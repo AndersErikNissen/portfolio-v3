@@ -16,21 +16,8 @@ export default {
     HeroHero,
   },
   methods: {
-    loginPOST: function () {
-      axios.post("https://skole.aenders.dk/wp-json/jwt-auth/v1/token", {
-        username: "api.user",
-        password: "API-key-1234#!",
-      })
-      .then((response) => {
-        localStorage.skoleToken = response.data.token;
-      });
-    },
     getPosts: function () {
-      axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts/2596?status=private&per_page=50", {
-        headers: {
-          "Authorization": "Bearer " + localStorage.skoleToken
-        }
-      })
+      axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts?status=publish&per_page=50")
       .then((response) => {
         console.log(response.data)
 
@@ -38,7 +25,6 @@ export default {
     }
   },
   created() {
-    this.loginPOST();
     this.getPosts();
   }
 };
