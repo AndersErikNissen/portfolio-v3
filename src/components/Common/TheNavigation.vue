@@ -92,10 +92,10 @@ img {
     # Z-index works with display: flex, but only for the children of the flex-parent.
     # If I want to change the parten it needs to have something like postion: relative.
   */
-  display: flex;
-  z-index: 1;
+  z-index: 2;
 }
 #nav__mobile--menu {
+  z-index: 1;
   background-color: var(--color-bg-first);
 }
 </style>
