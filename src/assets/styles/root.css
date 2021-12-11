@@ -1,0 +1,24 @@
+/*
+  CSS Variables
+*/
+:root {
+    /* 
+          Colors
+      */
+    --color-first: red;
+    --color-second: blue;
+    --color-bg-first: yellow;
+    --color-font: black;
+    --color-a: black;
+    /* 
+          Typo
+      */
+    --font-header-weight: 700;
+    --a-weight: 400;
+    --a-size: 1.5rem;
+    /* 
+      Spacing
+    */
+    --padding: 1rem;
+    --padding-normal: var(--padding) * 2;
+  }
