@@ -4,45 +4,31 @@
             "title": "Hjem",
             "path": "/",
             "WP_ID": 0,
-            "text": {},
-            "images": {}
+            "content": {}
         },
         {
             "title": "Profil",
             "path": "/profil",
             "WP_ID": 0,
-            "text": {},
-            "images": {}
+            "content": {}
         },
         {
             "title": "Case Studies",
             "path": "/case-studies",
             "WP_ID": 0,
-            "text": {},
-            "images": {}
+            "content": {}
         },
         {
             "title": "Designs",
             "path": "/designs",
             "WP_ID": 0,
-            "text": {},
-            "images": {}
+            "content": {}
         },
         {
             "title": "Kontakt",
             "path": "/kontakt",
             "WP_ID": 0,
-            "text": {},
-            "images": {}
-        }
-    ],
-    "data_templates": [
-        {
-            "title": "Kontakt",
-            "": "/kontakt",
-            "WP_ID": 0,
-            "text": {},
-            "images": {}
+            "content": {}
         }
     ]
 }

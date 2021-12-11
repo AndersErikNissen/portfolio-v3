@@ -1,32 +1,39 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-  </div>
+  <the-nav></the-nav>
   <router-view />
-  <hero-hero></hero-hero>
+
 </template>
 
 <script>
-import HeroHero from "./Layouts/HomePage/HomepageHero.vue";
 import axios from "axios";
+import theNav from "./components/Common/TheNavigation.vue"
+
 export default {
   name: "App",
   components: {
-    HeroHero,
+    theNav,
   },
   methods: {
     getPosts: function () {
       axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts?status=publish&per_page=50")
       .then((response) => {
-        console.log(response.data)
+        console.log("%c Get from API: ", 'background: #FFF; color: rgb(214, 36, 155)', response.data)
 
       })
-    }
+    },
+    resizeWindow: function () {
+      window.addEventListener("resize", ()=> {
+        this.$store.commit('RESIZE_WINDOW')
+      })
+    },
   },
   created() {
+    this.$store.dispatch("LOAD_NAV");
+    this.resizeWindow();
     this.getPosts();
-    console.log(this.$store.state)
-  }
+  },
+  mounted() {
+  },
 };
 </script>
 

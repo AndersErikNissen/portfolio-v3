@@ -32,13 +32,7 @@ body {
   font-weight: 400;
   color: --color-font;
 }
-ul {
-  &.clean {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-}
+
 picture,
 img {
   width: 100%;
@@ -108,10 +102,12 @@ a {
   &.underline {
     text-decoration: underline;
   }
-  &:hover,
-  &:focus {
-    transition: 0.3s linear;
-    transform: scale(1.1);
+  &.animate {
+    &:hover,
+    &:focus {
+      transition: 0.3s linear;
+      transform: scale(1.1);
+    }
   }
 }
 .uppercase {
@@ -126,6 +122,15 @@ a {
   height: auto;
   position: relative; // If child elements need to use position: absolute.
   // Could use a max-width.
+}
+.fixed {
+  position: fixed;
+  &.zero--100 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
 }
 
 // Flex
@@ -152,15 +157,71 @@ a {
     flex-direction: row;
     &--sb {
       justify-content: space-between;
+      align-items: center;
     }
     &--sa {
       justify-content: space-around;
+      align-items: center;
     }
     &--se {
       justify-content: space-evenly;
+      align-items: center;
     }
   }
   &.wrap {
     flex-wrap: wrap;
   }
+}
+/*
+  Common Items
+*/
+ul {
+  #nav & {
+    //Works on TheNavigation
+    & li {
+      margin: 0 1rem;
+
+      &:last-of-type {
+        //Removes margin from the right most li in our navigation list.
+        margin-right: 0;
+      }
+      & a {
+        color: var(--color-a);
+        &.router-link-exact-active {
+          color: var(--color-a-active);
+        } 
+      }
+    }
+    
+  }
+  &.clean {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/*
+  Animations
+*/
+.display {
+  &--block {
+    display: block;
+  }
+  &--flex {
+    display: flex;
+  }
+  &--inline-block {
+    display: inline-block;
+  }
+  &--inline {
+    display: inline;
+  }
+  &--none {
+    display: none;
+  }
+}
+.nav--transition {
+  transition: opacity 1s linear;
+  opacity: 1;
 }

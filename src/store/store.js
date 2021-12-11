@@ -11,6 +11,9 @@ export default createStore({
     // state stores the variables (analogous to 'data' in the vue options object)
     state() {
         return {
+            //Used to know what the width of the screen is at the moment, and will update on resize from the use of the mutation (RESIZE_WINDOW).
+            windowWidth: window.innerWidth,
+            
             nav: []
         }
     },
@@ -24,11 +27,15 @@ export default createStore({
         SET_NAV: (state, navArray) => {
             state.nav = navArray;
         },
+        RESIZE_WINDOW: (state) => {
+            // Used for checking what type of navigation should be used (Hamburger-With-Menu or Desktop-List).
+            state.windowWidth = window.innerWidth;
+        },
     },
     // actions are for async calls and functions that may have different mutations as outcome
     actions: {
         // load() fetches the data from API
-        load: (context) => {
+        LOAD_NAV: (context) => {
             const 
             //Set up a array from the data.json with all the global data, here the data_nav
             nav = dataNav.data_nav;
