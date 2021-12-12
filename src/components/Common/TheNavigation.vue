@@ -28,9 +28,17 @@
         'flex',
         'center',
         isBurger ? 'display--flex' : 'display--none',
+        animateBG ? 'active' : '',
       ]"
     >
-      <div>HeLLO!!!</div>
+      <div id="bg__circle"></div>
+      <section>
+        <ul>
+          <li>Hey</li>
+          <li>Nice</li>
+          <li>Awesome</li>
+        </ul>
+      </section>
     </section>
   </section>
 </template>
@@ -46,6 +54,7 @@ export default {
       AENLogo,
       windowWidth: this.$store.state.windowWidth,
       isBurger: false,
+      animateBG: false,
     };
   },
   computed: {
@@ -67,8 +76,19 @@ export default {
   },
   methods: {
     toggleBurger() {
-      this.isBurger = !this.isBurger;
-      console.log(this.isBurger, "WOOP");
+      // In order to animate something that goes from block / none, there has to be a delay, otherwise the animation will not be run after changing display.
+      // We can use setTimeout because we know how long the animations are, and have the delay be 30ms (Just to be sure).
+      if (this.isBurger === false) {
+        this.isBurger = true;
+        setTimeout(() => {
+          this.animateBG = true;
+        }, 30);
+      } else {
+        this.animateBG = false;
+        setTimeout(() => {
+          this.isBurger = false;
+        }, 1030);
+      }
     },
   },
   created() {
@@ -96,6 +116,25 @@ img {
 }
 #nav__mobile--menu {
   z-index: 1;
+  // background-color: var(--color-bg-first);
+}
+#nav__mobile--menu section {
+  z-index: 1;
+}
+
+#bg__circle {
+  border-radius: 50%;
   background-color: var(--color-bg-first);
+  width: 50px;
+  height: 50px;
+
+  position: fixed;
+  top: -50px;
+  right: -50px;
+  transform-origin: center;
+  transition: transform 1s linear;
+}
+.active #bg__circle {
+  transform: scale(100);
 }
 </style>
