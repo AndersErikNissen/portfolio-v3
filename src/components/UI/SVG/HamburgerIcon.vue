@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     animate_status() {
-      const div = document.querySelector("#hamburgerDiv"); // Not Scoped..
+      const div = document.querySelector("#hamburgerDiv"); // Not Scoped, remember!
 
       if (!div.classList.contains("active")) {
         div.classList.add("active");
