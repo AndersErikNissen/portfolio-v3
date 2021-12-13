@@ -1,12 +1,12 @@
 <template>
   <the-nav></the-nav>
   <router-view />
-
 </template>
 
 <script>
 import axios from "axios";
 import theNav from "./components/Common/TheNavigation.vue"
+
 
 export default {
   name: "App",

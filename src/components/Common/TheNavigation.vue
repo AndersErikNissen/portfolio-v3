@@ -14,7 +14,7 @@
         </li>
       </ul>
       <div v-else id="hamburger">
-        <button @click="toggleBurger">Button</button>
+        <hamburger-icon @click="toggleBurger"></hamburger-icon>
       </div>
     </section>
 
@@ -45,6 +45,7 @@
 
 <script>
 import AENLogo from "../../assets/images/aen_logo_simple_1.png";
+import hamburgerIcon from "../UI/SVG/HamburgerIcon.vue"
 
 export default {
   name: "TheNavigation",
@@ -56,6 +57,9 @@ export default {
       isBurger: false,
       animateBG: false,
     };
+  },
+  components: {
+    hamburgerIcon
   },
   computed: {
     skipFirst() {
