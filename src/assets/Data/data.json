@@ -30,5 +30,57 @@
             "WP_ID": 0,
             "content": {}
         }
+    ],
+    "data_wp_categories": [
+        {
+            "name": "v3",
+            "id": 81
+        },
+        {
+            "name": "cases",
+            "id": 82
+        },
+        {
+            "name": "designs",
+            "id": 83
+        },
+        {
+            "name": "main",
+            "id": 84
+        }
+    ],
+    "data_wp_tags": [
+        {
+            "name": "profil",
+            "id": 85
+        },
+        {
+            "name": "homepage",
+            "id": 86
+        },
+        {
+            "name": "overview",
+            "id": 87
+        },
+        {
+            "name": "case",
+            "id": 88
+        },
+        {
+            "name": "design",
+            "id": 89
+        },
+        {
+            "name": "contact",
+            "id": 90
+        },
+        {
+            "name": "case-studies",
+            "id": 91
+        },
+        {
+            "name": "designs",
+            "id": 92
+        }
     ]
 }
