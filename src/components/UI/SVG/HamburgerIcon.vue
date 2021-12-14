@@ -54,37 +54,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../../assets/styles/_mixins.scss';
 #hamburgerDiv {
     width: 35px;
 }
 
-/* 
-    Help from these guides:
-    #1 - https://dev.to/inverseswirl/how-to-add-keyframes-animation-code-in-scss-46k8
-    #2 - https://thoughtbot.com/blog/sasss-content-directive
-    */
-// In SCSS 2 mixin's are made, that do the same as what they do normally in CSS.
-@mixin animate($animationName, $duration, $method, $times) {
-  animation: $animationName $duration $method $times;
-}
-/* 
-    All the is writen in the mixin will be but @content. 
-    While it will be used 3 times for each type of Keyframe. 
-    #{animationName} is where the name of the animation is put. 
-*/
-@mixin keyframes($animationName) {
-  @-webkit-keyframes #{$animationName} {
-    @content;
-  }
-
-  @-moz-keyframes #{$animationName} {
-    @content;
-  }
-
-  @keyframes #{$animationName} {
-    @content;
-  }
-}
 // Styling Class
 .st_v1 {
   fill: none;

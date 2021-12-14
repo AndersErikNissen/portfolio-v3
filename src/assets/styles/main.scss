@@ -66,6 +66,13 @@ h1 {
 }
 h2 {
   font-size: 3.5rem;
+  &.clamp {
+    font-size: clamp(2rem, 10vw, 4.5rem);
+  }
+  &.slide {
+    display: block;
+    overflow: hidden;
+  }
 }
 h3 {
   font-size: 3rem;
@@ -176,15 +183,18 @@ a {
   Common Items
 */
 ul {
-  #nav & {
+  #nav &.desktop {
     //Works on TheNavigation
     & li {
       margin: 0 1rem;
-
-      &:last-of-type {
-        //Removes margin from the right most li in our navigation list.
-        margin-right: 0;
-      }
+    }
+    & li:last-of-type {
+      //Removes margin from the right most li in our navigation list.
+      margin-right: 0;
+    }
+  }
+  #nav & {
+    & li {
       & a {
         color: var(--color-a);
         &.router-link-exact-active {
@@ -192,7 +202,6 @@ ul {
         } 
       }
     }
-    
   }
   &.clean {
     list-style-type: none;

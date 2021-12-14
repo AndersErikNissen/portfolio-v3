@@ -6,7 +6,7 @@
           <img :src="AENLogo" alt="AEN Logo" />
         </div>
       </router-link>
-      <ul v-if="isDesktop" class="flex row clean">
+      <ul v-if="isDesktop" class="desktop flex row clean">
         <li v-for="item in skipFirst" :key="item.title">
           <router-link :to="item.path">
             {{ item.title }}
@@ -33,10 +33,25 @@
     >
       <div id="bg__circle"></div>
       <section>
-        <ul>
-          <li>Hey</li>
-          <li>Nice</li>
-          <li>Awesome</li>
+        <ul
+          class="flex column center clean"
+          :class="[
+            'flex',
+            'column',
+            'center',
+            'clean',
+            showMenu_nonDesktop ? 'endY' : 'startY',
+          ]"
+        >
+          <li v-for="item in skipFirst" :key="item.title">
+            <router-link :to="item.path">
+              <h2 class="clamp slide">
+                <span>
+                  {{ item.title }}
+                </span>
+              </h2>
+            </router-link>
+          </li>
         </ul>
       </section>
     </section>
@@ -45,7 +60,7 @@
 
 <script>
 import AENLogo from "../../assets/images/aen_logo_simple_1.png";
-import hamburgerIcon from "../UI/SVG/HamburgerIcon.vue"
+import hamburgerIcon from "../UI/SVG/HamburgerIcon.vue";
 
 export default {
   name: "TheNavigation",
@@ -56,10 +71,11 @@ export default {
       windowWidth: this.$store.state.windowWidth,
       isBurger: false,
       animateBG: false,
+      showMenu_nonDesktop: false,
     };
   },
   components: {
-    hamburgerIcon
+    hamburgerIcon,
   },
   computed: {
     skipFirst() {
@@ -85,10 +101,12 @@ export default {
       if (this.isBurger === false) {
         this.isBurger = true;
         setTimeout(() => {
+          this.showMenu_nonDesktop = true;
           this.animateBG = true;
         }, 30);
       } else {
         this.animateBG = false;
+        this.showMenu_nonDesktop = false;
         setTimeout(() => {
           this.isBurger = false;
         }, 1030);
@@ -102,6 +120,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/styles/_mixins.scss";
+
 #nav {
   padding: 1rem 0;
 }
@@ -121,9 +141,31 @@ img {
 #nav__mobile--menu {
   z-index: 1;
   // background-color: var(--color-bg-first);
+  & section {
+    z-index: 1;
+  }
 }
-#nav__mobile--menu section {
-  z-index: 1;
+span {
+  width: 100%;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.21, 0.64, 0.62, 0.89);
+
+  .startY & {
+    transform: translateY(100%);
+  }
+  .endY & {
+    transition-delay: 0.2s;
+    transform: translateY(0%);
+  }
+  .endY li:nth-child(2) & {
+        transition-delay: .3s;
+  }
+  .endY li:nth-child(3) & {
+        transition-delay: .4s;
+  }
+  .endY li:nth-child(4) & {
+        transition-delay: .5s;
+  }
 }
 
 #bg__circle {
@@ -136,9 +178,10 @@ img {
   top: -50px;
   right: -50px;
   transform-origin: center;
-  transition: transform 1s linear;
-}
-.active #bg__circle {
-  transform: scale(100);
+  transition: transform 0.8s linear;
+
+  .active & {
+    transform: scale(100);
+  }
 }
 </style>
