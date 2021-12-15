@@ -35,6 +35,15 @@ export default createStore({
         SET_TAGS: (state, tagsArray) => {
             state.tags = tagsArray;
         },
+        ADD_APIDATA: (state, obj) => {
+            const
+            findNAVitem = state.nav.find(item => item.title == obj.WPinfo.title);
+
+            if(findNAVitem) {
+                findNAVitem.content = obj.content;
+            }
+            console.log("%c Check Nav","background-color: red;", state.nav)
+        },
         RESIZE_WINDOW: (state) => {
             // Used for checking what type of navigation should be used (Hamburger-With-Menu or Desktop-List).
             state.windowWidth = window.innerWidth;

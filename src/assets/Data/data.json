@@ -3,59 +3,59 @@
         {
             "title": "Hjem",
             "path": "/",
-            "WP_ID": 0,
+            "WPpost": 2733,
             "content": {}
         },
         {
             "title": "Profil",
             "path": "/profil",
-            "WP_ID": 0,
+            "WPpost": 2605,
             "content": {}
         },
         {
             "title": "Case Studies",
             "path": "/case-studies",
-            "WP_ID": 0,
+            "WPpost": 2737,
             "content": {}
         },
         {
             "title": "Designs",
             "path": "/designs",
-            "WP_ID": 0,
+            "WPpost": 2739,
             "content": {}
         },
         {
             "title": "Kontakt",
             "path": "/kontakt",
-            "WP_ID": 0,
+            "WPpost": 2636,
             "content": {}
         }
     ],
     "data_wp_categories": [
         {
-            "name": "v3",
+            "title": "v3",
             "id": 81
         },
         {
-            "name": "cases",
+            "title": "cases",
             "id": 82
         },
         {
-            "name": "designs",
+            "title": "designs",
             "id": 83
         },
         {
-            "name": "main",
+            "title": "main",
             "id": 84
         }
     ],
     "data_wp_tags": [
         {
-            "name": "profil",
+            "title": "profil",
             "id": 85
         },
         {
-            "name": "homepage",
+            "title": "homepage",
             "id": 86
         },
         {
@@ -63,23 +63,23 @@
             "id": 87
         },
         {
-            "name": "case",
+            "title": "case",
             "id": 88
         },
         {
-            "name": "design",
+            "title": "design",
             "id": 89
         },
         {
-            "name": "contact",
+            "title": "contact",
             "id": 90
         },
         {
-            "name": "case-studies",
+            "title": "case-studies",
             "id": 91
         },
         {
-            "name": "designs",
+            "title": "designs",
             "id": 92
         }
     ]
