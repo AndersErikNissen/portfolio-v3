@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 
-import dataNav from '../assets/Data/data.json'
+import data from '../assets/Data/data.json'
 
 //1 The plan: get Homepage first
 //- load() will get the homepage data from WordPress 
@@ -14,7 +14,9 @@ export default createStore({
             //Used to know what the width of the screen is at the moment, and will update on resize from the use of the mutation (RESIZE_WINDOW).
             windowWidth: window.innerWidth,
             
-            nav: []
+            nav: [],
+            categories: [],
+            tags: [],
         }
     },
     // getters do not modify the state, but return values based on some criteria
@@ -27,6 +29,12 @@ export default createStore({
         SET_NAV: (state, navArray) => {
             state.nav = navArray;
         },
+        SET_CATEGORIES: (state, categoriesArray) => {
+            state.categories = categoriesArray;
+        },
+        SET_TAGS: (state, tagsArray) => {
+            state.tags = tagsArray;
+        },
         RESIZE_WINDOW: (state) => {
             // Used for checking what type of navigation should be used (Hamburger-With-Menu or Desktop-List).
             state.windowWidth = window.innerWidth;
@@ -38,10 +46,18 @@ export default createStore({
         LOAD_NAV: (context) => {
             const 
             //Set up a array from the data.json with all the global data, here the data_nav
-            nav = dataNav.data_nav;
+            nav = data.data_nav;
             //Use the a mutation to update our state.nav array from the data.json.
             context.commit('SET_NAV', nav);
-        }
+        },
+        LOAD_WP_DATA: (context) => {
+            const 
+            categories = data.data_wp_categories,
+            tags = data.data_wp_tags;
+            //Use the a mutation to update our state.nav array from the data.json.
+            context.commit('SET_CATEGORIES', categories);
+            context.commit('SET_TAGS', tags);
+        },
     }
 });
 
