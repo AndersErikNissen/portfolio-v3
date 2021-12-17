@@ -1,11 +1,12 @@
 import { createStore } from 'vuex'
+import axios from 'axios'
 
 import data from '../assets/Data/data.json'
 
-//1 The plan: get Homepage first
-//- load() will get the homepage data from WordPress 
-//2 After loading a page the first time, store that object in store,
-//3 Then reuse it the next time visiting that page
+/* 
+    NOTE TO SELF:
+    #1 - Use COMMIT for Mutations, and DISPATCH for Actions.
+*/
 
 export default createStore({
     // state stores the variables (analogous to 'data' in the vue options object)
@@ -13,8 +14,9 @@ export default createStore({
         return {
             //Used to know what the width of the screen is at the moment, and will update on resize from the use of the mutation (RESIZE_WINDOW).
             windowWidth: window.innerWidth,
-            
+
             nav: [],
+            api_data: [],
             categories: [],
             tags: [],
         }
@@ -22,50 +24,59 @@ export default createStore({
     // getters do not modify the state, but return values based on some criteria
     // getters are re-evaluated when the state changes (analogous to 'computed' in the vue options object)
     getters: {
-      
+
     },
     // mutations directly manipulate the state (variables), mutations are synchronous!
     mutations: {
-        SET_NAV: (state, navArray) => {
-            state.nav = navArray;
-        },
-        SET_CATEGORIES: (state, categoriesArray) => {
-            state.categories = categoriesArray;
-        },
-        SET_TAGS: (state, tagsArray) => {
-            state.tags = tagsArray;
-        },
-        ADD_APIDATA: (state, obj) => {
+        CHECK_APIDATA: (state, payload) => {
             const
-            findNAVitem = state.nav.find(item => item.title == obj.WPinfo.title);
+                findObject = state.api_data.find(object => object.slug == payload.slug);
 
-            if(findNAVitem) {
-                findNAVitem.content = obj.content;
-            }
-            console.log("%c Check Nav","background-color: red;", state.nav)
+            // if(findNAVitem) {
+            //     findNAVitem.content = obj.content;
+            // }
+
+            console.log("%c CHECK_APIDATA ", "background-color: red;", findObject)
+            return findObject;
+       
         },
         RESIZE_WINDOW: (state) => {
             // Used for checking what type of navigation should be used (Hamburger-With-Menu or Desktop-List).
             state.windowWidth = window.innerWidth;
         },
+        SET_STATIC_DATA: (state) => {
+            const
+                //Set up arrays from the data.json with all the static data
+                nav = data.data_nav,
+                categories = data.data_wp_categories,
+                tags = data.data_wp_tags;
+            //Add Static data to state from data.json
+            state.nav = nav;
+            state.categories = categories;
+            state.tags = tags;
+        }
     },
     // actions are for async calls and functions that may have different mutations as outcome
     actions: {
-        // load() fetches the data from API
-        LOAD_NAV: (context) => {
-            const 
-            //Set up a array from the data.json with all the global data, here the data_nav
-            nav = data.data_nav;
-            //Use the a mutation to update our state.nav array from the data.json.
-            context.commit('SET_NAV', nav);
-        },
-        LOAD_WP_DATA: (context) => {
-            const 
-            categories = data.data_wp_categories,
-            tags = data.data_wp_tags;
-            //Use the a mutation to update our state.nav array from the data.json.
-            context.commit('SET_CATEGORIES', categories);
-            context.commit('SET_TAGS', tags);
+        GET_API_DATA: (context, payload) => {
+            // In order to be able to return data when the actions is dispatched, a promise is used. 
+            // It would also be possible to use .find() to find the data in api_data, but this is a bit more simple.
+            return new Promise((resolve,reject) => {
+            axios
+                .get(
+                    "https://skole.aenders.dk/wp-json/wp/v2/posts/" +
+                    payload.id +
+                    "?status=publish&per_page=50"
+                )
+                .then((response) => {
+                    context.state.api_data.push(response.data);
+                    resolve(response.data)
+                })
+                .catch((error) => {
+                    console.log("The Error: ", error)
+                    reject(error);
+                });
+            })
         },
     }
 });

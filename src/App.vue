@@ -27,10 +27,12 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("LOAD_NAV");
-    this.$store.dispatch("LOAD_WP_DATA");
+    //Updates static data to store.state
+    this.$store.commit("SET_STATIC_DATA");
+    //Add a functional "mediaquery-watcher" to use for methods and other stuff.
     this.resizeWindow();
-    this.getPosts();
+
+    // this.getPosts();
   },
   mounted() {
   },

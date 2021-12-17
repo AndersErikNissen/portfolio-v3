@@ -1,13 +1,18 @@
 <template>
-  <main v-if="hjemObj">
+  <!-- <main v-if="hjemObj"> -->
+  <main>
     <h1>
-      {{ hjemObj.titletoh1 }}
+      <!-- {{ hjemObj.titletoh1 }} -->
+      Check forside! 
     </h1>
+    <h3>
+      ACF.title = {{ hjemObj.acf.title}}
+    </h3>
   </main>
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "HjemPage",
@@ -18,32 +23,25 @@ export default {
     };
   },
   methods: {
-    checkData() {},
-    loadData() {
-      axios
-        .get(
-          "https://skole.aenders.dk/wp-json/wp/v2/posts/" +
-            this.WPID.WPpost +
-            "?status=publish&per_page=50"
-        )
-        .then((response) => {
-          console.log(response);
+    checkData() {
+      const checkAPIDATA = this.$store.commit("CHECK_APIDATA", {slug:"fisk"});
 
-          this.hjemObj = response.data.acf;
+      // If CHECK_APIDATA is undefined, it means there was NOT a match in state.api_data so a API call is need to get the data.
+      if(checkAPIDATA) {
+        console.log("%c Check = True ", "background-color: blue;");
+        this.hjemObj = checkAPIDATA;
+      } else {
+        this.$store.dispatch("GET_API_DATA", {id: 2752}).then((res)=> {
+          console.log("NO RES",res)
+          this.hjemObj = res;
 
-          this.$store.commit({
-            type: 'ADD_APIDATA',
-            WPinfo: this.WPID,
-            content: this.hjemObj
-          })
+          //If API call fails, redirect to 404 page..
         })
-        .catch((error)=> {
-          console.log(error)
-        });
+      }
     },
   },
   created() {
-    this.loadData();
+    this.checkData();
   },
 };
 </script>
