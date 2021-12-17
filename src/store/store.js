@@ -30,11 +30,11 @@ export default createStore({
     mutations: {
         CHECK_APIDATA: (state, payload) => {
             const
-                findObject = state.api_data.find(object => object.slug == payload.slug);
+            findObject = state.api_data.find(object => object.slug == payload.slug);
+            if() {
+                
+            }
 
-            // if(findNAVitem) {
-            //     findNAVitem.content = obj.content;
-            // }
 
             console.log("%c CHECK_APIDATA ", "background-color: red;", findObject)
             return findObject;
@@ -59,15 +59,21 @@ export default createStore({
     // actions are for async calls and functions that may have different mutations as outcome
     actions: {
         GET_API_DATA: (context, payload) => {
-            // In order to be able to return data when the actions is dispatched, a promise is used. 
+            // In order to be able to return data when the actions is dispatched, a promise is used. It can also be used since actions are async. 
             // It would also be possible to use .find() to find the data in api_data, but this is a bit more simple.
             return new Promise((resolve,reject) => {
+                let
+                getString = "https://skole.aenders.dk/wp-json/wp/v2/posts";
+
+                if(payload.id === "id") {
+                    //For views where id is used.
+                    getString += "/" + payload.id + "?status=publish&per_page=50";
+                } else {
+                    //For views where a slug is used.
+                    getString +="?status=publish&per_page=50&slug=" + payload.slug;
+                }
             axios
-                .get(
-                    "https://skole.aenders.dk/wp-json/wp/v2/posts/" +
-                    payload.id +
-                    "?status=publish&per_page=50"
-                )
+                .get(getString)
                 .then((response) => {
                     context.state.api_data.push(response.data);
                     resolve(response.data)
