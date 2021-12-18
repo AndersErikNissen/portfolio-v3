@@ -29,6 +29,7 @@ export default {
   created() {
     //Updates static data to store.state
     this.$store.commit("SET_STATIC_DATA");
+    this.$store.dispatch("GET_API_LIBRARY");
     //Add a functional "mediaquery-watcher" to use for methods and other stuff.
     this.resizeWindow();
 

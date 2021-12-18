@@ -3,34 +3,32 @@
         {
             "title": "Hjem",
             "path": "/",
-            "WPpost": 2733,
-            "content": {}
+            "WPpost": 2733
         },
         {
             "title": "Profil",
             "path": "/profil",
-            "WPpost": 2605,
-            "content": {}
+            "WPpost": 2605
         },
         {
             "title": "Case Studies",
             "path": "/case-studies",
-            "WPpost": 2737,
-            "content": {}
+            "WPpost": 2737
         },
         {
             "title": "Designs",
             "path": "/designs",
-            "WPpost": 2739,
-            "content": {}
+            "WPpost": 2739
         },
         {
             "title": "Kontakt",
             "path": "/kontakt",
-            "WPpost": 2636,
-            "content": {}
+            "WPpost": 2636
         }
     ],
+    "data_wp_library": {
+        "id": 2770
+    },
     "data_wp_categories": [
         {
             "title": "v3",
