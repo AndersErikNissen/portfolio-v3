@@ -28,17 +28,13 @@ export default createStore({
     },
     // mutations directly manipulate the state (variables), mutations are synchronous!
     mutations: {
-        CHECK_APIDATA: (state, payload) => {
-            const
-            findObject = state.api_data.find(object => object.slug == payload.slug);
-            if() {
-                
+        CHECK_API_DATA: (state, payload) => {
+            // If the payload include an id, it has to use that as part of the .find() otherwise look for a matching slug.
+            if (payload.id) {
+                return state.api_data.find(object => object.id == payload.id);
+            } else {
+                return state.api_data.find(object => object.slug == payload.slug);
             }
-
-
-            console.log("%c CHECK_APIDATA ", "background-color: red;", findObject)
-            return findObject;
-       
         },
         RESIZE_WINDOW: (state) => {
             // Used for checking what type of navigation should be used (Hamburger-With-Menu or Desktop-List).
@@ -61,28 +57,36 @@ export default createStore({
         GET_API_DATA: (context, payload) => {
             // In order to be able to return data when the actions is dispatched, a promise is used. It can also be used since actions are async. 
             // It would also be possible to use .find() to find the data in api_data, but this is a bit more simple.
-            return new Promise((resolve,reject) => {
-                let
-                getString = "https://skole.aenders.dk/wp-json/wp/v2/posts";
 
-                if(payload.id === "id") {
+            console.log("%c PAYLOAD ", "background-color: red;", payload)
+            const checkStoreData = context.commit("CHECK_API_DATA", payload);
+         
+
+            if (checkStoreData) {
+                // If data is found in the store, then give that to the dispatch.
+                return checkStoreData;
+            } else {
+                let string = undefined;
+                if (payload.id) {
                     //For views where id is used.
-                    getString += "/" + payload.id + "?status=publish&per_page=50";
+                    string = "https://skole.aenders.dk/wp-json/wp/v2/posts/" + payload.id + "?status=publish&per_page=50";
                 } else {
                     //For views where a slug is used.
-                    getString +="?status=publish&per_page=50&slug=" + payload.slug;
+                    string = "https://skole.aenders.dk/wp-json/wp/v2/posts?status=publish&per_page=50&slug=" + payload.slug;
                 }
-            axios
-                .get(getString)
-                .then((response) => {
-                    context.state.api_data.push(response.data);
-                    resolve(response.data)
-                })
-                .catch((error) => {
-                    console.log("The Error: ", error)
-                    reject(error);
-                });
-            })
+                console.log("%c AXIOS ","background-color:white;color: pink;",axios.get(string).then((response) => {console.log("then: ", response)}))
+                
+                axios
+                        .get(string)
+                        .then((response) => {
+                            context.state.api_data.push(response.data);
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+
+            }
+            
         },
     }
 });
