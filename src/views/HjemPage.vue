@@ -2,7 +2,7 @@
   <!-- <main v-if="hjemObj"> -->
   <main>
     <h1>
-      <!-- {{ hjemObj.titletoh1 }} -->
+      {{ pageObj }}
       Check forside!
     </h1>
     <h3>
@@ -18,44 +18,23 @@ export default {
   name: "HjemPage",
   data() {
     return {
-      hjemObj: false,
-      WPID: this.$store.state.nav.find((item) => item.title == "Hjem"),
+      WPID: this.$store.state.nav.find((item) => item.title === "Hjem"),
     };
+  },
+  computed: {
+    pageObj() {
+      return this.$store.state.api_data.find((data) => data.id == this.WPID.WPpost);
+    },
   },
   methods: {
     checkData() {
-      // this.$store.dispatch("GET_API_DATA", { id: 2752 }).then((res) => {
-      //   console.log(
-      //     "%c Hjem Page",
-      //     "background-color:black; color: white;",
-      //     res
-      //   );
-
-      //   if(res.status) {
-      //     // this.$router.go("/notfound")
-      //   }
-      // });
-
-      this.$store.dispatch("GET_API_DATA", { id: 2752 });
-
-
-      // console.log("%c API DATA ", "background-color:black; color: white;");
-      // this.$store.dispatch("GET_API_DATA", { id: 27562 })
-      // .then((res) => {
-      //   console.log("NO RES", res);
-
-      //   this.hjemObj = res;
-      //   // this.$router.go("/notfound")
-
-      //   //If API call fails, redirect to 404 page..
-      // });
-
-      // If CHECK_APIDATA is undefined, it means there was NOT a match in state.api_data so a API call is need to get the data.
-      // if(checkAPIDATA) {
-      //   console.log("%c Check = True ", "background-color: blue;");
-      //   this.hjemObj = checkAPIDATA;
-      // } else {
-      // }
+      // this.$router.push("/notfound")
+      this.$store.dispatch("GET_API_DATA", { id: this.WPID.WPpost });
+      if(!this.pageObj) {
+        // Ikke optimalt.
+        // this.$router.push("/notfound")
+      }
+      // this.$store.dispatch("GET_API_DATA", { id: 894984});
     },
   },
   created() {
