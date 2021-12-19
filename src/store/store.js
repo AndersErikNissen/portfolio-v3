@@ -17,6 +17,7 @@ export default createStore({
 
             nav: [],
             library: [],
+            randomLibrary: [],
             api_data: [],
             categories: [],
             tags: [],
@@ -43,19 +44,22 @@ export default createStore({
         SET_LIBRARY: (state, lib) => {
             // Since using ACF, there could be some empty array, because they have not been filed out.
             // Therefore the foreach will only place the non-empty object in the cleanLibArr
-            let cleanLibArr = [];
+            let cleanLibObject = {
+                cases: [],
+                designs: []
+            };
             lib.cases.forEach(arr => {
                 if (arr.slug != "" && arr.wppost != "") {
-                    cleanLibArr.push(arr);
+                    cleanLibObject.cases.push(arr);
                 }
             })
             lib.designs.forEach(arr => {
                 if (arr.slug != "" && arr.wppost != "") {
-                    cleanLibArr.push(arr);
+                    cleanLibObject.designs.push(arr);
                 }
             })
 
-            state.library = cleanLibArr;
+            state.library = cleanLibObject;
         },
         ADD_TO_APIDATA: (state, dataObj) => {
             state.api_data.push(dataObj)
@@ -88,7 +92,8 @@ export default createStore({
                     axios
                         .get(getString)
                         .then((response) => {
-                            context.state.api_data.push(response.data);
+                            context.commit("ADD_TO_APIDATA", response.data)
+                            resolve(response.data)
                         })
                         .catch((error) => {
                             console.log(error);
@@ -107,9 +112,26 @@ export default createStore({
                 .catch(error => {
                     console.log("Library Error:", error.message)
                 })
+        },
+        GET_API_RANDOM_CASES: (context) => {
+            const showAmount = 2;
+            let returnArray = [],
+                randomArray = [];
 
+
+            context
+            while (randomArray.length < showAmount) {
+                let // Get a random number in the range of 0 - showAmount.
+                    randomNumber = Math.floor(Math.random() * showAmount);
+                // If the randomNumber is NOT in the randomArray, then push.
+                if (randomArray.includes(randomNumber) != true) {
+                    randomArray.push(randomNumber);
+                    returnArray.push(context.state.library.cases[randomNumber]);
+                }
+            }
+            console.log("REturn array",returnArray, context);
+            // context.dispatch("GET_API_DATA")
         }
-
     }
 });
 
