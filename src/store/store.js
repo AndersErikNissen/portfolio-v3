@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 
 import data from '../assets/Data/data.json'
+import ApiGet from '../assets/api/apiroutes'
 
 /* 
     NOTE TO SELF:
@@ -56,16 +57,15 @@ export default createStore({
         }
     },
     actions: {
-        async loadSinglePost({ commit, context }, payload) {
+        async loadSinglePost({ commit }, payload) {
             console.log("POST")
             /* 
                 Inspiration from: https://medium.com/js-dojo/vuex-tip-error-handling-on-actions-ee286ed28df4
             */
             // Await for the answer from axios, then use that data in post and commit it if there was no error.
-            const getRequest = await axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts/" + payload + "?status=publish&per_page=50&categories=");
+            const getRequest = await axios.get(ApiGet.byId(payload));
             const post = getRequest.data;
 
-            console.log(post)
             // - If there is an error, it could be a code:200 but something still went wrong, and we get an empty array then we don't want to commit.
             // - *It could be that there were some issues with the Query Parameters.
             // -- *It might be unessary..
@@ -73,16 +73,15 @@ export default createStore({
                 commit("ADD_TO_MAIN", post);
             }
         },
-        async loadAllCases({ commit, context }) {
+        async loadAllCases({ commit }) {
             /* 
                 Inspiration from: https://medium.com/js-dojo/vuex-tip-error-handling-on-actions-ee286ed28df4
             */
             // Await for the answer from axios, then use that data in post and commit it if there was no error.
-            const getRequest = await axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts?status=publish&per_page=50&categories=" + state.staticData.categories["v3"]);
+            const getRequest = await axios.get(ApiGet.allCases);
             const posts = getRequest.data;
+            console.log("%c actions: loadAllCases", "background-color: blue; color: white;", posts)
 
-            // - If there is an error, it could be a code:200 but something still went wrong, and we get an empty array then we don't want to commit.
-            // - *It could be that there were some issues with the Query Parameters.
             commit("ADD_TO_CASES", posts);
         },
     }

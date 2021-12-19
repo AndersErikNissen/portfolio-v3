@@ -2,7 +2,7 @@
   <!-- <main v-if="hjemObj"> -->
   <main>
     <h1>
-      {{ loaded }}
+ 
     </h1>
     <div>
       <h2>
@@ -12,12 +12,10 @@
         {{ pageACF.titletoh1 }}
       </div>
     </div>
-
-    <section v-if="pageObj">
-      <h1></h1>
       <hjem-cases></hjem-cases>
-    </section>
-    <section v-else>
+
+   
+    <section>
       <!-- Skeleton Grid -->
       <h2>Loading...</h2>
     </section>
@@ -33,11 +31,8 @@ export default {
   },
   data() {
     return {
-      pageObj: undefined,
-      cases: undefined,
-      designs: undefined,
       error: undefined,
-      loaded: false,
+      loading: true,
     };
   },
   computed: {
@@ -70,7 +65,7 @@ export default {
         try {
           console.log("%c SUCCESS ", "background-color: green;", this.getId.WPpost);
           await this.$store.dispatch("loadSinglePost", this.getId.WPpost);
-          this.loaded = true;
+          this.loading = false;
           /*
             If API call has 200 and this.loaded = true, but have no data, something with the GET(URL) could have failed, like a wrong slug, so we redirect to the ErrorPage.
           */
