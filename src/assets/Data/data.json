@@ -29,24 +29,12 @@
     "data_wp_library": {
         "id": 2770
     },
-    "data_wp_categories": [
-        {
-            "title": "v3",
-            "id": 81
-        },
-        {
-            "title": "cases",
-            "id": 82
-        },
-        {
-            "title": "designs",
-            "id": 83
-        },
-        {
-            "title": "main",
-            "id": 84
-        }
-    ],
+    "data_wp_categories": {
+        "v3": 81,
+        "cases": 82,
+        "designs": 83,
+        "main": 84
+    },
     "data_wp_tags": [
         {
             "title": "profil",

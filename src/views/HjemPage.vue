@@ -43,7 +43,7 @@ export default {
   computed: {
     getId() {
       //From state.nav find what ID matched with Hjem.
-      return this.$store.state.nav.find((item) => item.title === "Hjem");
+      return this.$store.state.staticData.nav.find((item) => item.title === "Hjem");
     },
     getPage() {
       return this.$store.state.main.find(
@@ -68,18 +68,18 @@ export default {
       // Check if the getPage can find some data that matches, because then we don't need to make an API call.
       if (!this.getPage) {
         try {
+          console.log("%c SUCCESS ", "background-color: green;", this.getId.WPpost);
           await this.$store.dispatch("loadSinglePost", this.getId.WPpost);
           this.loaded = true;
-          console.log("%c SUCCESS ", "background-color: green;");
           /*
             If API call has 200 and this.loaded = true, but have no data, something with the GET(URL) could have failed, like a wrong slug, so we redirect to the ErrorPage.
           */
           if (!this.getPage) {
             console.log("%c ERROR ", "background-color: red;");
-            // this.$router.push('/notfound');
+            this.$router.push('/notfound');
           }
         } catch (e) {
-          // this.$router.push('/notfound');
+          this.$router.push('/notfound');
         }
       }
     },

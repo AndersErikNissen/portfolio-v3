@@ -37,6 +37,8 @@ export default createStore({
             state.staticData.nav = nav;
             state.staticData.categories = categories;
             state.staticData.tags = tags;
+
+            console.log(state.staticData.categories)
         },
         ADD_TO_MAIN: (state, dataObj) => {
             state.main.push(dataObj)
@@ -49,35 +51,39 @@ export default createStore({
             // Debouncer missing.
             state.windowWidth = window.innerWidth;
         },
+        TEST_TEST: (state) => {
+            console.log("TEST TEST",state)
+        }
     },
     actions: {
-        async loadSinglePost({ commit }, payload) {
+        async loadSinglePost({ commit, context }, payload) {
+            console.log("POST")
             /* 
                 Inspiration from: https://medium.com/js-dojo/vuex-tip-error-handling-on-actions-ee286ed28df4
             */
             // Await for the answer from axios, then use that data in post and commit it if there was no error.
-            const getRequest = await axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts/" + payload + "?status=publish&per_page=50&categories=81");
+            const getRequest = await axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts/" + payload + "?status=publish&per_page=50&categories=");
             const post = getRequest.data;
-            console.log("POST", post)
+
+            console.log(post)
             // - If there is an error, it could be a code:200 but something still went wrong, and we get an empty array then we don't want to commit.
             // - *It could be that there were some issues with the Query Parameters.
+            // -- *It might be unessary..
             if (!post.length) {
                 commit("ADD_TO_MAIN", post);
             }
         },
-        async loadAllCases({ commit }) {
+        async loadAllCases({ commit, context }) {
             /* 
                 Inspiration from: https://medium.com/js-dojo/vuex-tip-error-handling-on-actions-ee286ed28df4
             */
             // Await for the answer from axios, then use that data in post and commit it if there was no error.
-            const getRequest = await axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts?status=publish&per_page=50&categories=81");
-            const post = getRequest.data;
+            const getRequest = await axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts?status=publish&per_page=50&categories=" + state.staticData.categories["v3"]);
+            const posts = getRequest.data;
 
             // - If there is an error, it could be a code:200 but something still went wrong, and we get an empty array then we don't want to commit.
             // - *It could be that there were some issues with the Query Parameters.
-            if (!post.length) {
-                commit("ADD_TO_MAIN", post);
-            }
+            commit("ADD_TO_CASES", posts);
         },
     }
 });
