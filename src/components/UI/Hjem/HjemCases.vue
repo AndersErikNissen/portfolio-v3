@@ -5,6 +5,16 @@
       
     </ul>
 
+
+    <div v-if="noData">
+      <h4 class="italic">
+        No Data
+      </h4>
+    </div>
+    <div v-else>
+      {{ getAllCases }}
+    </div>
+
     <section v-if="loading && !error" class="loading">
       <!-- Skeleton Grid -->
     </section>
@@ -40,7 +50,13 @@ export default {
           console.log("%c ERROR HjemCases.vue", "background-color: red;")
           this.error = e;
         }
-        if(this.getAllCases.length )
+
+        // Looking for .length 0, didn't seem to work since the array we get back has the length 1, with 1 empty array inside.
+        // - ? That might because we use find, and I think that returns an empty array ?
+        if(this.getAllCases[0] == false) {
+          // If the GET are done without and error, and still no data, then no data was found.
+          this.noData = true;
+        }
         this.loading = false;
       }
     },
