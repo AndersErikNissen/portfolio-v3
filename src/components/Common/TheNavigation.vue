@@ -66,7 +66,7 @@ export default {
   name: "TheNavigation",
   data() {
     return {
-      navData: this.$store.state.nav,
+      navData: this.$store.state.staticData.nav,
       AENLogo,
       windowWidth: this.$store.state.windowWidth,
       isBurger: false,
@@ -112,9 +112,6 @@ export default {
         }, 1030);
       }
     },
-  },
-  created() {
-    console.log(this.$store.state.nav);
   },
 };
 </script>

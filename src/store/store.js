@@ -9,26 +9,23 @@ import data from '../assets/Data/data.json'
 */
 
 export default createStore({
-    // state stores the variables (analogous to 'data' in the vue options object)
     state() {
         return {
             //Used to know what the width of the screen is at the moment, and will update on resize from the use of the mutation (RESIZE_WINDOW).
             windowWidth: window.innerWidth,
 
-            nav: [],
-            library: [],
-            randomLibrary: [],
-            api_data: [],
-            categories: [],
-            tags: [],
+            staticData: {
+                nav: [],
+                categories: [],
+                tags: [],
+            },
+            main: [],
+            cases: [],
         }
     },
-    // getters do not modify the state, but return values based on some criteria
-    // getters are re-evaluated when the state changes (analogous to 'computed' in the vue options object)
     getters: {
 
     },
-    // mutations directly manipulate the state (variables), mutations are synchronous!
     mutations: {
         SET_STATIC_DATA: (state) => {
             const
@@ -37,101 +34,51 @@ export default createStore({
                 categories = data.data_wp_categories,
                 tags = data.data_wp_tags;
             //Add Static data to state from data.json
-            state.nav = nav;
-            state.categories = categories;
-            state.tags = tags;
+            state.staticData.nav = nav;
+            state.staticData.categories = categories;
+            state.staticData.tags = tags;
         },
-        SET_LIBRARY: (state, lib) => {
-            // Since using ACF, there could be some empty array, because they have not been filed out.
-            // Therefore the foreach will only place the non-empty object in the cleanLibArr
-            let cleanLibObject = {
-                cases: [],
-                designs: []
-            };
-            lib.cases.forEach(arr => {
-                if (arr.slug != "" && arr.wppost != "") {
-                    cleanLibObject.cases.push(arr);
-                }
-            })
-            lib.designs.forEach(arr => {
-                if (arr.slug != "" && arr.wppost != "") {
-                    cleanLibObject.designs.push(arr);
-                }
-            })
-
-            state.library = cleanLibObject;
+        ADD_TO_MAIN: (state, dataObj) => {
+            state.main.push(dataObj)
         },
-        ADD_TO_APIDATA: (state, dataObj) => {
-            state.api_data.push(dataObj)
+        ADD_TO_CASES: (state, dataObj) => {
+            state.cases.push(dataObj)
         },
         RESIZE_WINDOW: (state) => {
             // Used for checking what type of navigation should be used (Hamburger-With-Menu or Desktop-List).
+            // Debouncer missing.
             state.windowWidth = window.innerWidth;
         },
     },
-    // actions are for async calls and functions that may have different mutations as outcome
     actions: {
-        GET_API_DATA: (context, payload) => {
-            return new Promise((resolve, reject) => {
-                let
-                    // checkState is to know if the object exist in the state.api_data, and if / if not change the AXIOS GET string to match the result.
-                    checkState = undefined,
-                    getString = undefined;
-
-                if (payload.id) {
-                    checkState = context.state.api_data.find(object => object.id == payload.id);
-                    getString = "https://skole.aenders.dk/wp-json/wp/v2/posts/" + payload.id + "?status=publish&per_page=50&categories=81";
-                } else {
-                    checkState = context.state.api_data.find(object => object.slug == payload.slug);
-                    getString = "https://skole.aenders.dk/wp-json/wp/v2/posts?status=publish&per_page=50&categories=81&slug=" + payload.slug;
-                }
-
-                if (checkState) {
-                    resolve(checkState);
-                } else {
-                    axios
-                        .get(getString)
-                        .then((response) => {
-                            context.commit("ADD_TO_APIDATA", response.data)
-                            resolve(response.data)
-                        })
-                        .catch((error) => {
-                            console.log(error);
-                            reject(error);
-                        });
-                }
-            })
-        },
-        GET_API_LIBRARY: (context) => {
-            const lib = data.data_wp_library.id;
-
-            axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts/" + lib + "?status=publish&per_page=50&categories=81")
-                .then((response) => {
-                    context.commit("SET_LIBRARY", response.data.acf)
-                })
-                .catch(error => {
-                    console.log("Library Error:", error.message)
-                })
-        },
-        GET_API_RANDOM_CASES: (context) => {
-            const showAmount = 2;
-            let returnArray = [],
-                randomArray = [];
-
-
-            context
-            while (randomArray.length < showAmount) {
-                let // Get a random number in the range of 0 - showAmount.
-                    randomNumber = Math.floor(Math.random() * showAmount);
-                // If the randomNumber is NOT in the randomArray, then push.
-                if (randomArray.includes(randomNumber) != true) {
-                    randomArray.push(randomNumber);
-                    returnArray.push(context.state.library.cases[randomNumber]);
-                }
+        async loadSinglePost({ commit }, payload) {
+            /* 
+                Inspiration from: https://medium.com/js-dojo/vuex-tip-error-handling-on-actions-ee286ed28df4
+            */
+            // Await for the answer from axios, then use that data in post and commit it if there was no error.
+            const getRequest = await axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts/" + payload + "?status=publish&per_page=50&categories=81");
+            const post = getRequest.data;
+            console.log("POST", post)
+            // - If there is an error, it could be a code:200 but something still went wrong, and we get an empty array then we don't want to commit.
+            // - *It could be that there were some issues with the Query Parameters.
+            if (!post.length) {
+                commit("ADD_TO_MAIN", post);
             }
-            console.log("REturn array",returnArray, context);
-            // context.dispatch("GET_API_DATA")
-        }
+        },
+        async loadAllCases({ commit }) {
+            /* 
+                Inspiration from: https://medium.com/js-dojo/vuex-tip-error-handling-on-actions-ee286ed28df4
+            */
+            // Await for the answer from axios, then use that data in post and commit it if there was no error.
+            const getRequest = await axios.get("https://skole.aenders.dk/wp-json/wp/v2/posts?status=publish&per_page=50&categories=81");
+            const post = getRequest.data;
+
+            // - If there is an error, it could be a code:200 but something still went wrong, and we get an empty array then we don't want to commit.
+            // - *It could be that there were some issues with the Query Parameters.
+            if (!post.length) {
+                commit("ADD_TO_MAIN", post);
+            }
+        },
     }
 });
 
