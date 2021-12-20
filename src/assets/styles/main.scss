@@ -100,6 +100,9 @@ b {
 .italic {
   font-style: italic;
 }
+p {
+  max-width: 58ch;
+}
 a {
   color: --color-a;
   font-size: --a-size;

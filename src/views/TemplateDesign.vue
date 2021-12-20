@@ -38,7 +38,7 @@ export default {
       if (!this.getDesign) {
         try {
           this.loading = true;
-          await this.$store.dispatch("loadAll", 0);
+          await this.$store.dispatch("loadAll", 1);
           if (!this.getDesign && this.loading === true) {
             this.$router.push("/notfound");
           }

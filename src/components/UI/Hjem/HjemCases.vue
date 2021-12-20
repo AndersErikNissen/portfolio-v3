@@ -1,19 +1,21 @@
 <template>
   <section>
-    <h2>Cases</h2>
-    <ul>
-      
-    </ul>
-
-
-    <div v-if="noData">
-      <h4 class="italic">
-        No Data
-      </h4>
-    </div>
-    <div v-else>
-      {{ getAllCases }}
-    </div>
+    <section v-if="noData">
+      <h4 class="italic">No Data</h4>
+    </section>
+    <section v-else>
+      <div>
+        <h2>Cases</h2>
+      </div>
+      <section>
+        <ui-display
+          v-for="obj in getAllCases"
+          :key="obj.slug"
+          :obj="obj"
+          :basePath="basePath"
+        ></ui-display>
+      </section>
+    </section>
 
     <section v-if="loading && !error" class="loading">
       <!-- Skeleton Grid -->
@@ -22,24 +24,29 @@
 </template>
 
 <script>
+import uiDisplay from "../Universal/UIDisplayContainer.vue";
 export default {
   name: "HjemCases",
+  components: {
+    uiDisplay,
+  },
   data() {
     return {
       showAmount: 2,
       error: false,
       loading: false,
       noData: false,
+      basePath: "/case-studies/",
     };
   },
   computed: {
     getAllCases() {
-      console.log("ALL CASES", this.$store.state.cases)
+      console.log("ALL CASES", this.$store.state.cases);
       return this.$store.state.cases;
-    }
+    },
   },
   methods: {
-   async checkCases() {
+    async checkCases() {
       // Check if the getPage can find some data that matches, because then we don't need to make an API call.
       if (this.getAllCases.length <= 0) {
         this.loading = true;
@@ -50,13 +57,13 @@ export default {
           await this.$store.dispatch("loadAll", 0);
           console.log("%c SUCCESS HjemCases.vue", "background-color: green;");
         } catch (e) {
-          console.log("%c ERROR HjemCases.vue", "background-color: red;")
+          console.log("%c ERROR HjemCases.vue", "background-color: red;");
           this.error = e;
         }
 
         // Looking for .length 0, didn't seem to work since the array we get back has the length 1, with 1 empty array inside.
         // - ? That might because we use find, and I think that returns an empty array ?
-        if(this.getAllCases[0] == false) {
+        if (this.getAllCases[0] == false) {
           // If the GET are done without and error, and still no data, then no data was found.
           this.noData = true;
         }
@@ -64,13 +71,11 @@ export default {
       }
     },
   },
-  created() {
-  
-  },
+  created() {},
   mounted() {
     this.checkCases();
-    console.log(this.getAllCases)
-  }
+    console.log(this.getAllCases);
+  },
 };
 </script>
 

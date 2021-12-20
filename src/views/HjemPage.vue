@@ -1,21 +1,13 @@
 <template>
   <!-- <main v-if="hjemObj"> -->
   <main>
-    <h1></h1>
-    <div>
-      <h2>
-        {{ error }}
-      </h2>
-      <div>
+    <h1>
         {{ pageACF.titletoh1 }}
-      </div>
-    </div>
+
+    </h1>
+  
     <hjem-cases></hjem-cases>
 
-    <section>
-      <!-- Skeleton Grid -->
-      <h2>Loading...</h2>
-    </section>
   </main>
 </template>
 

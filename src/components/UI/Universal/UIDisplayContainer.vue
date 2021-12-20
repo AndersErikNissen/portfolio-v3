@@ -1,10 +1,13 @@
 <template>
-<router-link :to="obj.slug">
+<router-link v-if="obj" :to="basePath + obj.slug">
     <article>
         <section>
-            <h2>
-               Title 
-            </h2>
+            <h3>
+               {{ useACF.title }}
+            </h3>
+            <p>
+                {{ useACF.description }}
+            </p>
         </section>
     </article>
 </router-link>
@@ -17,6 +20,20 @@ export default {
         obj: {
             type: Object,
             required: true
+        },
+        basePath: {
+            type: String,
+            required: true
+        }
+    },
+    data() {
+        return {
+
+        }
+    },
+    computed: {
+        useACF() {
+            return this.obj.acf;
         }
     }
 }
@@ -25,6 +42,8 @@ export default {
 <style lang="scss" scoped>
 a {
     cursor: pointer;
+    color: inherit;
+    text-decoration: inherit;
 }
 
 </style>
