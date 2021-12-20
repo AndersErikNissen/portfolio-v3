@@ -4,7 +4,7 @@
     <!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
     <svg
       version="1.1"
-      id="Hamburger"
+      id="HamburgerSVG"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
       x="0px"
@@ -57,6 +57,7 @@ export default {
 @import '../../../assets/styles/_mixins.scss';
 #hamburgerDiv {
     width: 35px;
+    cursor: pointer;
 }
 
 // Styling Class

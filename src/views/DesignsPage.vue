@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "ProfilPage",
+  name: "DesignsPage",
   data() {
     return {
       loading: false,
@@ -17,7 +17,7 @@ export default {
     getId() {
       //From state.nav find what ID matched with Hjem.
       return this.$store.state.staticData.nav.find(
-        (item) => item.title === "Profil"
+        (item) => item.title === "Designs"
       );
     },
     getPage() {

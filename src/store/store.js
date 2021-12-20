@@ -73,12 +73,17 @@ export default createStore({
                 commit("ADD_TO_MAIN", post);
             }
         },
-        async loadAllCases({ commit }) {
+        async loadAll({ commit }, payload) {
             /* 
                 Inspiration from: https://medium.com/js-dojo/vuex-tip-error-handling-on-actions-ee286ed28df4
             */
             // Await for the answer from axios, then use that data in post and commit it if there was no error.
-            const getRequest = await axios.get(ApiGet.allCases);
+            let getRequest;
+            if(payload === 0) {
+                getRequest = await axios.get(ApiGet.allCases);
+            } else if (payload === 1) {
+                getRequest = await axios.get(ApiGet.allDesigns);
+            }
             const posts = getRequest.data;
             console.log("%c actions: loadAllCases", "background-color: blue; color: white;", posts)
 

@@ -1,7 +1,12 @@
 <template>
   <section id="nav">
     <section id="nav__bar" class="flex row--sb pack">
-      <router-link to="/">
+      <router-link v-if="isDesktop" to="/">
+        <div>
+          <img :src="AENLogo" alt="AEN Logo" />
+        </div>
+      </router-link>
+      <router-link @click="toggleOff" v-else to="/">
         <div>
           <img :src="AENLogo" alt="AEN Logo" />
         </div>
@@ -43,7 +48,7 @@
             showMenu_nonDesktop ? 'endY' : 'startY',
           ]"
         >
-          <li v-for="item in skipFirst" :key="item.title">
+          <li @click="toggleOff" v-for="item in skipFirst" :key="item.title">
             <router-link :to="item.path">
               <h2 class="clamp slide">
                 <span>
@@ -112,6 +117,18 @@ export default {
         }, 1030);
       }
     },
+    toggleOff() {
+      // For when click on any of the links, it should reset the Menu.
+      const div = document.querySelector("#hamburgerDiv"); // Not Scoped, remember!
+      div.classList.remove("active");
+      div.classList.add("inactive");
+
+      this.animateBG = false;
+      this.showMenu_nonDesktop = false;
+      setTimeout(() => {
+        this.isBurger = false;
+      }, 1030);
+    },
   },
 };
 </script>
@@ -155,13 +172,13 @@ span {
     transform: translateY(0%);
   }
   .endY li:nth-child(2) & {
-        transition-delay: .3s;
+    transition-delay: 0.3s;
   }
   .endY li:nth-child(3) & {
-        transition-delay: .4s;
+    transition-delay: 0.4s;
   }
   .endY li:nth-child(4) & {
-        transition-delay: .5s;
+    transition-delay: 0.5s;
   }
 }
 

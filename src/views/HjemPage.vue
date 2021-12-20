@@ -1,9 +1,7 @@
 <template>
   <!-- <main v-if="hjemObj"> -->
   <main>
-    <h1>
- 
-    </h1>
+    <h1></h1>
     <div>
       <h2>
         {{ error }}
@@ -12,9 +10,8 @@
         {{ pageACF.titletoh1 }}
       </div>
     </div>
-      <hjem-cases></hjem-cases>
+    <hjem-cases></hjem-cases>
 
-   
     <section>
       <!-- Skeleton Grid -->
       <h2>Loading...</h2>
@@ -31,14 +28,16 @@ export default {
   },
   data() {
     return {
-      error: undefined,
-      loading: true,
+      error: false,
+      loading: false,
     };
   },
   computed: {
     getId() {
       //From state.nav find what ID matched with Hjem.
-      return this.$store.state.staticData.nav.find((item) => item.title === "Hjem");
+      return this.$store.state.staticData.nav.find(
+        (item) => item.title === "Hjem"
+      );
     },
     getPage() {
       return this.$store.state.main.find(
@@ -63,25 +62,22 @@ export default {
       // Check if the getPage can find some data that matches, because then we don't need to make an API call.
       if (!this.getPage) {
         try {
-          console.log("%c SUCCESS ", "background-color: green;", this.getId.WPpost);
+          this.loading = true;
           await this.$store.dispatch("loadSinglePost", this.getId.WPpost);
-          this.loading = false;
           /*
             If API call has 200 and this.loaded = true, but have no data, something with the GET(URL) could have failed, like a wrong slug, so we redirect to the ErrorPage.
           */
           if (!this.getPage) {
-            console.log("%c ERROR ", "background-color: red;");
-            this.$router.push('/notfound');
+            this.$router.push("/notfound");
           }
         } catch (e) {
-          this.$router.push('/notfound');
+          this.$router.push("/notfound");
         }
+        this.loading = false;
       }
     },
   },
-  created() {},
   mounted() {
-    // Could also make mounted async, if async functions wasn't being used.
     this.checkPageData();
   },
 };

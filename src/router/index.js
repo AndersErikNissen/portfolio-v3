@@ -34,12 +34,13 @@ const routes = [
   {
     path: '/designs',
     name: 'Designs',
-    component: () => import('../views/DesignPage.vue')
+    component: () => import('../views/DesignsPage.vue')
   },
   {
     path: '/kontakt',
     name: 'Kontakt',
-    component: () => import('../views/KontaktPage.vue')
+    component: () => import('../views/KontaktPage.vue'),
+    props: true
   },
   {
     path: '/notfound',

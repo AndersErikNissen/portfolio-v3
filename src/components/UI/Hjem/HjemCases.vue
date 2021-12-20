@@ -44,7 +44,10 @@ export default {
       if (this.getAllCases.length <= 0) {
         this.loading = true;
         try {
-          await this.$store.dispatch("loadAllCases");
+          // Payload with dispatch:
+          // 0 - Is for all Cases
+          // 1 - Is for all Designs
+          await this.$store.dispatch("loadAll", 0);
           console.log("%c SUCCESS HjemCases.vue", "background-color: green;");
         } catch (e) {
           console.log("%c ERROR HjemCases.vue", "background-color: red;")
