@@ -45,7 +45,8 @@ export default createStore({
             state.main.push(dataObj)
         },
         ADD_TO_CASES: (state, dataObj) => {
-            state.cases.push(dataObj)
+            // Since Templates will check data even if the full array exists, then it has to replace the old array with the new every time.
+            state.cases = dataObj
         },
         RESIZE_WINDOW: (state) => {
             // Used for checking what type of navigation should be used (Hamburger-With-Menu or Desktop-List).
