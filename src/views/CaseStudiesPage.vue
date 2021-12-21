@@ -43,11 +43,6 @@ export default {
         try {
           this.loading = true;
           await this.$store.dispatch("loadSinglePost", this.getId.WPpost);
-          // If API call has 200 and this.loading = true, but have no data, something with the GET(URL) could have failed, like a wrong slug, so we redirect to the ErrorPage.
-          
-          if (!this.getPage) {
-            this.$router.push("/notfound");
-          }
         } catch (e) {
           this.$router.push("/notfound");
         }

@@ -39,6 +39,8 @@ export default {
         try {
           this.loading = true;
           await this.$store.dispatch("loadAll", 1);
+          // If we have checked the data.array, tried loading the newest version from the API, and still no data, then something must be wrong.
+          // - Like a wrong URL.
           if (!this.getDesign && this.loading === true) {
             this.$router.push("/notfound");
           }
@@ -52,6 +54,13 @@ export default {
   mounted() {
     this.checkPageData();
   },
+   watch: {
+    design: function () {
+      // If the params, change, check the data inside store and the after (if not in store) API call. 
+      // If the params is not in the data(getDesign() = undefined) 
+      this.checkPageData();
+    }
+  }
 };
 </script>
 

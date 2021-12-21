@@ -8,12 +8,14 @@
             <p>
                 {{ useACF.description }}
             </p>
+            <ui-svg :path="useACF.svg_path" :title="useACF.title"></ui-svg>
         </section>
     </article>
 </router-link>
 </template>
 
 <script>
+import uiSvg from '../SVG/UiSvgContainer.vue'
 export default {
     name: "UiDisplayContainer",
     props: {
@@ -25,6 +27,9 @@ export default {
             type: String,
             required: true
         }
+    },
+    components: {
+        uiSvg,
     },
     data() {
         return {

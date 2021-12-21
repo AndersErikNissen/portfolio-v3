@@ -21,6 +21,8 @@ export default {
       })
     },
     resizeWindow: function () {
+      // A debouncer could be used here, like lodash's debounce, or on could be created, but, 
+      // since this will mostly be used when inspecting in the Browser, it shouldn't be that needed.
       window.addEventListener("resize", ()=> {
         this.$store.commit('RESIZE_WINDOW')
       })

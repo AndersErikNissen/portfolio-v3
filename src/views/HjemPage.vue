@@ -2,12 +2,10 @@
   <!-- <main v-if="hjemObj"> -->
   <main>
     <h1>
-        {{ pageACF.titletoh1 }}
-
+      {{ pageACF.titletoh1 }}
     </h1>
-  
-    <hjem-cases></hjem-cases>
 
+    <hjem-cases></hjem-cases>
   </main>
 </template>
 
@@ -56,12 +54,14 @@ export default {
         try {
           this.loading = true;
           await this.$store.dispatch("loadSinglePost", this.getId.WPpost);
+
           /*
-            If API call has 200 and this.loading = true, but have no data, something with the GET(URL) could have failed, like a wrong slug, so we redirect to the ErrorPage.
+            Earlier ErrorHandler: If API call has 200 and this.loading = true, but have no data, something with the GET(URL) could have failed, like a wrong slug, so we redirect to the ErrorPage.
+            -- But it doesn't seem to be needed + If you clicked too quickly away from the View it would use the router.push("/notfound").
+            if (!this.getPage) {
+              this.$router.push("/notfound");
+            }
           */
-          if (!this.getPage) {
-            this.$router.push("/notfound");
-          }
         } catch (e) {
           this.$router.push("/notfound");
         }

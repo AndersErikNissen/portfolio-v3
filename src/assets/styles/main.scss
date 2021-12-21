@@ -30,7 +30,9 @@ body {
   font-size: 100%;
   line-height: 1.5;
   font-weight: 400;
-  color: --color-font;
+  color: var(--color-font);
+
+  background-color: var(--color-bg-second);
 }
 
 picture,

@@ -21,14 +21,19 @@ export default {
   },
   computed: {
     getCase() {
-      return this.$store.state.cases.find((item) => item.slug === this.case);
+      console.log("GETCASE", this.$store.state.cases.find(
+        (item) => item.slug === this.case
+      ));
+      return this.$store.state.cases.find(
+        (item) => item.slug === this.case
+      );
     },
     pageACF() {
       let acf = {};
-        const pageData = this.getCase;
-        if (pageData) {
-          acf = pageData.acf;
-        }
+      const pageData = this.getCase;
+      if (pageData) {
+        acf = pageData.acf;
+      }
       return acf;
     },
   },
@@ -39,11 +44,13 @@ export default {
         try {
           this.loading = true;
           await this.$store.dispatch("loadAll", 0);
+          // If we have checked the data.array, tried loading the newest version from the API, and still no data, then something must be wrong.
+          // - Like a wrong URL.
           if (!this.getCase && this.loading === true) {
             this.$router.push("/notfound");
           }
         } catch (e) {
-            this.$router.push("/notfound");
+          this.$router.push("/notfound");
         }
         this.loading = false;
       }
@@ -52,6 +59,13 @@ export default {
   mounted() {
     this.checkPageData();
   },
+  watch: {
+    case: function () {
+      // If the params, change, check the data inside store and the after (if not in store) API call. 
+      // If the params is not in the data(getCase() = undefined) 
+      this.checkPageData();
+    }
+  }
 };
 </script>
 

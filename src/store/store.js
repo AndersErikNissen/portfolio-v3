@@ -50,12 +50,8 @@ export default createStore({
         },
         RESIZE_WINDOW: (state) => {
             // Used for checking what type of navigation should be used (Hamburger-With-Menu or Desktop-List).
-            // Debouncer missing.
             state.windowWidth = window.innerWidth;
         },
-        TEST_TEST: (state) => {
-            console.log("TEST TEST",state)
-        }
     },
     actions: {
         async loadSinglePost({ commit }, payload) {

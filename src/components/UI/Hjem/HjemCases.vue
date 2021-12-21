@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import uiDisplay from "../Universal/UIDisplayContainer.vue";
+import uiDisplay from "../Universal/UiDisplayCasesAndDesigns.vue";
 export default {
   name: "HjemCases",
   components: {
@@ -60,7 +60,6 @@ export default {
           console.log("%c ERROR HjemCases.vue", "background-color: red;");
           this.error = e;
         }
-
         // Looking for .length 0, didn't seem to work since the array we get back has the length 1, with 1 empty array inside.
         // - ? That might because we use find, and I think that returns an empty array ?
         if (this.getAllCases[0] == false) {
