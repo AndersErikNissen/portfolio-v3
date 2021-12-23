@@ -1,13 +1,16 @@
 <template>
   <main>
-    <h2>Show Page Content</h2>
-    {{ pageACF }}
+    <profil-hero :dataObj="heroObj"></profil-hero>
   </main>
 </template>
 
 <script>
+import profilHero from '../components/UI/Profil/ProfilHero.vue'
 export default {
   name: "ProfilPage",
+  components: {
+    profilHero,
+  },
   data() {
     return {
       loading: false,
@@ -34,6 +37,18 @@ export default {
         acf = pageData.acf;
       }
       return acf;
+    },
+    heroObj() {
+      let obj = {},
+      check = this.pageACF;
+      if(check) {
+        obj = {
+          title: check.title,
+          description: check.description,
+          img: check.images[0]
+        }
+      }
+      return obj;
     },
   },
   methods: {

@@ -1,17 +1,20 @@
 <template>
   <the-nav></the-nav>
   <router-view />
+  <the-footer></the-footer>
 </template>
 
 <script>
 import axios from "axios";
 import theNav from "./components/Common/TheNavigation.vue"
+import theFooter from "./components/Common/TheFooter.vue"
 
 
 export default {
   name: "App",
   components: {
     theNav,
+    theFooter,
   },
   methods: {
     getPosts: function () {

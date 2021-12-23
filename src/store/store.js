@@ -19,6 +19,7 @@ export default createStore({
                 nav: [],
                 categories: [],
                 tags: [],
+                some: [],
             },
             main: [],
             cases: [],
@@ -33,11 +34,13 @@ export default createStore({
                 //Set up arrays from the data.json with all the static data
                 nav = data.data_nav,
                 categories = data.data_wp_categories,
+                soMe = data.data_soMe,
                 tags = data.data_wp_tags;
             //Add Static data to state from data.json
             state.staticData.nav = nav;
             state.staticData.categories = categories;
             state.staticData.tags = tags;
+            state.staticData.soMe = soMe;
 
             console.log(state.staticData.categories)
         },

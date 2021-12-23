@@ -1,19 +1,29 @@
 <template>
   <!-- <main v-if="hjemObj"> -->
   <main>
-    <h1>
-      {{ pageACF.titletoh1 }}
-    </h1>
+    <hjem-textpack
+      v-if="pageACF"
+      :hero="true"
+      :dataObj="objHero"
+    ></hjem-textpack>
+    <section v-if="pageACF">
+      <hjem-textpack :dataObj="objDesc"></hjem-textpack>
+      <hjem-cases></hjem-cases>
+    </section>
 
-    <hjem-cases></hjem-cases>
+    <section v-if="!pageACF && loading">
+      <!-- Skeleton Grid -->
+    </section>
   </main>
 </template>
 
 <script>
+import hjemTextpack from "../components/UI/Hjem/HjemTextPack.vue";
 import hjemCases from "../components/UI/Hjem/HjemCases.vue";
 export default {
   name: "HjemPage",
   components: {
+    hjemTextpack,
     hjemCases,
   },
   data() {
@@ -43,8 +53,27 @@ export default {
       if (pageData) {
         acf = pageData.acf;
       }
-
       return acf;
+    },
+    objHero() {
+      let obj = {};
+      if (this.pageACF) {
+        obj = {
+          title: this.pageACF.titletoh1,
+          description: this.pageACF.descriptiontoh1,
+        };
+      }
+      return obj;
+    },
+    objDesc() {
+      let obj = {};
+      if (this.pageACF) {
+        obj = {
+          title: this.pageACF.titletoh2,
+          description: this.pageACF.descriptiontoh2,
+        };
+      }
+      return obj;
     },
   },
   methods: {
