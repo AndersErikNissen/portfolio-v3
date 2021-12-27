@@ -1,15 +1,18 @@
 <template>
   <main>
-    <profil-hero :dataObj="heroObj"></profil-hero>
+    <profil-hero v-if="heroObj" :dataObj="heroObj"></profil-hero>
+    <profil-content v-if="contentArr" :dataArr="contentArr"></profil-content>
   </main>
 </template>
 
 <script>
 import profilHero from '../components/UI/Profil/ProfilHero.vue'
+import profilContent from '../components/UI/Profil/ProfilContent.vue'
 export default {
   name: "ProfilPage",
   components: {
     profilHero,
+    profilContent,
   },
   data() {
     return {
@@ -39,9 +42,9 @@ export default {
       return acf;
     },
     heroObj() {
-      let obj = {},
-      check = this.pageACF;
-      if(check) {
+      let obj = false,
+      check = this.pageACF; 
+      if(check.title) {
         obj = {
           title: check.title,
           description: check.description,
@@ -50,6 +53,15 @@ export default {
       }
       return obj;
     },
+    contentArr() {
+      let 
+      arr = false;
+      
+      if (this.pageACF.text_areas && this.pageACF.text_areas.length > 0) {
+        arr = this.pageACF.text_areas;
+      }
+      return arr;
+    }
   },
   methods: {
     async checkPageData() {

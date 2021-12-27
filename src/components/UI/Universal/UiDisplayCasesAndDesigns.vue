@@ -1,5 +1,5 @@
 <template>
-<router-link v-if="obj" :to="basePath + obj.slug">
+<router-link v-if="dataObj" :to="basePath + dataObj.slug">
     <article>
         <section>
             <h3>
@@ -19,7 +19,7 @@ import uiSvg from '../SVG/UiSvgContainer.vue'
 export default {
     name: "UiDisplayContainer",
     props: {
-        obj: {
+        dataObj: {
             type: Object,
             required: true
         },
@@ -38,7 +38,7 @@ export default {
     },
     computed: {
         useACF() {
-            return this.obj.acf;
+            return this.dataObj.acf;
         }
     }
 }

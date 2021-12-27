@@ -20,6 +20,7 @@ export default createStore({
                 categories: [],
                 tags: [],
                 some: [],
+                universal: {}
             },
             main: [],
             cases: [],
@@ -35,14 +36,14 @@ export default createStore({
                 nav = data.data_nav,
                 categories = data.data_wp_categories,
                 soMe = data.data_soMe,
-                tags = data.data_wp_tags;
+                tags = data.data_wp_tags,
+                uni = data.universal;
             //Add Static data to state from data.json
             state.staticData.nav = nav;
             state.staticData.categories = categories;
             state.staticData.tags = tags;
             state.staticData.soMe = soMe;
-
-            console.log(state.staticData.categories)
+            state.staticData.universal = uni;
         },
         ADD_TO_MAIN: (state, dataObj) => {
             state.main.push(dataObj)

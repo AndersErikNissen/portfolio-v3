@@ -21,7 +21,7 @@ export default {
     name: "ProfilHero.vue",
     props: {
         dataObj: {
-            type: String,
+            type: Object,
             required: true
         }
     },

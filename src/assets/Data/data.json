@@ -85,5 +85,24 @@
             "link": "https://www.behance.net/andersnissen",
             "icon": "linkedin_round_line.svg"
         }
-    ]
+    ],
+    "universal": {
+        "cases": {
+            "hjem": {
+                "show": 2,
+                "type": 0,
+                "path": "/case-studies/"
+            },
+            "all": {
+                "type": 0,
+                "path": "/case-studies/"
+            }
+        },
+        "designs": {
+            "all": {
+                "type": 1,
+                "path": "/designs/"
+            }
+        }
+    }
 }

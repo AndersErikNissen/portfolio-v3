@@ -1,10 +1,10 @@
 <template>
     <section class="profil__textBlock--outer">
         <h2>
-            {{ dataObj.title }}
+            {{ dataObj[0] }}
         </h2>
         <p>
-            {{ dataObj.title }}
+            {{ dataObj[1] }}
         </p>
     </section>    
 </template>
@@ -14,7 +14,7 @@ export default {
     name: "ProfilTextBlock",
     props: {
         dataObj: {
-            type: String,
+            type: Object,
             required: true
         }
     }
