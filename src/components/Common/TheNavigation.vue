@@ -151,8 +151,11 @@ img {
     # If I want to change the parten it needs to have something like postion: relative.
   */
   z-index: 2;
+}
+#nav {
   position: sticky;
-  top: -10px;
+  // Sticky is used instead of fixed, since fixed removes the element from being seen by other elements, like absolute.
+  top: 0;
   left: 0;
 }
 #nav__mobile--menu {
