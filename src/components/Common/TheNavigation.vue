@@ -151,6 +151,9 @@ img {
     # If I want to change the parten it needs to have something like postion: relative.
   */
   z-index: 2;
+  position: sticky;
+  top: -10px;
+  left: 0;
 }
 #nav__mobile--menu {
   z-index: 1;

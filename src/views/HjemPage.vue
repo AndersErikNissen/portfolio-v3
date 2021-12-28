@@ -8,7 +8,7 @@
     ></hjem-textpack>
     <section v-if="pageACF">
       <hjem-textpack :dataObj="objDesc"></hjem-textpack>
-      <hjem-cases></hjem-cases>
+      <hjem-cases :useCase="useCaseObj"></hjem-cases>
     </section>
 
     <section v-if="!pageACF && loading">
@@ -19,7 +19,7 @@
 
 <script>
 import hjemTextpack from "../components/UI/Hjem/HjemTextPack.vue";
-import hjemCases from "../components/UI/Hjem/HjemCases.vue";
+import hjemCases from "../components/UI/Universal/UiAllCasesOrDesigns.vue";
 export default {
   name: "HjemPage",
   components: {
@@ -30,6 +30,7 @@ export default {
     return {
       error: false,
       loading: false,
+      useCaseObj: this.$store.state.staticData.universal.cases.hjem,
     };
   },
   computed: {

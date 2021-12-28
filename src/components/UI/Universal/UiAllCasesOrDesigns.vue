@@ -26,18 +26,23 @@
 </template>
 
 <script>
-import uiDisplay from "../Universal/UiDisplayCasesAndDesigns.vue";
+import uiDisplay from "./UiDisplayCasesAndDesigns.vue";
 export default {
   name: "HjemCases",
   components: {
     uiDisplay,
+  },
+  props: {
+    useCase: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {
       error: false,
       loading: false,
       noData: false,
-      useCase: this.$store.state.staticData.universal.cases.hjem,
     }
   },
   computed: {
