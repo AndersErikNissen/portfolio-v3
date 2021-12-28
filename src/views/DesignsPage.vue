@@ -1,16 +1,23 @@
 <template>
   <main>
-    <h2>Show Page Content</h2>
-    {{ pageACF }}
+    <intro-header :dataObj="pageACF"></intro-header>
+    <all-designs :useCase="useDesignsObj"></all-designs>
   </main>
 </template>
 
 <script>
+import allDesigns from "../components/UI/Universal/UiAllCasesOrDesigns.vue";
+import introHeader from "../components/UI/Universal/UiIntroHeader.vue";
 export default {
   name: "DesignsPage",
+  components: {
+    allDesigns,
+    introHeader,
+  },
   data() {
     return {
       loading: false,
+      useDesignsObj: this.$store.state.staticData.universal.designs.all,
     };
   },
   computed: {
@@ -52,6 +59,7 @@ export default {
   },
   mounted() {
     this.checkPageData();
+    window.scrollTo(0, 0);
   },
 };
 </script>

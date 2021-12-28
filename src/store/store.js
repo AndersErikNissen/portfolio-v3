@@ -52,6 +52,10 @@ export default createStore({
             // Since Templates will check data even if the full array exists, then it has to replace the old array with the new every time.
             state.cases = dataObj
         },
+        ADD_TO_DESIGNS: (state, dataObj) => {
+            // Since Templates will check data even if the full array exists, then it has to replace the old array with the new every time.
+            state.designs = dataObj
+        },
         RESIZE_WINDOW: (state) => {
             // Used for checking what type of navigation should be used (Hamburger-With-Menu or Desktop-List).
             state.windowWidth = window.innerWidth;
@@ -59,7 +63,6 @@ export default createStore({
     },
     actions: {
         async loadSinglePost({ commit }, payload) {
-            console.log("POST")
             /* 
                 Inspiration from: https://medium.com/js-dojo/vuex-tip-error-handling-on-actions-ee286ed28df4
             */
@@ -82,13 +85,18 @@ export default createStore({
             let getRequest;
             if(payload === 0) {
                 getRequest = await axios.get(ApiGet.allCases);
+                const posts = getRequest.data;
+                commit("ADD_TO_CASES", posts);
+
+                console.log("%c actions: loadAll: Result", "background-color: blue; color: white;", posts)
             } else if (payload === 1) {
                 getRequest = await axios.get(ApiGet.allDesigns);
+                const posts = getRequest.data;
+                commit("ADD_TO_DESIGNS", posts);
+                
+                console.log("%c actions: loadAll: Result", "background-color: blue; color: white;", posts)
             }
-            const posts = getRequest.data;
-            console.log("%c actions: loadAllCases", "background-color: blue; color: white;", posts)
-
-            commit("ADD_TO_CASES", posts);
+            
         },
     }
 });

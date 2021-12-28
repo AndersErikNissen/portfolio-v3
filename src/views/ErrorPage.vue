@@ -12,6 +12,9 @@
 <script>
 export default {
     name:"ErrorPage",
+    mounted() {
+        window.scrollTo(0,0);
+    }
 }
 </script>
 

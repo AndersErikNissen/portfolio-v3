@@ -58,6 +58,7 @@ export default {
   },
   mounted() {
     this.checkPageData();
+    window.scrollTo(0,0);
   },
   watch: {
     case: function () {

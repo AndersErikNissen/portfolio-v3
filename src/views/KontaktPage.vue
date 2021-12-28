@@ -1,18 +1,24 @@
 <template>
   <main>
-    <h2>Show Page Content</h2>
-    {{ pageACF }}
-
-    <a id="aen_email" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
+    <svg-loader :svgPath="svg" :svgAlt="svgDesc"></svg-loader>
+    <intro-header :dataObj="pageACF" :email="true"></intro-header>
   </main>
 </template>
 
 <script>
+import introHeader from "../components/UI/Universal/UiIntroHeader.vue";
+import svgLoader from "../components/UI/SVG/SvgLoaderContainer.vue"
 export default {
   name: "KontaktPage",
+  components: {
+    introHeader,
+    svgLoader,
+  },
   data() {
     return {
       loading: false,
+      svg: "Balloon.svg",
+      svgDesc: "Et monster i en luftballon"
     };
   },
   computed: {
@@ -54,6 +60,7 @@ export default {
   },
   mounted() {
     this.checkPageData();
+    window.scrollTo(0,0);
   },
 };
 </script>

@@ -1,16 +1,23 @@
 <template>
   <main>
-    <h2>Show Page Content</h2>
-    {{ pageACF }}
+    <intro-header :dataObj="pageACF"></intro-header>
+    <all-cases :useCase="useCasesObj"></all-cases>
   </main>
 </template>
 
 <script>
+import allCases from "../components/UI/Universal/UiAllCasesOrDesigns.vue"
+import introHeader from "../components/UI/Universal/UiIntroHeader.vue"
 export default {
   name: "CaseStudiesPage",
+  components: {
+    allCases,
+    introHeader,
+  },
   data() {
     return {
       loading: false,
+      useCasesObj: this.$store.state.staticData.universal.cases.all,
     };
   },
   computed: {
@@ -52,6 +59,7 @@ export default {
   },
   mounted() {
     this.checkPageData();
+    window.scrollTo(0,0);
   },
 };
 </script>

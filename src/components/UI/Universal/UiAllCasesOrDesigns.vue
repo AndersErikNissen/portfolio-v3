@@ -28,7 +28,7 @@
 <script>
 import uiDisplay from "./UiDisplayCasesAndDesigns.vue";
 export default {
-  name: "HjemCases",
+  name: "UiAllCasesOrDesigns",
   components: {
     uiDisplay,
   },
@@ -47,11 +47,11 @@ export default {
   },
   computed: {
     getAll() {
-      let all = false,
+      let all = [],
       type = this.useCase.type;
-      if(type === 0) {
+      if(type === 0 && this.$store.state.cases) {
         all = this.$store.state.cases;
-      } else if(type === 1) {
+      } else if(type === 1 && this.$store.state.designs) {
         all = this.$store.state.designs;
       }
       console.log(
@@ -63,23 +63,21 @@ export default {
     },
   },
   methods: {
-    async checkCases() {
-      // Check if the getPage can find some data that matches, because then we don't need to make an API call.
-      if (this.getAll.length <= 0) {
+    async checkAll() {
+      if (this.getAll.length === 0) {
         this.loading = true;
         try {
           // Payload with dispatch:
           // 0 - Is for all Cases
           // 1 - Is for all Designs
           await this.$store.dispatch("loadAll", this.useCase.type);
-          console.log("%c SUCCESS HjemCases.vue", "background-color: green;");
+          console.log("%c SUCCESS checkAll ", "background-color: green;");
         } catch (e) {
-          console.log("%c ERROR HjemCases.vue", "background-color: red;");
+          console.log("%c ERROR checkAll", "background-color: red;");
           this.error = e;
         }
-        // Looking for .length 0, didn't seem to work since the array we get back has the length 1, with 1 empty array inside.
-        // - ? That might because we use find, and I think that returns an empty array ?
-        if (this.getAll[0] == false) {
+        if (this.getAll.length === 0) {
+          console.log("%c No Data! ", "background-color: orange; color: white;")
           // If the GET are done without and error, and still no data, then no data was found.
           this.noData = true;
         }
@@ -88,7 +86,7 @@ export default {
     },
   },
   mounted() {
-    this.checkCases();
+    this.checkAll();
   },
 };
 </script>

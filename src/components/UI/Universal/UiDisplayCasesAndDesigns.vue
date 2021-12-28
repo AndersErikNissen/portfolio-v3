@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import uiSvg from '../SVG/UiSvgContainer.vue'
+import uiSvg from '../SVG/SvgLogoContainer.vue'
 export default {
     name: "UiDisplayContainer",
     props: {
