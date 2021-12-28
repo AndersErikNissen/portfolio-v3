@@ -154,7 +154,7 @@ img {
 }
 #nav {
   position: sticky;
-  // Sticky is used instead of fixed, since fixed removes the element from being seen by other elements, like absolute.
+  // Sticky is used instead of fixed, since fixed removes the element the document flow, like absolute.
   top: 0;
   left: 0;
 }
