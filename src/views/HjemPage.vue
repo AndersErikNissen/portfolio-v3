@@ -1,5 +1,4 @@
 <template>
-  <!-- <main v-if="hjemObj"> -->
   <main>
     <hjem-textpack
       v-if="pageACF"
@@ -102,12 +101,13 @@ export default {
   mounted() {
     this.checkPageData();
     // Will reset window each time going from 1 router to another.
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   },
 };
 </script>
 
 <style lang="scss" scoped>
+  
 </style>
 
 

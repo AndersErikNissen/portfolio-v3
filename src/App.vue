@@ -1,6 +1,6 @@
 <template>
   <the-nav></the-nav>
-  <router-view />
+  <router-view id="view" />
   <the-footer></the-footer>
 </template>
 
@@ -33,4 +33,7 @@ export default {
 </script>
 
 <style lang="scss">
+#view {
+  min-height: 100vh;
+}
 </style>
