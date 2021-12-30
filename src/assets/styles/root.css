@@ -7,8 +7,9 @@
       */
     --color-first: red;
     --color-second: blue;
+    --color-btn: orange;
     --color-bg-first: #7ddbfd;
-    --color-bg-second: #eeeeee;
+    --color-bg-second: white;
     --color-font: black;
     --color-a: black;
     --color-a-active: blue;
@@ -22,5 +23,6 @@
       Spacing
     */
     --padding: 1rem;
-    --padding-normal: var(--padding) * 2;
+    --padding-normal: calc(var(--padding) * 2);
+    --padding-5: 5%;
   }

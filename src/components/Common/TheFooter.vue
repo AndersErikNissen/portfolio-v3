@@ -40,7 +40,7 @@ footer {
   background-color: var(--color-bg-first);
   color: white;
   min-height: 60vh;
-  padding: 5%;
+  padding: var(--padding-5);
 }
 article {
   margin: 3rem 0 0 0;

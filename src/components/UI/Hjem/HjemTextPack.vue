@@ -4,13 +4,14 @@
         # If used in hjem Hero, hero = true and it will have the link to the pdf.
         # If NOT used in Hero but used in hjem Desc, hero = false, and it will have a link to /profil. 
      -->
-  <section :class="['hjem__outerPack', hero ? 'sticky--hero flex center' : '']"
-  :style="'top:' + getHeight + ';'"
-   ref="heroHeight">
+  <section
+    :class="['hjem__outerPack', hero ? 'sticky--hero flex center' : '']"
+    ref="heroHeight"
+  >
     <section
       :class="[
         'hjem__contentPack',
-        hero ? 'flex row center hjem__inner--hero' : '',
+        hero ? 'flex center hjem__inner--hero' : '',
       ]"
     >
       <!-- Will always have "hjem__textPack", but depending on hero's value the next class will change to match -->
@@ -72,28 +73,58 @@ export default {
     };
   },
   computed: {
-      getHeight() {
-        //   console.log("GET",this.$refs.heroHeight.clientHeight)
-        //   if (this.$refs.heroHeight) return window.innerHeight - this.$refs.heroHeight.clientHeight;
-        
-          return document.querySelector(".sticky--hero").offsetHeigth;
+    windowWidth() {
+      return this.$store.state.windowWidth;
+    }
+  },
+  methods: {
+    getTop() {
+      // If hero is true, set where the sticky--hero should stop at(top);
+      if (this.hero) {
+        let ele = document.querySelector(".sticky--hero"),
+          eleHeight = ele.offsetHeight,
+          winHeight = window.innerHeight;
+        ele.style.top = winHeight - eleHeight + "px";
       }
+    },
+  },
+  watch: {
+    windowWidth() {
+      // If the windowWidth changes, update the position: sticky > top.
+      this.getTop();
+    }
   },
   mounted() {
-      if(this.hero) {
-          console.log("HEIGHT",this.getHeight)
-          console.log("DOC", window.innerHeight)
-      }
-  }
+    this.getTop();
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.hjem__contentPack {
+  flex-direction: row;
+}
 .hjem__inner--hero .hjem__svg,
 .hjem__inner--hero .hjem__textPack {
   width: 50%;
 }
 .hjem__inner--hero .hjem__svg {
   min-width: 500px;
+}
+
+@media screen and (max-width: 1024px) {
+  .hjem__contentPack {
+    flex-direction: column;
+    padding: var(--padding-5);
+  }
+  
+  .hjem__inner--hero .hjem__svg,
+  .hjem__inner--hero .hjem__textPack {
+    width: 100%;
+  }
+  .hjem__inner--hero .hjem__svg {
+    min-width: 0px;
+  }
+
 }
 </style>

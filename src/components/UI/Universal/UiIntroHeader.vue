@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section :class="['flex center column', email ? 'kontakt--style' : '']">
         <h1>
             {{ dataObj.title }}
         </h1>
@@ -22,11 +22,16 @@ export default {
         },
         email: {
             type: Boolean
+        },
+        sticky: {
+            type: Boolean
         }
-    }    
+    },
 }
 </script>
 
 <style lang="scss" scoped>
-
+.kontakt--style {
+    padding: var(--padding-normal);
+}
 </style>

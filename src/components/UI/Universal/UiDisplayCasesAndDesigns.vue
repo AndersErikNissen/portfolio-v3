@@ -1,14 +1,11 @@
 <template>
 <router-link v-if="dataObj" :to="basePath + dataObj.slug">
-    <article>
+    <article class="pack">
         <section>
             <h3>
                {{ useACF.title }}
             </h3>
-            <p>
-                {{ useACF.description }}
-            </p>
-            <ui-svg :path="useACF.svg_path" :title="useACF.title"></ui-svg>
+            <ui-svg class="logo" :path="useACF.svg_path" :title="useACF.title"></ui-svg>
         </section>
     </article>
 </router-link>
@@ -50,5 +47,12 @@ a {
     color: inherit;
     text-decoration: inherit;
 }
-
+article {
+    background-color: red;
+}
+.logo {
+    position: relative;
+    top: 0;
+    left: 0;
+}
 </style>

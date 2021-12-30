@@ -253,3 +253,14 @@ ul {
   transition: opacity 1s linear;
   opacity: 1;
 }
+
+/* 
+  Button Designs
+*/
+.btn {
+  background-color: var(--color-btn);
+  &--round {
+    border-radius: 200px;
+  }
+}
+

@@ -1,11 +1,12 @@
 <template>
-  <main>
+  <main :style="'background-image: url(' + bgSvg + ');'" class="flex row ">
     <svg-loader :svgPath="svg" :svgAlt="svgDesc"></svg-loader>
     <intro-header :dataObj="pageACF" :email="true"></intro-header>
   </main>
 </template>
 
 <script>
+import bgSvg from "@/assets/svg/BackgroundClouds.svg"
 import introHeader from "../components/UI/Universal/UiIntroHeader.vue";
 import svgLoader from "../components/UI/SVG/SvgLoaderContainer.vue"
 export default {
@@ -18,7 +19,8 @@ export default {
     return {
       loading: false,
       svg: "Balloon.svg",
-      svgDesc: "Et monster i en luftballon"
+      svgDesc: "Et monster i en luftballon",
+      bgSvg,
     };
   },
   computed: {
@@ -66,4 +68,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+main {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+main > * {
+  width: 50%;
+}
 </style>

@@ -5,7 +5,8 @@
       :hero="true"
       :dataObj="objHero"
     ></hjem-textpack>
-    <section v-if="pageACF">
+    <section class="hjem__main" v-if="pageACF">
+      <svg-top></svg-top>
       <hjem-textpack :dataObj="objDesc"></hjem-textpack>
       <hjem-cases :useCase="useCaseObj"></hjem-cases>
     </section>
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import svgTop from "../components/UI/SVG/SvgEdgeTop.vue"
 import hjemTextpack from "../components/UI/Hjem/HjemTextPack.vue";
 import hjemCases from "../components/UI/Universal/UiAllCasesOrDesigns.vue";
 export default {
@@ -24,6 +26,7 @@ export default {
   components: {
     hjemTextpack,
     hjemCases,
+    svgTop,
   },
   data() {
     return {
@@ -107,6 +110,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.hjem__main {
+  background-color: var(--color-bg-second);
+}
   
 </style>
 

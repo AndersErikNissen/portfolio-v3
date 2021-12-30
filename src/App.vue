@@ -35,5 +35,6 @@ export default {
 <style lang="scss">
 #view {
   min-height: 100vh;
+  // max-width: 1200px;
 }
 </style>
