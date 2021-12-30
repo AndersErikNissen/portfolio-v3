@@ -64,7 +64,7 @@ h6 {
 }
 h1 {
   font-size: clamp(3.8rem, 10vw, 6rem);
-  &.clamp-small {
+  &.clamp--small {
     font-size: clamp(2rem, 10vw, 4rem);
   }
 
@@ -75,7 +75,7 @@ h2 {
   &.clamp {
     font-size: clamp(2rem, 10vw, 4.5rem);
   }
-  &.clamp-small {
+  &.clamp--small {
     font-size: clamp(1.5rem, 5vw, 3rem);
   }
   &.slide {
@@ -154,12 +154,18 @@ a {
     height: 100vh;
   }
 }
-.sticky--hero {
-  min-height: 100vh;
-
-  position: sticky;
-  left: 0;
-  z-index: -1;
+.sticky {
+  &--hero {
+    min-height: 100vh;
+  
+    position: sticky;
+    left: 0;
+    z-index: 0;
+  }
+  &--main {
+    position: relative;
+    z-index: 1;
+  }
 }
 // Flex
 .flex {
@@ -257,10 +263,64 @@ ul {
 /* 
   Button Designs
 */
+a {
+  &.btn {
+      color: inherit;
+      text-decoration: inherit;
+  }
+}
 .btn {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  min-width: 15ch;
+  padding: 0.8rem 1.4rem;
+  
+  font-size: var(--font-btn);
+  color: white;
+  text-align: center;
   background-color: var(--color-btn);
-  &--round {
+  &.slim {
+    border: 1px solid var(--color-btn-border);
+  }
+  &.round {
     border-radius: 200px;
+  }
+  &.bold {
+    font-weight: 700;
+  }
+
+  // Special Hover Effect
+  //#1 Circle Cover (!Remember to use <span>)
+  // - Will cover the whole button, and the text if a span is not used.
+  & span {
+    position: relative;
+    z-index: 1;
+    font-size: var(--font-btn);
+    color: white;
+    text-align: center;
+  }
+  &::before {
+    transition: .6s;
+    content: "";
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-btn-bg);
+    position: absolute;
+    top: -50px;
+    // Not sure if to use -50 / -100 px.
+    right: -100px;
+  }
+  &:hover::before {
+    transform: scale(12);
   }
 }
 
+// Portfolio Specific
+.bgSvg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 90vh;
+}

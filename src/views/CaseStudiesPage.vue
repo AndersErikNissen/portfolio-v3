@@ -1,11 +1,12 @@
 <template>
   <main>
-    <intro-header :dataObj="pageACF"></intro-header>
+    <intro-header :style="'background-image: url(' + bgSvg + ');'" class="flex column bgSvg" :dataObj="pageACF"></intro-header>
     <all-cases :useCase="useCasesObj"></all-cases>
   </main>
 </template>
 
 <script>
+import bgSvg from "@/assets/svg/BackgroundClouds.svg"
 import allCases from "../components/UI/Universal/UiAllCasesOrDesigns.vue"
 import introHeader from "../components/UI/Universal/UiIntroHeader.vue"
 export default {
@@ -18,6 +19,7 @@ export default {
     return {
       loading: false,
       useCasesObj: this.$store.state.staticData.universal.cases.all,
+      bgSvg,
     };
   },
   computed: {
@@ -65,4 +67,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 </style>

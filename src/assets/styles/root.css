@@ -7,7 +7,12 @@
       */
     --color-first: red;
     --color-second: blue;
+    /* Button */
     --color-btn: orange;
+    --color-btn-bg: rgb(255, 102, 0);
+    --color-btn-border: transparent;
+
+
     --color-bg-first: #7ddbfd;
     --color-bg-second: white;
     --color-font: black;
@@ -17,6 +22,7 @@
           Typo
       */
     --font-header-weight: 700;
+    --font-btn: 1rem;
     --a-weight: 400;
     --a-size: 1.5rem;
     /* 

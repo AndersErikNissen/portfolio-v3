@@ -5,7 +5,7 @@
       :hero="true"
       :dataObj="objHero"
     ></hjem-textpack>
-    <section class="hjem__main" v-if="pageACF">
+    <section class="hjem__main sticky--main" v-if="pageACF">
       <svg-top></svg-top>
       <hjem-textpack :dataObj="objDesc"></hjem-textpack>
       <hjem-cases :useCase="useCaseObj"></hjem-cases>

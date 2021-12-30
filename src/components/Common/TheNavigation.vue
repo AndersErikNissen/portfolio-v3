@@ -150,19 +150,20 @@ img {
     # Z-index works with display: flex, but only for the children of the flex-parent.
     # If I want to change the parten it needs to have something like postion: relative.
   */
-  z-index: 2;
+  z-index: 3;
 }
 #nav {
   position: sticky;
-  // Sticky is used instead of fixed, since fixed removes the element the document flow, like absolute.
+  // Sticky is used instead of fixed, since fixed removes the element from the document flow, like absolute.
   top: 0;
   left: 0;
+  z-index: 3;
 }
 #nav__mobile--menu {
   z-index: 1;
   // background-color: var(--color-bg-first);
   & section {
-    z-index: 1;
+    z-index: 2;
   }
 }
 span {

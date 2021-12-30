@@ -1,6 +1,6 @@
 <template>
     <section :class="['flex center column', email ? 'kontakt--style' : '']">
-        <h1>
+        <h1 :class="email ? 'clamp--small' : ''">
             {{ dataObj.title }}
         </h1>
         <p>

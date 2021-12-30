@@ -1,5 +1,5 @@
 <template>
-  <main :style="'background-image: url(' + bgSvg + ');'" class="flex row ">
+  <main :style="'background-image: url(' + bgSvg + ');'" class="flex row">
     <svg-loader :svgPath="svg" :svgAlt="svgDesc"></svg-loader>
     <intro-header :dataObj="pageACF" :email="true"></intro-header>
   </main>

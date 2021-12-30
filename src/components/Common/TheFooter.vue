@@ -1,8 +1,8 @@
 <template>
   <footer class="flex center column">
     <section class="flex column center">
-      <h2 class="clamp-small">Vil du vide mere om mig, eller i kontakt?</h2>
-      <router-link to="/kontakt">KONTAKT MIG</router-link>
+      <h2 class="clamp--small">Vil du vide mere om mig, eller i kontakt?</h2>
+      <router-link to="/kontakt" class="btn round slim"><span>KONTAKT MIG</span></router-link>
     </section>
     <article class="footer__soMePack flex row center">
       <a :href="some.link" class="flex row" v-for="some in getSoMe" :key="some.title">
