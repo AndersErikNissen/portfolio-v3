@@ -275,7 +275,7 @@ a {
   overflow: hidden;
   cursor: pointer;
   min-width: 15ch;
-  padding: 0.8rem 1.4rem;
+  padding: 0.5rem .9rem;
   
   font-size: var(--font-btn);
   color: white;
@@ -313,7 +313,8 @@ a {
     // Not sure if to use -50 / -100 px.
     right: -100px;
   }
-  &:hover::before {
+  &:hover::before,
+  &:focus::before {
     transform: scale(12);
   }
 }
@@ -322,5 +323,6 @@ a {
 .bgSvg {
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 90vh;
+  background-position: center;
+  min-height: 95vh;
 }

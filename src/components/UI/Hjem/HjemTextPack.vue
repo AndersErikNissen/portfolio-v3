@@ -31,8 +31,8 @@
           <p>
             {{ dataObj.description }}
           </p>
-          <a v-if="hero" href="@/assets/pdf/aen_cv.pdf" download class="btn slim round"> <span>DOWNLOAD CV</span></a>
-          <router-link v-else to="/profil" class="btn slim round"><span>LÆS MERE</span></router-link>
+          <a v-if="hero" href="@/assets/pdf/aen_cv.pdf" download class="btn round"> <span>DOWNLOAD CV</span></a>
+          <router-link v-else to="/profil" class="btn round"><span>LÆS MERE</span></router-link>
         </section>
       </div>
       <div class="hjem__svg">
