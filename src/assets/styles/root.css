@@ -12,13 +12,13 @@
     --color-btn-bg: rgb(255, 102, 0);
     --color-btn-border: transparent;
     /* Hero */
-    --color-hero: rgba(243, 124, 45, 0.315);
+    --color-hero: rgb(45, 187, 243);
 
-    --color-bg-first: #7ddbfd;
+    --color-bg-first: #1f2ac2;
     --color-bg-second: white;
     --color-font: black;
     --color-a: black;
-    --color-a-active: blue;
+    --color-a-active: rgb(255, 102, 0);
     /* 
           Typo
       */

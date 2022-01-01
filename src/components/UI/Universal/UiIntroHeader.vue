@@ -3,7 +3,7 @@
     <h1 :class="email ? 'clamp--small' : ''">
       {{ dataObj.title }}
     </h1>
-    <p>
+    <p class="large">
       {{ dataObj.description }}
     </p>
     <div v-if="email">

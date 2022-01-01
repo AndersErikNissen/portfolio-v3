@@ -169,9 +169,6 @@ a {
     left: 0;
     z-index: 0;
   }
-  &--hero.heroBg {
-    background-color: var(--color-hero);
-  }
   &--main {
     position: relative;
     z-index: 1;
@@ -182,6 +179,9 @@ a {
   &--main section.fill {
     background-color: var(--color-bg-second);
   }
+}
+.heroBg {
+  background-color: var(--color-hero);
 }
 
 // Flex

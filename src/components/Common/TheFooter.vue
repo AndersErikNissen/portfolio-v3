@@ -57,4 +57,15 @@ img {
   width: 30px;
   height: 30px;
 }
+h4,a {
+  transition: transform .1s linear;
+  &:hover,
+  &:focus {
+    color: var(--color-a-active);
+    text-decoration-color: var(--color-a-active);
+  }
+  &:active {
+    transform: scale(.98);
+  }
+}
 </style>
