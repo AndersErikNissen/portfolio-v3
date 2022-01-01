@@ -64,7 +64,8 @@
 </template>
 
 <script>
-import AENLogo from "../../assets/images/aen_logo_simple_1.png";
+// import AENLogo from "../../assets/images/aen_logo_simple_1.png";
+import AENLogo from "@/assets/svg/logos/logo_aen_color.svg";
 import hamburgerIcon from "../UI/SVG/HamburgerIcon.vue";
 
 export default {

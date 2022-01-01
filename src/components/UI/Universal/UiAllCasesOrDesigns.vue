@@ -1,6 +1,6 @@
 <template>
   <section>
-    <section v-if="noData">
+    <section v-if="noData" class="fill">
       <h4 class="italic">No Data</h4>
     </section>
     <section v-if="!noData && getAll.length > 0">

@@ -1,12 +1,22 @@
 <template>
   <main>
-    <intro-header :style="'background-image: url(' + bgSvg + ');'" class="flex column bgSvg" :dataObj="pageACF"></intro-header>
-    <all-designs :useCase="useDesignsObj"></all-designs>
+    <intro-header
+      :style="'background-image: url(' + bgSvg + ');'"
+      class="flex column bgSvg"
+      :dataObj="pageACF"
+    ></intro-header>
+    <section class="sticky--main">
+      <svg-top></svg-top>
+      <all-designs :useCase="useDesignsObj"></all-designs>
+      <svg-bot></svg-bot>
+    </section>
   </main>
 </template>
 
 <script>
-import bgSvg from "@/assets/svg/BackgroundClouds.svg"
+import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
+import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
+import bgSvg from "@/assets/svg/BackgroundClouds.svg";
 import allDesigns from "../components/UI/Universal/UiAllCasesOrDesigns.vue";
 import introHeader from "../components/UI/Universal/UiIntroHeader.vue";
 export default {
@@ -14,6 +24,8 @@ export default {
   components: {
     allDesigns,
     introHeader,
+    svgTop,
+    svgBot,
   },
   data() {
     return {

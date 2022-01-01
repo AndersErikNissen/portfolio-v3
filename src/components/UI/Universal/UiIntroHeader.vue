@@ -1,37 +1,66 @@
 <template>
-    <section :class="['flex center column', email ? 'kontakt--style' : '']">
-        <h1 :class="email ? 'clamp--small' : ''">
-            {{ dataObj.title }}
-        </h1>
-        <p>
-            {{ dataObj.description }}
-        </p>
-        <div v-if="email">
-            <a id="aen_email" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
-        </div>
-    </section>
+  <section :class="['flex center column', email ? 'kontakt--style' : 'sticky--hero heroBg']">
+    <h1 :class="email ? 'clamp--small' : ''">
+      {{ dataObj.title }}
+    </h1>
+    <p>
+      {{ dataObj.description }}
+    </p>
+    <div v-if="email">
+      <a
+        id="aen_email"
+        href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;"
+        >&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a
+      >
+    </div>
+  </section>
 </template>
 
 <script>
 export default {
-    name: "UiIntroHeader",
-    props: {
-        dataObj: {
-            type: Object,
-            required: true
-        },
-        email: {
-            type: Boolean
-        },
-        sticky: {
-            type: Boolean
-        }
+  name: "UiIntroHeader",
+  props: {
+    dataObj: {
+      type: Object,
+      required: true,
     },
-}
+    email: {
+      type: Boolean,
+    },
+    sticky: {
+      type: Boolean,
+    },
+  },
+  computed: {
+    windowWidth() {
+      return this.$store.state.windowWidth;
+    },
+  },
+  methods: {
+    getTop() {
+      // If hero is true, set where the sticky--hero should stop at(top);
+      if (!this.email) {
+        let ele = document.querySelector(".sticky--hero"),
+          eleHeight = ele.offsetHeight,
+          winHeight = window.innerHeight;
+        ele.style.top = winHeight - eleHeight + "px";
+      }
+    },
+  },
+   watch: {
+    windowWidth() {
+      // If the windowWidth changes, update the position: sticky > top.
+      this.getTop();
+    }
+  },
+  mounted() {
+    this.getTop();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .kontakt--style {
-    padding: var(--padding-normal);
+  padding: var(--padding-normal);
 }
 </style>

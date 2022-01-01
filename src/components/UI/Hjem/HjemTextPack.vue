@@ -6,7 +6,6 @@
      -->
   <section
     :class="['hjem__outerPack', hero ? 'sticky--hero flex center heroBg' : '']"
-    ref="heroHeight"
   >
     <section
       :class="[
@@ -31,8 +30,17 @@
           <p :class="hero ? 'large' : ''">
             {{ dataObj.description }}
           </p>
-          <a v-if="hero" href="@/assets/pdf/aen_cv.pdf" download class="btn round"> <span>DOWNLOAD CV</span></a>
-          <router-link v-else to="/profil" class="btn round"><span>LÆS MERE</span></router-link>
+          <a
+            v-if="hero"
+            href="@/assets/pdf/aen_cv.pdf"
+            download
+            class="btn round"
+          >
+            <span>DOWNLOAD CV</span></a
+          >
+          <router-link v-else to="/profil" class="btn round"
+            ><span>LÆS MERE</span></router-link
+          >
         </section>
       </div>
       <div class="hjem__svg">
@@ -76,7 +84,7 @@ export default {
   computed: {
     windowWidth() {
       return this.$store.state.windowWidth;
-    }
+    },
   },
   methods: {
     getTop() {
@@ -85,6 +93,7 @@ export default {
         let ele = document.querySelector(".sticky--hero"),
           eleHeight = ele.offsetHeight,
           winHeight = window.innerHeight;
+        // # 1 caviart, is that with this method the hero have to be at least 100vh, otherwise there will be space on top.
         ele.style.top = winHeight - eleHeight + "px";
       }
     },
@@ -93,7 +102,7 @@ export default {
     windowWidth() {
       // If the windowWidth changes, update the position: sticky > top.
       this.getTop();
-    }
+    },
   },
   mounted() {
     this.getTop();
@@ -102,25 +111,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.svgAir {
-  margin: 0 0 10vh 0;
-}
 .hjem__layout--hero {
   & .hjem__textArea {
     margin-left: 5vw;
   }
-
 }
 .hjem__contentPack {
   flex-direction: row;
   width: 100%;
 }
-.hjem__inner--hero .hjem__svg,
-.hjem__inner--hero .hjem__textPack {
-  width: 50%;
-}
-.hjem__inner--hero .hjem__svg {
-  min-width: 500px;
+.hjem__inner--hero {
+  & .hjem__svg {
+    width: 50%;
+    min-width: 500px;
+  }
+  & .hjem__textPack {
+    width: 50%;
+  } 
 }
 
 @media screen and (max-width: 1024px) {
@@ -128,14 +135,18 @@ export default {
     flex-direction: column;
     padding: var(--padding-5);
   }
-  
-  .hjem__inner--hero .hjem__svg,
-  .hjem__inner--hero .hjem__textPack {
-    width: 100%;
-  }
-  .hjem__inner--hero .hjem__svg {
-    min-width: 0px;
-  }
 
+  .hjem__inner--hero {
+    & .hjem__svg,
+    & .hjem__textPack {
+      width: 100%;
+    }
+    & .hjem__svg {
+      min-width: 0px;
+    }
+  }
+  .svgAir {
+    margin: 0 0 10vh 0;
+  }
 }
 </style>

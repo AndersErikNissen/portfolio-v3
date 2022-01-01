@@ -1,19 +1,31 @@
 <template>
   <main>
-    <intro-header :style="'background-image: url(' + bgSvg + ');'" class="flex column bgSvg" :dataObj="pageACF"></intro-header>
-    <all-cases :useCase="useCasesObj"></all-cases>
+    <intro-header
+      :style="'background-image: url(' + bgSvg + ');'"
+      class="flex column bgSvg"
+      :dataObj="pageACF"
+    ></intro-header>
+    <section class="sticky--main">
+      <svg-top></svg-top>
+      <all-cases :useCase="useCasesObj"></all-cases>
+      <svg-bot></svg-bot>
+    </section>
   </main>
 </template>
 
 <script>
-import bgSvg from "@/assets/svg/BackgroundClouds.svg"
-import allCases from "../components/UI/Universal/UiAllCasesOrDesigns.vue"
-import introHeader from "../components/UI/Universal/UiIntroHeader.vue"
+import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
+import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
+import bgSvg from "@/assets/svg/BackgroundClouds.svg";
+import allCases from "../components/UI/Universal/UiAllCasesOrDesigns.vue";
+import introHeader from "../components/UI/Universal/UiIntroHeader.vue";
 export default {
   name: "CaseStudiesPage",
   components: {
     allCases,
     introHeader,
+    svgTop,
+    svgBot,
   },
   data() {
     return {
@@ -61,11 +73,10 @@ export default {
   },
   mounted() {
     this.checkPageData();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
 </style>
