@@ -1,11 +1,18 @@
 <template>
-  <footer class="flex center column">
+  <footer class="flex center column pack">
     <section class="flex column center">
       <h2 class="clamp--small">Vil du vide mere om mig, eller i kontakt?</h2>
-      <router-link to="/kontakt" class="btn round"><span>KONTAKT MIG</span></router-link>
+      <router-link to="/kontakt" class="btn round"
+        ><span>KONTAKT MIG</span></router-link
+      >
     </section>
     <article class="footer__soMePack flex row center">
-      <a :href="some.link" class="flex row" v-for="some in getSoMe" :key="some.title">
+      <a
+        :href="some.link"
+        class="flex row"
+        v-for="some in getSoMe"
+        :key="some.title"
+      >
         <h4 class="clamp">
           {{ some.title }}
         </h4>
@@ -15,10 +22,6 @@
             ## If require was not used the path to the images would look like this: <img src="@/assets/...">
             ## Which would not work since that path don't exist.
          -->
-        <!-- <img
-          :src="require('@/assets/icons/' + some.icon)"
-          :alt="'Ikon til mit sociale medie: ' + some.title"
-        /> -->
       </a>
     </article>
   </footer>
@@ -40,7 +43,7 @@ footer {
   background-color: var(--color-bg-first);
   color: white;
   min-height: 60vh;
-  padding: var(--padding-5);
+  // padding: var(--padding-5);
 }
 article {
   margin: 3rem 0 0 0;

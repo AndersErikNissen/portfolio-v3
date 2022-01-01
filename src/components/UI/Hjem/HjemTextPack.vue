@@ -5,7 +5,7 @@
         # If NOT used in Hero but used in hjem Desc, hero = false, and it will have a link to /profil. 
      -->
   <section
-    :class="['hjem__outerPack', hero ? 'sticky--hero flex center' : '']"
+    :class="['hjem__outerPack', hero ? 'sticky--hero flex center heroBg' : '']"
     ref="heroHeight"
   >
     <section
@@ -21,14 +21,14 @@
           hero ? 'hjem__layout--hero' : 'hjem__layout--desc',
         ]"
       >
-        <section>
+        <section class="hjem__textArea">
           <h1 v-if="hero" class="clamp--small">
             {{ dataObj.title }}
           </h1>
           <h2 v-else>
             {{ dataObj.title }}
           </h2>
-          <p>
+          <p :class="hero ? 'large' : ''">
             {{ dataObj.description }}
           </p>
           <a v-if="hero" href="@/assets/pdf/aen_cv.pdf" download class="btn round"> <span>DOWNLOAD CV</span></a>
@@ -40,6 +40,7 @@
           v-if="hero"
           :src="svgCity"
           alt="En by med et blødt moster, som ser sød og imødekommende ud. (SVG fil med animation)"
+          class="svgAir"
         />
         <img
           v-else
@@ -52,7 +53,7 @@
 </template>
 
 <script>
-import heroSvg from "@/assets/svg/CodeCity.svg";
+import heroSvg from "@/assets/svg/CodeCity_updated.svg";
 import deskSvg from "@/assets/svg/FlyingDesk.svg";
 export default {
   name: "HjemHero",
@@ -101,8 +102,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.svgAir {
+  margin: 0 0 10vh 0;
+}
+.hjem__layout--hero {
+  & .hjem__textArea {
+    margin-left: 5vw;
+  }
+
+}
 .hjem__contentPack {
   flex-direction: row;
+  width: 100%;
 }
 .hjem__inner--hero .hjem__svg,
 .hjem__inner--hero .hjem__textPack {

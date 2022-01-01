@@ -11,7 +11,8 @@
     --color-btn: orange;
     --color-btn-bg: rgb(255, 102, 0);
     --color-btn-border: transparent;
-
+    /* Hero */
+    --color-hero: rgba(243, 124, 45, 0.315);
 
     --color-bg-first: #7ddbfd;
     --color-bg-second: white;
@@ -22,7 +23,7 @@
           Typo
       */
     --font-header-weight: 700;
-    --font-btn: 1rem;
+    --font-btn: .9rem;
     --a-weight: 400;
     --a-size: 1.5rem;
     /* 
@@ -31,4 +32,5 @@
     --padding: 1rem;
     --padding-normal: calc(var(--padding) * 2);
     --padding-5: 5%;
+    --padding-vh-normal: 10vh;
   }

@@ -138,6 +138,7 @@ export default {
 
 #nav {
   padding: 1rem 0;
+  width: 100%;
 }
 img {
   width: 50px;
@@ -150,11 +151,12 @@ img {
     # Z-index works with display: flex, but only for the children of the flex-parent.
     # If I want to change the parten it needs to have something like postion: relative.
   */
+  width: 100%;
   z-index: 3;
 }
 #nav {
-  position: sticky;
-  // Sticky is used instead of fixed, since fixed removes the element from the document flow, like absolute.
+  position: fixed;
+  // Sticky could be used instead of fixed, since fixed removes the element from the document flow, like absolute.
   top: 0;
   left: 0;
   z-index: 3;

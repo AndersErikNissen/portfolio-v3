@@ -7,8 +7,9 @@
     ></hjem-textpack>
     <section class="hjem__main sticky--main" v-if="pageACF">
       <svg-top></svg-top>
-      <hjem-textpack :dataObj="objDesc"></hjem-textpack>
-      <hjem-cases :useCase="useCaseObj"></hjem-cases>
+      <hjem-textpack class="fill air" :dataObj="objDesc"></hjem-textpack>
+      <hjem-cases class="fill air" :useCase="useCaseObj"></hjem-cases>
+      <svg-bot></svg-bot>
     </section>
 
     <section v-if="!pageACF && loading">
@@ -19,6 +20,7 @@
 
 <script>
 import svgTop from "../components/UI/SVG/SvgEdgeTop.vue"
+import svgBot from "../components/UI/SVG/SvgEdgeBot.vue"
 import hjemTextpack from "../components/UI/Hjem/HjemTextPack.vue";
 import hjemCases from "../components/UI/Universal/UiAllCasesOrDesigns.vue";
 export default {
@@ -27,6 +29,7 @@ export default {
     hjemTextpack,
     hjemCases,
     svgTop,
+    svgBot,
   },
   data() {
     return {
@@ -110,9 +113,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hjem__main {
-  background-color: var(--color-bg-second);
-}
+// .hjem__main {
+//   background-color: var(--color-bg-second);
+// }
   
 </style>
 
