@@ -19,6 +19,6 @@ export default {
 <style lang="scss" scoped>
     div {
         width: 100%;
-        background-color: var(--color-bg-first)
+        background-color: var(--color-bg-first-5)
     }
 </style>

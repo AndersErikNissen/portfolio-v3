@@ -129,6 +129,11 @@ export default {
     width: 50%;
   } 
 }
+.hjem__layout--desc {
+  & .hjem__textArea {
+    padding: var(--padding-5);
+  }
+}
 
 @media screen and (max-width: 1024px) {
   .hjem__contentPack {

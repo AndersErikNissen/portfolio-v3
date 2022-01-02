@@ -89,7 +89,7 @@
     "universal": {
         "cases": {
             "hjem": {
-                "show": 3,
+                "show": 4,
                 "type": 0,
                 "path": "/case-studies/"
             },

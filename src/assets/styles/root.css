@@ -15,8 +15,10 @@
     --color-hero: rgb(45, 187, 243);
 
     --color-bg-first: #1f2ac2;
+    --color-bg-first-5: #3763dd;
     --color-bg-second: white;
     --color-font: black;
+    --color-font-second: white;
     --color-a: black;
     --color-a-active: rgb(255, 102, 0);
     /* 
@@ -29,10 +31,13 @@
     /* 
       Spacing
     */
-    --padding: 1rem;
+    --space: 1rem;
+    --padding: var(--space);
     --padding-normal: calc(var(--padding) * 2);
     --padding-5: 5%;
-    --padding-vh-normal: 10vh;
+    --padding-2: 2%;
+    --padding-vh-normal: 2vh;
+    --margin-outer: calc(var(--space) * .5);
     /* 
       Borders
     */

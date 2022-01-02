@@ -40,7 +40,12 @@ export default {
 
 <style lang="scss" scoped>
 footer {
-  background-color: var(--color-bg-first);
+  background: rgb(31, 42, 194);
+  background: linear-gradient(
+    0deg,
+    rgba(31, 42, 194, 1) 25%,
+    rgba(55, 99, 221, 1) 100%
+  );
   color: white;
   min-height: 60vh;
   // padding: var(--padding-5);
@@ -57,15 +62,16 @@ img {
   width: 30px;
   height: 30px;
 }
-h4,a {
-  transition: transform .1s linear;
+h4,
+a {
+  transition: transform 0.1s linear;
   &:hover,
   &:focus {
     color: var(--color-a-active);
     text-decoration-color: var(--color-a-active);
   }
   &:active {
-    transform: scale(.98);
+    transform: scale(0.98);
   }
 }
 </style>

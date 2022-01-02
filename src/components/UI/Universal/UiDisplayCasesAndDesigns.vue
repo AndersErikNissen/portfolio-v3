@@ -2,22 +2,28 @@
   <router-link v-if="dataObj" :to="basePath + dataObj.slug">
     <!-- <article class="pack flex row--top"
     :style="'background-color:' + useACF.color + ';'"> -->
-    <article class="pack"
-    :style="'background-image:url(' + useACF.mood + '); background-color:' + useACF.color + ';'">
+    <article
+      class="pack flex row"
+      :style="'background-color:' + useACF.color + ';'"
+    >
+    <!-- <article
+      class="pack flex row"
+      :style="'background-color:' + useACF.color + ';'"
+    > -->
       <section class="display__textArea">
         <div>
-          <h4>
+          <h4 class="clamp">
             {{ useACF.title }}
           </h4>
           <div>
-            <h5>Roller</h5>
+            <!-- <h6>Roller</h6> -->
             <p>
               {{ cleanRoles }}
             </p>
           </div>
         </div>
       </section>
-      <!-- <img :src="useACF.mood" :alt="'Stemningsbillede til ' + useACF.title" /> -->
+      <img :src="useACF.mood" :alt="'Stemningsbillede til ' + useACF.title" />
     </article>
   </router-link>
 </template>
@@ -48,12 +54,12 @@ export default {
         }
       });
       // Add ", " to all expept the last element in the array.
-      for(let i = 0; i < cleanArr.length - 1; i++) {
-          cleanArr[i] += ", ";
+      for (let i = 0; i < cleanArr.length - 1; i++) {
+        cleanArr[i] += ", ";
       }
       // Turn Array into String format
-      cleanArr.forEach(role => returnString += role)
-        
+      cleanArr.forEach((role) => (returnString += role));
+
       return returnString;
     },
   },
@@ -61,36 +67,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.display__textArea {
-    // &::before {
-    //     content: "";
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    //     width: 50%;
-    //     height: 100%;
-    //     background-color: red;
-    // }
-}
 a {
   cursor: pointer;
   color: inherit;
   text-decoration: inherit;
+  margin: var(--margin-outer);
+  @media screen and (min-width: 1025px) {
+      &:nth-child(odd) {
+          margin-left: 0;
+      }
+      &:nth-child(even) {
+          margin-right: 0;
+      }
+  }
+}
+h4 {
+    margin-bottom: 1rem;
 }
 article {
-height: 100%;
-min-height: 300px;
-width: 100%;
-
-  background-position: center;
-  background-size: cover;
+    color: white;
+    border-radius: var(--border-round-edge);
+& > * {
+    width: 50%;
+}
   & section {
     padding: var(--padding-5);
   }
 }
 
 img {
-  max-width: 400px;
+  max-width: 600px;
   height: auto;
 }
 
