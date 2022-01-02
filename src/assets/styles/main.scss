@@ -327,7 +327,8 @@ a {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: var(--color-btn-bg);
+    background: rgb(255,102,0);
+    background: linear-gradient(90deg, rgba(255,102,0,1) 0%, rgba(194,31,31,1) 86%);
     position: absolute;
     top: -50px;
     // Not sure if to use -50 / -100 px.
