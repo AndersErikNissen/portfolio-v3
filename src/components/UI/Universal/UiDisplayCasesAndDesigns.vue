@@ -1,15 +1,9 @@
 <template>
   <router-link v-if="dataObj" :to="basePath + dataObj.slug">
-    <!-- <article class="pack flex row--top"
-    :style="'background-color:' + useACF.color + ';'"> -->
     <article
       class="pack flex row"
       :style="'background-color:' + useACF.color + ';'"
     >
-    <!-- <article
-      class="pack flex row"
-      :style="'background-color:' + useACF.color + ';'"
-    > -->
       <section class="display__textArea">
         <div>
           <h4 class="clamp">
@@ -73,23 +67,28 @@ a {
   text-decoration: inherit;
   margin: var(--margin-outer);
   @media screen and (min-width: 1025px) {
-      &:nth-child(odd) {
-          margin-left: 0;
-      }
-      &:nth-child(even) {
-          margin-right: 0;
-      }
+    &:nth-child(odd) {
+      margin-left: 0;
+    }
+    &:nth-child(even) {
+      margin-right: 0;
+    }
   }
 }
 h4 {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 article {
-    color: white;
-    border-radius: var(--border-round-edge);
-& > * {
+  color: white;
+  border-radius: var(--border-round-edge);
+  &:hover,
+  &:focus {
+      transition: transform .2s ease-in-out;
+      transform: scale(.98);
+  }
+  & > * {
     width: 50%;
-}
+  }
   & section {
     padding: var(--padding-5);
   }

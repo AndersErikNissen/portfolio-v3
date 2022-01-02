@@ -67,6 +67,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+section {
+  color: white;
+}
 .kontakt--style {
   padding: var(--padding-normal);
 }

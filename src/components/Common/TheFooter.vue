@@ -40,11 +40,11 @@ export default {
 
 <style lang="scss" scoped>
 footer {
-  background: rgb(31, 42, 194);
+  background: var(--color-bg-first);
   background: linear-gradient(
     0deg,
-    rgba(31, 42, 194, 1) 25%,
-    rgba(55, 99, 221, 1) 100%
+    var(--color-bg-first) 25%,
+    var(--color-bg-first-5) 100%
   );
   color: white;
   min-height: 60vh;
@@ -73,5 +73,8 @@ a {
   &:active {
     transform: scale(0.98);
   }
+}
+i {
+  color: #df85f1;
 }
 </style>
