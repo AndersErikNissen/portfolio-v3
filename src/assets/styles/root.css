@@ -23,7 +23,7 @@
           Typo
       */
     --font-header-weight: 700;
-    --font-btn: .9rem;
+    --font-btn: .8rem;
     --a-weight: 400;
     --a-size: 1.5rem;
     /* 
@@ -33,4 +33,8 @@
     --padding-normal: calc(var(--padding) * 2);
     --padding-5: 5%;
     --padding-vh-normal: 10vh;
+    /* 
+      Borders
+    */
+    --border-round-edge: 20px;
   }

@@ -1,11 +1,11 @@
 <template>
   <section>
-    <section v-if="noData" class="fill">
+    <section v-if="noData" class="fill max-width">
       <h4 class="italic">No Data</h4>
     </section>
-    <section v-if="!noData && getAll.length > 0">
+    <section v-if="!noData && getAll.length > 0" class="flex column center">
       <!-- If only a certain amount should be shown, then use the first section otherwise use the second that will show all data found. -->
-      <section v-if="useCase.show">
+      <section v-if="useCase.show" class="grid--2x2">
         <!-- It is n - 1, because v-for starts with 1 where as an array start with a 0 -->
         <ui-display v-for="n in useCase.show" :key="n-1" :dataObj="getAll[n-1]" :basePath="useCase.path"></ui-display>
       </section>
