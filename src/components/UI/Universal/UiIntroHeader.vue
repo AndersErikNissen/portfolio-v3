@@ -1,17 +1,24 @@
 <template>
-  <section :class="['flex center column', email ? 'kontakt--style' : 'sticky--hero heroBg']">
-    <h1 :class="email ? 'clamp--small' : ''">
-      {{ dataObj.title }}
-    </h1>
-    <p class="large">
-      {{ dataObj.description }}
-    </p>
-    <div v-if="email">
-      <a
-        id="aen_email"
-        href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;"
-        >&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a
-      >
+  <section
+    :class="[
+      'flex center column',
+      email ? 'kontakt--style' : 'sticky--hero heroBg',
+    ]"
+  >
+    <div>
+      <h1 :class="email ? 'clamp--small' : ''">
+        {{ dataObj.title }}
+      </h1>
+      <p class="large">
+        {{ dataObj.description }}
+      </p>
+      <div v-if="email">
+        <a
+          id="aen_email"
+          href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;"
+          >&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a
+        >
+      </div>
     </div>
   </section>
 </template>
@@ -47,11 +54,11 @@ export default {
       }
     },
   },
-   watch: {
+  watch: {
     windowWidth() {
       // If the windowWidth changes, update the position: sticky > top.
       this.getTop();
-    }
+    },
   },
   mounted() {
     this.getTop();
