@@ -38,7 +38,7 @@ export default {
     getId() {
       //From state.nav find what ID matched with Hjem.
       return this.$store.state.staticData.nav.find(
-        (item) => item.title === "CaseStudies"
+        (item) => item.title === "Case Studies"
       );
     },
     getPage() {

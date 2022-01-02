@@ -29,7 +29,7 @@
     50% {transform: translateX(-70px);}
     100% {transform: translateX(0px);}
 }
-	.st0{opacity:0.6;fill:#FF6600;enable-background:new    ;}
+	.st0{opacity:0.6;fill:#7e85e6;enable-background:new    ;}
 	.st1{fill:#FFFFFF;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 	.st2{fill:#EF7443;stroke:#EF7443;stroke-linecap:round;stroke-linejoin:round;}
 	.st3{fill:#FFBA6E;stroke:#FFBA6E;stroke-linecap:round;stroke-linejoin:round;}
@@ -455,6 +455,7 @@
     75% {
         fill: #ffe650;
     }
+
 }
 </style>
 <ellipse id="large_x5F_bg_x5F_circle" class="st0" cx="667.4" cy="901.7" rx="662.8" ry="193.1"/>
