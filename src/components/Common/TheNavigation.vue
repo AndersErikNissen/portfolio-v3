@@ -130,7 +130,20 @@ export default {
         this.isBurger = false;
       }, 1030);
     },
+    toggleBG() {
+      // console.log(this.positionY)
+
+    }
   },
+  watch: {
+    positionY: function() {
+      console.log(window.scrollY)
+    }
+  },
+  mounted() {
+    window.addEventListener("scroll", this.toggleBG)
+    this.toggleBG();
+  }
 };
 </script>
 
