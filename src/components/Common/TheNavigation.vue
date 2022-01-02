@@ -13,7 +13,7 @@
       </router-link>
       <ul v-if="isDesktop" class="desktop flex row clean">
         <li v-for="item in skipFirst" :key="item.title">
-          <router-link :to="item.path">
+          <router-link :to="item.path" class="bold">
             {{ item.title }}
           </router-link>
         </li>
@@ -138,7 +138,7 @@ export default {
 @import "../../assets/styles/_mixins.scss";
 
 #nav {
-  padding: 1rem 0;
+  padding: var(--padding-normal);
   width: 100%;
 }
 img {
@@ -191,7 +191,6 @@ span {
     transition-delay: 0.5s;
   }
 }
-
 #bg__circle {
   border-radius: 50%;
   background-color: var(--color-bg-first);

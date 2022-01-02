@@ -132,6 +132,10 @@ export default {
 .hjem__layout--desc {
   & .hjem__textArea {
     padding: var(--padding-5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
