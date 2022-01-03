@@ -114,16 +114,14 @@ export default {
   },
   mounted() {
     this.checkPageData();
-    // Will reset window each time going from 1 router to another.
+    // Will reset window each time going from 1 router to another. There are some Vue ways to do it, but they didn't seem to work.
+    // - I have also disabled smooth scrolling to the user don't have to watch the scrolling when changing router.
     window.scrollTo(0, 0);
   },
 };
 </script>
 
 <style lang="scss" scoped>
-// .hjem__main {
-//   background-color: var(--color-bg-second);
-// }
 </style>
 
 

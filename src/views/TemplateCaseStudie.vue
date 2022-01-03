@@ -1,12 +1,17 @@
 <template>
   <main>
-    
+    <template-header :dataObj="pageACF"></template-header>
+    <template-description></template-description>
+    <template-block></template-block>
     <h2>Show Page Content</h2>
     {{ pageACF }}
   </main>
 </template>
 
 <script>
+import templateHeader from "../components/UI/Template/TemplateHeader.vue"
+import templateDescription from "../components/UI/Template/TemplateDescription.vue"
+import templateBlock from "../components/UI/Template/TemplateSegmentBlock.vue"
 export default {
   name: "TemplateCaseStudie",
   props: {
@@ -14,6 +19,11 @@ export default {
       type: String,
       required: true,
     },
+  },
+  components: {
+    templateHeader,
+    templateDescription,
+    templateBlock
   },
   data() {
     return {

@@ -1,6 +1,6 @@
 <template>
     <section class="profil__textBlock--outer">
-        <h2>
+        <h2 class="clamp">
             {{ dataObj[0] }}
         </h2>
         <p>
@@ -23,6 +23,15 @@ export default {
 
 <style lang="scss" scoped>
 .profil__textBlock--outer {
-    margin: var(--margin-outer);
+    margin: var(--margin-large) 0;
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+    @media screen and (max-width: 468px) {
+        margin: calc(var(--margin-outer) * 2);
+    }
 }
 </style>

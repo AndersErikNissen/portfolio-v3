@@ -39,6 +39,7 @@
     --padding-2: 2%;
     --padding-vh-normal: 2vh;
     --margin-outer: calc(var(--space) * .5);
+    --margin-large: calc(var(--space) * 3);
     /* 
       Borders
     */

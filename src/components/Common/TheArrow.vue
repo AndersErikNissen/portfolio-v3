@@ -20,7 +20,8 @@ export default {
     scrollToView() {
       // Help from Stackoverflow: https://stackoverflow.com/questions/42645964/vue-js-anchor-to-div-within-the-same-component;
       let view = document.querySelector(".sticky--main"),
-        viewTop = view.offsetTop + 100;
+      // In order to scroll a so the cloud edge disappear, it is divided with the window width.
+        viewTop = view.offsetTop + (this.$store.state.windowWidth / 15);
       window.scrollTo({
         top: viewTop,
         left: 0,

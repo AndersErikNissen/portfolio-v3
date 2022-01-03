@@ -4,7 +4,7 @@
             The require seems to be the best way to get a img/svg that has a dynamic path.
             - Not sure if it's the most optimal way, but I haven't been able to find another way to do it.
          -->
-        <img :src="require('@/assets/svg/logos/' + path)" :alt="'Billede til ' + title">
+        <img :src="require('@/assets/svg/logos/' + dataObj.path)" :alt="'Logo til projektet ' + dataObj.title">
     </div>
 </template>
 
@@ -12,14 +12,10 @@
 export default {
     name: "UiSvgContainer",
     props: {
-        path: {
-            type:String,
+        dataObj: {
+            type: Object,
             required: true
         },
-        title: {
-            type:String,
-            required: true
-        }
     }
 }
 </script>
