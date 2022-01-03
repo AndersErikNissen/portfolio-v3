@@ -22,5 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.profil__textBlock--outer {
+    margin: var(--margin-outer);
+}
 </style>

@@ -21,8 +21,6 @@ export default {
       // Help from Stackoverflow: https://stackoverflow.com/questions/42645964/vue-js-anchor-to-div-within-the-same-component;
       let view = document.querySelector(".sticky--main"),
         viewTop = view.offsetTop + 100;
-      console.log("CLICK!", view, viewTop);
-
       window.scrollTo({
         top: viewTop,
         left: 0,

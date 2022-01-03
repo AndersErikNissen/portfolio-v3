@@ -1,11 +1,13 @@
 <template>
   <main>
-    <profil-hero v-if="heroObj" :dataObj="heroObj"></profil-hero>
-    <profil-content v-if="contentArr" :dataArr="contentArr"></profil-content>
+    <profil-hero v-if="heroObj" :dataObj="heroObj" class="sticky--hero"></profil-hero>
+    <the-arrow></the-arrow>
+    <profil-content v-if="contentArr" :dataArr="contentArr" class="sticky--main"></profil-content>
   </main>
 </template>
 
 <script>
+import theArrow from "../components/Common/TheArrow.vue"
 import profilHero from '../components/UI/Profil/ProfilHero.vue'
 import profilContent from '../components/UI/Profil/ProfilContent.vue'
 export default {
@@ -13,6 +15,7 @@ export default {
   components: {
     profilHero,
     profilContent,
+    theArrow,
   },
   data() {
     return {
@@ -56,7 +59,6 @@ export default {
     contentArr() {
       let 
       arr = false;
-      
       if (this.pageACF.text_areas && this.pageACF.text_areas.length > 0) {
         arr = this.pageACF.text_areas;
       }

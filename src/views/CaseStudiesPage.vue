@@ -5,6 +5,7 @@
       class="flex column bgSvg"
       :dataObj="pageACF"
     ></intro-header>
+    <the-arrow></the-arrow>
     <section class="sticky--main">
       <svg-top></svg-top>
       <all-cases class="fill" :useCase="useCasesObj"></all-cases>
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+import theArrow from "../components/Common/TheArrow.vue"
 import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
 import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
 import bgSvg from "@/assets/svg/BackgroundClouds.svg";
@@ -26,6 +28,7 @@ export default {
     introHeader,
     svgTop,
     svgBot,
+    theArrow
   },
   data() {
     return {

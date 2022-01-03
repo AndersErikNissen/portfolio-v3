@@ -147,7 +147,7 @@ a {
   font-weight: var(--a-weight);
 }
 #nav {
-  padding: var(--padding);
+  padding: calc(var(--padding) * .5);
   width: 100%;
   background-color: white;
   // position: fixed;
