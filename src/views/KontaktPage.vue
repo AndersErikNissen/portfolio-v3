@@ -1,14 +1,14 @@
 <template>
-  <main :style="'background-image: url(' + bgSvg + ');'" class="flex row heroBg">
+  <main :style="'background-image: url(' + bgSvg + ');'" class="flex heroBg">
     <svg-loader :svgPath="svg" :svgAlt="svgDesc"></svg-loader>
     <intro-header :dataObj="pageACF" :email="true"></intro-header>
   </main>
 </template>
 
 <script>
-import bgSvg from "@/assets/svg/BackgroundClouds.svg"
+import bgSvg from "@/assets/svg/BackgroundClouds.svg";
 import introHeader from "../components/UI/Universal/UiIntroHeader.vue";
-import svgLoader from "../components/UI/SVG/SvgLoaderContainer.vue"
+import svgLoader from "../components/UI/SVG/SvgLoaderContainer.vue";
 export default {
   name: "KontaktPage",
   components: {
@@ -62,7 +62,7 @@ export default {
   },
   mounted() {
     this.checkPageData();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   },
 };
 </script>
@@ -71,8 +71,20 @@ export default {
 main {
   background-size: cover;
   background-repeat: no-repeat;
+  flex-direction: row;
+  align-items: center;
+  & > * {
+    width: 50%;
+  }
 }
-main > * {
-  width: 50%;
+@media screen and (max-width: 1024px) {
+  main {
+    & > * {
+    width: 100%;
+  }
+    &.flex {
+      flex-direction: column-reverse;
+    }
+  }
 }
 </style>

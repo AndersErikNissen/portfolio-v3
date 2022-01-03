@@ -1,6 +1,6 @@
 <template>
   <section id="nav">
-    <section id="nav__bar" class="flex row--sb pack">
+    <nav id="nav__bar" class="flex row--sb pack">
       <router-link v-if="isDesktop" to="/">
         <div>
           <img :src="AENLogo" alt="AEN Logo" />
@@ -18,20 +18,17 @@
           </router-link>
         </li>
       </ul>
-      <div v-else id="hamburger">
+      <div v-else id="hamburger" class="flex center">
         <hamburger-icon @click="toggleBurger"></hamburger-icon>
       </div>
-    </section>
+    </nav>
 
     <!-- Mobile Menu -->
-    <section
+    <nav
       v-if="!isDesktop"
       id="nav__mobile--menu"
       :class="[
-        'fixed',
-        'zero--100',
-        'flex',
-        'center',
+        'fixed center zero--100 flex',
         isBurger ? 'display--flex' : 'display--none',
         animateBG ? 'active' : '',
       ]"
@@ -39,12 +36,8 @@
       <div id="bg__circle"></div>
       <section>
         <ul
-          class="flex column center clean"
           :class="[
-            'flex',
-            'column',
-            'center',
-            'clean',
+            'flex column center clean nav__mobile--ul',
             showMenu_nonDesktop ? 'endY' : 'startY',
           ]"
         >
@@ -59,7 +52,7 @@
           </li>
         </ul>
       </section>
-    </section>
+    </nav>
   </section>
 </template>
 
@@ -157,11 +150,16 @@ a {
   padding: var(--padding);
   width: 100%;
   background-color: white;
+  // position: fixed;
+  position: sticky;
+  // Sticky could be used instead of fixed, since fixed removes the element from the document flow, like absolute.
+  top: 0;
+  left: 0;
+  z-index: 3;
 }
 img {
   width: 50px;
 }
-
 // Menu
 #nav__bar {
   /*
@@ -172,13 +170,7 @@ img {
   width: 100%;
   z-index: 3;
 }
-#nav {
-  position: fixed;
-  // Sticky could be used instead of fixed, since fixed removes the element from the document flow, like absolute.
-  top: 0;
-  left: 0;
-  z-index: 3;
-}
+
 #nav__mobile--menu {
   z-index: 1;
   // background-color: var(--color-bg-first);
@@ -223,5 +215,9 @@ span {
   .active & {
     transform: scale(100);
   }
+}
+#hamburger {
+  height: 30px;
+  align-self: center;
 }
 </style>

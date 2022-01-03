@@ -1,12 +1,12 @@
 <template>
   <footer class="flex center column pack">
     <section class="flex column center">
-      <h2 class="clamp--small">Vil du vide mere om mig, eller i kontakt?</h2>
+      <h2 class="clamp--small center-txt">Vil du vide mere om mig, eller i kontakt?</h2>
       <router-link to="/kontakt" class="btn round"
         ><span>KONTAKT MIG</span></router-link
       >
     </section>
-    <article class="footer__soMePack flex row center">
+    <article class="footer__soMePack flex center">
       <a
         :href="some.link"
         class="flex row"
@@ -48,22 +48,25 @@ footer {
   );
   color: white;
   min-height: 60vh;
-  // padding: var(--padding-5);
+  padding: var(--padding-5);
 }
-article {
+article.footer__soMePack {
   margin: 3rem 0 0 0;
-}
-a {
-  color: inherit;
-  text-decoration: underline;
-  margin: 1rem;
+  @media screen and (max-width: 1024px) {
+    & {
+      flex-direction: column;
+    }
+  }
 }
 img {
   width: 30px;
   height: 30px;
 }
-h4,
+
 a {
+  color: inherit;
+  text-decoration: underline;
+  margin: 1rem;
   transition: transform 0.1s linear;
   &:hover,
   &:focus {
@@ -72,6 +75,11 @@ a {
   }
   &:active {
     transform: scale(0.98);
+  }
+  @media screen and (max-width: 1024px) {
+    & {
+      margin: 0.5rem;
+    }
   }
 }
 i {

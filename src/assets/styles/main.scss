@@ -110,6 +110,9 @@ h6 {
 .basic {
   font-style: 400;
 }
+.center-txt {
+  text-align: center;
+}
 .bold,
 b {
   font-weight: 700;
@@ -235,6 +238,9 @@ ul {
     //Works on TheNavigation
     & li {
       margin: 0 1rem;
+      & a {
+        color: var(--color-a);
+      }
     }
     & li:last-of-type {
       //Removes margin from the right most li in our navigation list.
@@ -242,9 +248,11 @@ ul {
     }
   }
   #nav & {
+    &.nav__mobile--ul a {
+      color: var(--color-a-second);
+    }
     & li {
       & a {
-        color: var(--color-a);
         &.router-link-exact-active {
           color: var(--color-a-active);
         } 
@@ -346,6 +354,20 @@ a {
     transform: scale(12);
   }
 }
+// Email Button
+#aen_email {
+  & .btn {
+    padding: 1.2rem 2rem;
+    margin: 2rem 0;
+  }
+  & .btn span {
+    font-size: calc(var(--font-btn) * 1.5);
+  }
+  & .btn:hover::before,
+  & .btn:focus::before {
+    transform: scale(22);
+  }
+} 
 /* 
   #Grids
 */

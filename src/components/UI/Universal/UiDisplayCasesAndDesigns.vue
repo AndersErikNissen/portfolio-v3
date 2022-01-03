@@ -67,10 +67,10 @@ a {
   text-decoration: inherit;
   margin: var(--margin-outer);
   @media screen and (min-width: 1025px) {
-    &:nth-child(odd) {
+    .grid--2x2 &:nth-child(odd) {
       margin-left: 0;
     }
-    &:nth-child(even) {
+    .grid--2x2 &:nth-child(even) {
       margin-right: 0;
     }
   }
@@ -81,10 +81,10 @@ h4 {
 article {
   color: white;
   border-radius: var(--border-round-edge);
+  transition: transform 0.2s ease-in-out;
   &:hover,
   &:focus {
-      transition: transform .2s ease-in-out;
-      transform: scale(.98);
+    transform: scale(0.98);
   }
   & > * {
     width: 50%;
@@ -97,11 +97,5 @@ article {
 img {
   max-width: 600px;
   height: auto;
-}
-
-.logo {
-  position: relative;
-  top: 0;
-  left: 0;
 }
 </style>

@@ -6,6 +6,7 @@
      -->
   <section
     :class="['hjem__outerPack', hero ? 'sticky--hero flex center heroBg' : '']"
+    :style="{'background-image': hero ? 'url(' + starsClouds + ')' : ''}"
   >
     <section
       :class="[
@@ -61,6 +62,7 @@
 </template>
 
 <script>
+import starsClouds from "@/assets/svg/bg_starsAndClouds.svg";
 import heroSvg from "@/assets/svg/CodeCity_updated.svg";
 import deskSvg from "@/assets/svg/FlyingDesk.svg";
 export default {
@@ -79,6 +81,7 @@ export default {
     return {
       svgCity: heroSvg,
       svgDesk: deskSvg,
+      starsClouds,
     };
   },
   computed: {
@@ -111,9 +114,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.sticky--hero {
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
 .hjem__layout--hero {
   & .hjem__textArea {
     margin-left: 5vw;
+    color: white;
   }
 }
 .hjem__contentPack {

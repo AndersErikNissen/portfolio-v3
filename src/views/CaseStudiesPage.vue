@@ -7,7 +7,7 @@
     ></intro-header>
     <section class="sticky--main">
       <svg-top></svg-top>
-      <all-cases :useCase="useCasesObj"></all-cases>
+      <all-cases class="fill" :useCase="useCasesObj"></all-cases>
       <svg-bot></svg-bot>
     </section>
   </main>

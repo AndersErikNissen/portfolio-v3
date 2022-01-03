@@ -56,7 +56,8 @@ export default {
 <style lang="scss" scoped>
 @import '../../../assets/styles/_mixins.scss';
 #hamburgerDiv {
-    width: 35px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
 }
 
@@ -68,12 +69,16 @@ export default {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-miterlimit: 10;
+  .active & {
+    stroke: rgb(255, 255, 255);
+  }
 }
 // Animation blocks
 #outer {
   path {
     transition: stroke-dasharray 350ms ease-in-out,
-      stroke-dashoffset 350ms ease-in-out;
+      stroke-dashoffset 350ms ease-in-out,
+      stroke .8s ease-in-out;
     stroke-dasharray: 40.0999 102.9444;
     stroke-dashoffset: -63px;
     .active & {
@@ -85,7 +90,8 @@ export default {
 #center {
   polyline {
     transition: stroke-dasharray 350ms ease-in-out,
-      stroke-dashoffset 350ms ease-in-out;
+      stroke-dashoffset 350ms ease-in-out,
+      stroke .8s ease-in-out;
     stroke-dasharray: 41.1 50.1;
     stroke-dashoffset: -10;
     transform-origin: center;
