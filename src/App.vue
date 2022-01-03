@@ -2,7 +2,7 @@
   <the-nav></the-nav>
   <router-view id="view" />
   <div id="arrowPack" class="flex center">
-   <arrow-svg id="arrow" svgPath="arrow_down_v3.svg" @click="scrollToView"></arrow-svg>
+   <arrow-svg id="arrow" svgPath="arrow_down_v3.svg" svgAlt="Arrow" @click="scrollToView"></arrow-svg>
   </div>
   <the-footer></the-footer>
 </template>
