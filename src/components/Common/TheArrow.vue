@@ -1,8 +1,16 @@
 <template>
   <div id="arrowPack" class="flex center">
     <arrow-svg
+      v-if="!clean"
       id="arrow"
       svgPath="arrow_down_v3.svg"
+      svgAlt="Arrow"
+      @click="scrollToView"
+    ></arrow-svg>
+    <arrow-svg
+      v-else
+      id="arrow"
+      svgPath="arrow_down_v3_clean.svg"
       svgAlt="Arrow"
       @click="scrollToView"
     ></arrow-svg>
@@ -13,6 +21,11 @@
 import arrowSvg from "../UI/SVG/SvgLoaderContainer.vue";
 export default {
   name: "TheArrow",
+  props: {
+    clean: {
+      type: Boolean
+    }
+  },
   components: {
     arrowSvg,
   },
@@ -20,8 +33,8 @@ export default {
     scrollToView() {
       // Help from Stackoverflow: https://stackoverflow.com/questions/42645964/vue-js-anchor-to-div-within-the-same-component;
       let view = document.querySelector(".sticky--main"),
-      // In order to scroll a so the cloud edge disappear, it is divided with the window width.
-        viewTop = view.offsetTop + (this.$store.state.windowWidth / 15);
+        // In order to scroll a so the cloud edge disappear, it is divided with the window width.
+        viewTop = view.offsetTop + this.$store.state.windowWidth / 15;
       window.scrollTo({
         top: viewTop,
         left: 0,

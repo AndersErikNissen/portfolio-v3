@@ -1,5 +1,5 @@
 <template>
-  <section class="profil__heroPack--outer flex center heroBg">
+  <section :style="'background-image: url(' + bgSvg + ');'" class="profil__heroPack--outer flex center heroBg">
     <section class="profil__hero--content flex">
       <section>
         <h1>
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import bgSvg from "@/assets/svg/BackgroundClouds.svg";
 export default {
   name: "ProfilHero.vue",
   props: {
@@ -24,6 +25,11 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  data() {
+    return {
+      bgSvg,
+    }
   },
   methods: {
     getTop() {
@@ -49,6 +55,10 @@ export default {
 <style lang="scss" scoped>
 img {
   max-width: 600px;
+}
+.profil__heroPack--outer {
+  background-size: cover;
+   background-repeat: no-repeat;
 }
 .profil__hero--content {
   color: var(--color-font-second);

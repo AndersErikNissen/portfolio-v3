@@ -1,17 +1,24 @@
 <template>
   <main>
-    <template-header :dataObj="pageACF"></template-header>
-    <template-description></template-description>
-    <template-block></template-block>
-    <h2>Show Page Content</h2>
+    <template-header v-if="getCase" :dataObj="pageACF"></template-header>
+    <the-arrow :clean="true"></the-arrow>
+    <section>
+      <svg-top></svg-top>
+      <template-description></template-description>
+      <template-block></template-block>
     {{ pageACF }}
+      <svg-bot></svg-bot>
+    </section>
   </main>
 </template>
 
 <script>
-import templateHeader from "../components/UI/Template/TemplateHeader.vue"
-import templateDescription from "../components/UI/Template/TemplateDescription.vue"
-import templateBlock from "../components/UI/Template/TemplateSegmentBlock.vue"
+import theArrow from "../components/Common/TheArrow.vue"
+import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
+import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
+import templateHeader from "../components/UI/Template/TemplateHeader.vue";
+import templateDescription from "../components/UI/Template/TemplateDescription.vue";
+import templateBlock from "../components/UI/Template/TemplateSegmentBlock.vue";
 export default {
   name: "TemplateCaseStudie",
   props: {
@@ -23,7 +30,10 @@ export default {
   components: {
     templateHeader,
     templateDescription,
-    templateBlock
+    templateBlock,
+    svgTop,
+    svgBot,
+    theArrow,
   },
   data() {
     return {
@@ -32,12 +42,11 @@ export default {
   },
   computed: {
     getCase() {
-      console.log("GETCASE", this.$store.state.cases.find(
-        (item) => item.slug === this.case
-      ));
-      return this.$store.state.cases.find(
-        (item) => item.slug === this.case
+      console.log(
+        "GETCASE",
+        this.$store.state.cases.find((item) => item.slug === this.case)
       );
+      return this.$store.state.cases.find((item) => item.slug === this.case);
     },
     pageACF() {
       let acf = {};
@@ -69,15 +78,15 @@ export default {
   },
   mounted() {
     this.checkPageData();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   },
   watch: {
     case: function () {
-      // If the params, change, check the data inside store and the after (if not in store) API call. 
-      // If the params is not in the data(getCase() = undefined) 
+      // If the params, change, check the data inside store and the after (if not in store) API call.
+      // If the params is not in the data(getCase() = undefined)
       this.checkPageData();
-    }
-  }
+    },
+  },
 };
 </script>
 
