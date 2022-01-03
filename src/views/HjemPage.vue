@@ -5,6 +5,7 @@
       :hero="true"
       :dataObj="objHero"
     ></hjem-textpack>
+    <the-arrow></the-arrow>
     <section class="hjem__main sticky--main" v-if="pageACF">
       <svg-top></svg-top>
       <hjem-textpack class="fill air max-width flex center" :dataObj="objDesc"></hjem-textpack>
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import theArrow from "../components/Common/TheArrow.vue"
 import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
 import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
 import hjemTextpack from "../components/UI/Hjem/HjemTextPack.vue";
@@ -35,6 +37,7 @@ export default {
     hjemCases,
     svgTop,
     svgBot,
+    theArrow
   },
   data() {
     return {
