@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 121.26 121.26">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: #fff;
+                stroke: #fff;
+            }
+
+            .cls-1,
+            .cls-2 {
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            .cls-2 {
+                fill: #f60;
+                stroke: #f60;
+                stroke-width: 3px;
+            }
+            .cls-2 {
+                transition: transform .5s ease-in-out;
+                animation: infi 3s ease-in-out infinite;
+            }
+            @keyframes infi {
+                50% {
+                    transform: translateY(10px);  
+                }
+            }
+        </style>
+    </defs>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="v3Clouds">
+            <circle class="cls-1" cx="60.63" cy="60.63" r="60.13" />
+            <polygon class="cls-2" points="60.63 75.3 17.33 45.97 103.93 45.97 60.63 75.3" />
+        </g>
+    </g>
+</svg>

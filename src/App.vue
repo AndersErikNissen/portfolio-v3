@@ -1,13 +1,14 @@
 <template>
   <the-nav></the-nav>
   <router-view id="view" />
-  <div id="arrow" class="flex center">
-   <div @click="scrollToView"> Arrow </div>
+  <div id="arrowPack" class="flex center">
+   <arrow-svg id="arrow" svgPath="arrow_down_v3.svg" @click="scrollToView"></arrow-svg>
   </div>
   <the-footer></the-footer>
 </template>
 
 <script>
+import arrowSvg from "./components/UI/SVG/SvgLoaderContainer.vue"
 import theNav from "./components/Common/TheNavigation.vue";
 import theFooter from "./components/Common/TheFooter.vue";
 
@@ -16,6 +17,7 @@ export default {
   components: {
     theNav,
     theFooter,
+    arrowSvg,
   },
   methods: {
     resizeWindow: function () {
@@ -49,12 +51,16 @@ export default {
 </script>
 
 <style lang="scss">
-#arrow {
+#arrowPack {
   position: fixed;
   bottom: 1rem;
   left: 0;
   width: 100%;
-  background-color: white;
+  & #arrow {
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+  }
 }
 #view {
   min-height: 100vh;
