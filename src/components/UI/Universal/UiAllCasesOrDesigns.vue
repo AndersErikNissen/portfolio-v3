@@ -92,11 +92,9 @@ export default {
         console.log("REMOVERANGE", this.removeFromRange)
         while (releaseArray.length < 2) {
           let random = Math.floor(Math.random() * array.length);
-          console.log("RANDOM", random)
           if (random !== this.removeFromRange && !randomArray.includes(random)) {
             releaseArray.push(array[random]);
             randomArray.push(random);
-            console.log("asdas",random,randomArray)
           }
         }
       }

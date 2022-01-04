@@ -103,7 +103,7 @@ export default {
   },
   methods: {
     async checkPageData() {
-      if (!this.getPage) {
+      if (!this.getCase) {
         try {
           this.loading = true;
           await this.$store.dispatch("loadSinglePost", this.getId.WPpost);
