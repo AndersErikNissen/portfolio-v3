@@ -145,6 +145,11 @@ export default {
 
 a {
   font-weight: var(--a-weight);
+  text-decoration: underline .15rem rgba(0, 0, 0, 0);
+  transition: text-decoration .3s ease-in-out;
+}
+a:hover {
+  text-decoration: underline .15rem var(--color-a-active);
 }
 #nav {
   padding: calc(var(--padding) * .5);

@@ -12,6 +12,7 @@
         class="flex row"
         v-for="some in getSoMe"
         :key="some.title"
+        target="_blank"
       >
         <h4 class="clamp">
           {{ some.title }}

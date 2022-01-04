@@ -71,12 +71,10 @@ export default {
 
 <style lang="scss" scoped>
 .template__block--outer {
-  & h2 {
-    margin: calc(var(--margin-large) / 2) 0;
-  }
-  margin: var(--margin-large) 0;
+  margin: calc(var(--margin-5) * 3) 0;
   & .template__block--title {
-    align-items: center;
+      align-items: center;
+      margin: calc(var(--margin-large) / 3) 0;
   }
   & img {
     width: 100px;
