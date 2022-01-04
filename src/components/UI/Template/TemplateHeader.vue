@@ -52,6 +52,26 @@ export default {
       return newArray;
     },
   },
+  methods: {
+    getTop() {
+      // If hero is true, set where the sticky--hero should stop at(top);
+        let ele = document.querySelector(".sticky--hero"),
+          eleHeight = ele.offsetHeight,
+          winHeight = window.innerHeight;
+        // # 1 caviart, is that with this method the hero have to be at least 100vh, otherwise there will be space on top.
+        ele.style.top = winHeight - eleHeight + "px";
+
+    },
+  },
+  mounted() {
+    this.getTop();
+  },
+  watch: {
+    windowWidth() {
+      // If the windowWidth changes, update the position: sticky > top.
+      this.getTop();
+    },
+  },
 };
 </script>
 
@@ -79,7 +99,7 @@ header {
     }
     & .template__header--textArea {
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
     }
     & > * {
       width: 100%;

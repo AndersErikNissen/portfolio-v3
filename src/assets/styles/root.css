@@ -19,6 +19,7 @@
     --color-bg-second: white;
     --color-font: black;
     --color-font-second: white;
+    --color-font-third: rgb(68, 68, 68);
     --color-a: black;
     --color-a-second: white;
     --color-a-active: rgb(255, 102, 0);
@@ -40,8 +41,9 @@
     --padding-vh-normal: 2vh;
     --margin-outer: calc(var(--space) * .5);
     --margin-large: calc(var(--space) * 3);
+    --margin-5: 5%;
     /* 
       Borders
     */
-    --border-round-edge: 20px;
+    --border-round-edge: 15px;
   }

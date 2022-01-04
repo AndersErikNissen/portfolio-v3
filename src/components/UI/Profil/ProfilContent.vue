@@ -2,7 +2,7 @@
   <section>
     <svg-top></svg-top>
     <section class="fill flex center column">
-      <div>
+      <div class="max-width">
         <profil-textblock
           v-for="textBlock in dataArr"
           :key="textBlock.title"

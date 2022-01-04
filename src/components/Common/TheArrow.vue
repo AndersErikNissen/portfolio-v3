@@ -3,14 +3,14 @@
     <arrow-svg
       v-if="!clean"
       id="arrow"
-      svgPath="arrow_down_v3.svg"
+      svgPath="arrow_down_v3_scroll.svg"
       svgAlt="Arrow"
       @click="scrollToView"
     ></arrow-svg>
     <arrow-svg
       v-else
       id="arrow"
-      svgPath="arrow_down_v3_clean.svg"
+      svgPath="arrow_down_v3_scroll_clean.svg"
       svgAlt="Arrow"
       @click="scrollToView"
     ></arrow-svg>

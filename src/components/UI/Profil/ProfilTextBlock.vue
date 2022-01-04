@@ -30,6 +30,9 @@ export default {
     &:last-child {
         margin-bottom: 0;
     }
+    & h2 {
+        max-width: 12ch;
+    }
     @media screen and (max-width: 468px) {
         margin: calc(var(--margin-outer) * 2);
     }

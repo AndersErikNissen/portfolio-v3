@@ -2,23 +2,28 @@
   <main>
     <template-header v-if="getCase" :dataObj="pageACF"></template-header>
     <the-arrow :clean="true"></the-arrow>
-    <section>
+    <section class="sticky--main">
       <svg-top></svg-top>
-      <template-description></template-description>
-      <template-block></template-block>
-    {{ pageACF }}
+      <section v-if="getCase" class="grid--template fill">
+        <template-aside :dataObj="pageACF"></template-aside>
+        <section class="max-width">
+          <template-description :dataObj="pageACF"></template-description>
+          <template-shell :dataObj="pageACF.text_areas"></template-shell>
+        </section>
+      </section>
       <svg-bot></svg-bot>
     </section>
   </main>
 </template>
 
 <script>
-import theArrow from "../components/Common/TheArrow.vue"
+import theArrow from "../components/Common/TheArrow.vue";
 import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
 import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
+import templateAside from "../components/UI/Template/TemplateAside.vue";
 import templateHeader from "../components/UI/Template/TemplateHeader.vue";
 import templateDescription from "../components/UI/Template/TemplateDescription.vue";
-import templateBlock from "../components/UI/Template/TemplateSegmentBlock.vue";
+import templateShell from "../components/UI/Template/TemplateSegmentShell.vue";
 export default {
   name: "TemplateCaseStudie",
   props: {
@@ -30,7 +35,8 @@ export default {
   components: {
     templateHeader,
     templateDescription,
-    templateBlock,
+    templateShell,
+    templateAside,
     svgTop,
     svgBot,
     theArrow,
@@ -86,7 +92,7 @@ export default {
       // If the params is not in the data(getCase() = undefined)
       this.checkPageData();
     },
-  },
+  }
 };
 </script>
 
