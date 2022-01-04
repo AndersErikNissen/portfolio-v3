@@ -93,6 +93,11 @@
                 "type": 0,
                 "path": "/case-studies/"
             },
+            "template": {
+                "range": 2,
+                "type": 0,
+                "path": "/case-studies/"
+            },
             "all": {
                 "type": 0,
                 "path": "/case-studies/"

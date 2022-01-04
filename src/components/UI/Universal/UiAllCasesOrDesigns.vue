@@ -4,10 +4,14 @@
       <h4 class="italic">No Data</h4>
     </section>
     <section v-if="!noData && getAll.length > 0" class="flex column center">
-      <!-- If only a certain amount should be shown, then use the first section otherwise use the second that will show all data found. -->
+      <!-- If only a certain amount should be shown, then use the first section, if it should be a specific range use the second, otherwise use the third that will show all data found. -->
       <section v-if="useCase.show" class="grid--2x2">
         <!-- It is n - 1, because v-for starts with 1 where as an array start with a 0 -->
         <ui-display v-for="n in useCase.show" :key="n-1" :dataObj="getAll[n-1]" :basePath="useCase.path"></ui-display>
+      </section>
+      <section v-else-if="useCase.range" class="grid--2x2">
+        <!-- It is n - 1, because v-for starts with 1 where as an array start with a 0 -->
+        <ui-display v-for="n in useCase.range" :key="n-1" :dataObj="getAll[n-1]" :basePath="useCase.path"></ui-display>
       </section>
       <section v-else>
         <ui-display
@@ -17,6 +21,7 @@
           :basePath="useCase.path"
         ></ui-display>
       </section>
+        ONLY RANGE {{removeFromRange}}
     </section>
 
     <section v-if="loading && !error && !noData" class="loading">
@@ -36,6 +41,9 @@ export default {
     useCase: {
       type: Object,
       required: true
+    },
+    removeFromRange: {
+      type: Number
     }
   },
   data() {
@@ -61,6 +69,17 @@ export default {
       );
       return all;
     },
+    getOnlyRange() {
+      let array = false,
+      cases = false;
+      if(this.removeFromRange && this.$store.state.cases) {
+        console.log("RANGE", this.removeFromRange)
+         cases = this.$store.state.cases;
+         array = cases;
+        console.log("ARRAY!",array)
+      }
+      return array;
+    }
   },
   methods: {
     async checkAll() {

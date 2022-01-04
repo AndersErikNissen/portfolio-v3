@@ -1,5 +1,6 @@
 <template>
   <main>
+    <the-loading :check="loadingCheck"></the-loading>
     <intro-header
       :style="'background-image: url(' + bgSvg + ');'"
       class="flex column bgSvg"
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+import theLoading from "../components/Common/TheLoading.vue"
 import theArrow from "../components/Common/TheArrow.vue"
 import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
 import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
@@ -28,7 +30,8 @@ export default {
     introHeader,
     svgTop,
     svgBot,
-    theArrow
+    theArrow,
+    theLoading
   },
   data() {
     return {
@@ -58,6 +61,13 @@ export default {
         acf = pageData.acf;
       }
       return acf;
+    },
+    loadingCheck() {
+      let check = false;
+      if(this.loading === false && !this.getPage) {
+        check = true;
+      }
+      return check;
     },
   },
   methods: {

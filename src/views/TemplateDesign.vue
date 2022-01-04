@@ -1,11 +1,13 @@
 <template>
   <main>
+    <the-loading :check="loadingCheck"></the-loading>
     <h2>Show Page Content</h2>
     {{ pageACF }}
   </main>
 </template>
 
 <script>
+import theLoading from "../components/Common/TheLoading.vue"
 export default {
   name: "TemplateDesign",
   props: {
@@ -13,6 +15,9 @@ export default {
       type: String,
       required: true,
     },
+  },
+  components: {
+    theLoading,
   },
   data() {
     return {
@@ -30,6 +35,13 @@ export default {
           acf = pageData.acf;
         }
       return acf;
+    },
+    loadingCheck() {
+      let check = false;
+      if(this.loading === false && !this.getDesign || this.getDesign === undefined) {
+        check = true;
+      }
+      return check;
     },
   },
   methods: {

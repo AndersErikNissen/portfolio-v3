@@ -1,14 +1,18 @@
 <template>
   <main>
+    <the-loading :check="loadingCheck"></the-loading>
     <hjem-textpack
-      v-if="pageACF"
+      v-if="pageACF != {}"
       :hero="true"
       :dataObj="objHero"
     ></hjem-textpack>
-    <the-arrow></the-arrow>
-    <section class="hjem__main sticky--main" v-if="pageACF">
+    <the-arrow v-if="pageACF != {}"></the-arrow>
+    <section class="hjem__main sticky--main" v-if="pageACF != {}">
       <svg-top></svg-top>
-      <hjem-textpack class="fill air max-width flex center" :dataObj="objDesc"></hjem-textpack>
+      <hjem-textpack
+        class="fill air max-width flex center"
+        :dataObj="objDesc"
+      ></hjem-textpack>
       <section class="fill air max-width flex center column">
         <div class="flex center">
           <h2 class="clamp">Seneste Arbejde</h2>
@@ -17,15 +21,12 @@
       </section>
       <svg-bot></svg-bot>
     </section>
-
-    <section v-if="!pageACF && loading">
-      <!-- Skeleton Grid -->
-    </section>
   </main>
 </template>
 
 <script>
-import theArrow from "../components/Common/TheArrow.vue"
+import theLoading from "../components/Common/TheLoading.vue";
+import theArrow from "../components/Common/TheArrow.vue";
 import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
 import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
 import hjemTextpack from "../components/UI/Hjem/HjemTextPack.vue";
@@ -37,7 +38,8 @@ export default {
     hjemCases,
     svgTop,
     svgBot,
-    theArrow
+    theArrow,
+    theLoading,
   },
   data() {
     return {
@@ -88,6 +90,13 @@ export default {
         };
       }
       return obj;
+    },
+    loadingCheck() {
+      let check = false;
+      if (this.loading === false && !this.getPage) {
+        check = true;
+      }
+      return check;
     },
   },
   methods: {

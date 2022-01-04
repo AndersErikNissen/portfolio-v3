@@ -26,7 +26,7 @@ export default {
       required: true,
     },
     index: {
-      type: Number,
+      type: String,
       required: true,
     },
   },

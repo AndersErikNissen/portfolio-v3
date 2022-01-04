@@ -1,22 +1,29 @@
 <template>
   <main>
+    <the-loading :check="loadingCheck"></the-loading>
     <template-header v-if="getCase" :dataObj="pageACF"></template-header>
     <the-arrow :clean="true"></the-arrow>
-    <section class="sticky--main">
+    <section v-if="getCase" class="sticky--main">
       <svg-top></svg-top>
-      <section v-if="getCase" class="grid--template fill">
+      <section class="grid--template fill">
         <template-aside :dataObj="pageACF"></template-aside>
         <section class="max-width">
           <template-description :dataObj="pageACF"></template-description>
           <template-shell :dataObj="pageACF.text_areas"></template-shell>
         </section>
       </section>
+      <section class="fill flex center column">
+        <h2>Relaterede</h2>
+      <show-cases :useCase="amountOfCases" :removeFromRange="getRange"></show-cases>
+      </section>
       <svg-bot></svg-bot>
     </section>
+
   </main>
 </template>
 
 <script>
+import theLoading from "../components/Common/TheLoading.vue"
 import theArrow from "../components/Common/TheArrow.vue";
 import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
 import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
@@ -24,6 +31,8 @@ import templateAside from "../components/UI/Template/TemplateAside.vue";
 import templateHeader from "../components/UI/Template/TemplateHeader.vue";
 import templateDescription from "../components/UI/Template/TemplateDescription.vue";
 import templateShell from "../components/UI/Template/TemplateSegmentShell.vue";
+
+import showCases from "../components/UI/Universal/UiAllCasesOrDesigns.vue";
 export default {
   name: "TemplateCaseStudie",
   props: {
@@ -40,18 +49,17 @@ export default {
     svgTop,
     svgBot,
     theArrow,
+    theLoading,
+    showCases,
   },
   data() {
     return {
       loading: false,
+      amountOfCases: this.$store.state.staticData.universal.cases.template,
     };
   },
   computed: {
     getCase() {
-      console.log(
-        "GETCASE",
-        this.$store.state.cases.find((item) => item.slug === this.case)
-      );
       return this.$store.state.cases.find((item) => item.slug === this.case);
     },
     pageACF() {
@@ -62,6 +70,24 @@ export default {
       }
       return acf;
     },
+    loadingCheck() {
+      let check = false;
+      if(this.loading === false && !this.getCase || this.getCase === undefined) {
+        check = true;
+      }
+      return check;
+    },
+    getRange() {
+      let range = undefined,
+      map = undefined;
+      if(this.getCase) {
+        //Map returns a new array with false / true, depending on what I could find.
+        map = this.$store.state.cases.map( item => item.slug === this.case);
+        // We need the index of the current case, so we can exclude it from the array that shows other Work.
+        range = map.indexOf(true);
+      }
+      return range;
+    }
   },
   methods: {
     async checkPageData() {
