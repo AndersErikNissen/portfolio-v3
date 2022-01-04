@@ -5,7 +5,7 @@
   >
     <section class="split--60">
       <h1 class="clamp">Fejl 404</h1>
-      <h3>Noget gik galt et sted, bedre held næste gang.</h3>
+      <h4 class="clamp">Noget gik galt et sted, bedre held næste gang.</h4>
       <router-link class="btn round" to="/"
         ><span>TIL FORSIDE</span></router-link
       >
@@ -43,6 +43,9 @@ export default {
   & .split--60 {
     color: var(--color-font-second);
     padding: var(--padding-5);
+  }
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
   }
 }
 h3 {

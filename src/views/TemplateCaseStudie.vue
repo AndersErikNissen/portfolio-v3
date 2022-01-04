@@ -85,6 +85,7 @@ export default {
         map = this.$store.state.cases.map( item => item.slug === this.case);
         // We need the index of the current case, so we can exclude it from the array that shows other Work.
         range = map.indexOf(true);
+        console.log("%c RANGE ", "background-color: aqua; color: black;", range)
       }
       return range;
     }

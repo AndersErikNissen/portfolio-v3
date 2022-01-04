@@ -1,5 +1,6 @@
 <template>
   <main>
+    <the-loading :check="loadingCheck"></the-loading>
     <profil-hero v-if="heroObj" :dataObj="heroObj" class="sticky--hero"></profil-hero>
     <the-arrow></the-arrow>
     <profil-content v-if="contentArr" :dataArr="contentArr" class="sticky--main"></profil-content>
@@ -7,6 +8,7 @@
 </template>
 
 <script>
+import theLoading from "../components/Common/TheLoading.vue";
 import theArrow from "../components/Common/TheArrow.vue"
 import profilHero from '../components/UI/Profil/ProfilHero.vue'
 import profilContent from '../components/UI/Profil/ProfilContent.vue'
@@ -16,6 +18,7 @@ export default {
     profilHero,
     profilContent,
     theArrow,
+    theLoading
   },
   data() {
     return {
@@ -63,7 +66,14 @@ export default {
         arr = this.pageACF.text_areas;
       }
       return arr;
-    }
+    },
+    loadingCheck() {
+      let check = false;
+      if (this.loading === false && !this.getPage) {
+        check = true;
+      }
+      return check;
+    },
   },
   methods: {
     async checkPageData() {

@@ -1,11 +1,13 @@
 <template>
   <main :style="'background-image: url(' + bgSvg + ');'" class="flex heroBg">
-    <svg-loader :svgPath="svg" :svgAlt="svgDesc"></svg-loader>
-    <intro-header :dataObj="pageACF" :email="true"></intro-header>
+    <the-loading :check="loadingCheck"></the-loading>
+    <intro-header  v-if="pageACF != {}" :dataObj="pageACF" :email="true"></intro-header>
+    <svg-loader v-if="pageACF != {}" :svgPath="svg" :svgAlt="svgDesc"></svg-loader>
   </main>
 </template>
 
 <script>
+import theLoading from "../components/Common/TheLoading.vue";
 import bgSvg from "@/assets/svg/BackgroundClouds.svg";
 import introHeader from "../components/UI/Universal/UiIntroHeader.vue";
 import svgLoader from "../components/UI/SVG/SvgLoaderContainer.vue";
@@ -14,6 +16,7 @@ export default {
   components: {
     introHeader,
     svgLoader,
+    theLoading
   },
   data() {
     return {
@@ -44,6 +47,13 @@ export default {
         acf = pageData.acf;
       }
       return acf;
+    },
+    loadingCheck() {
+      let check = false;
+      if (this.loading === false && !this.getPage) {
+        check = true;
+      }
+      return check;
     },
   },
   methods: {

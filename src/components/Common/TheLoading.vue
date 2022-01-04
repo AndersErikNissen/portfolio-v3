@@ -20,9 +20,21 @@ export default {
       type: Boolean,
     },
   },
-  data() {
-    return {};
+  methods: {
+    displayNone() {
+      let section = document.querySelector(".theLoading");
+      if(!this.check && section) {
+        setTimeout(()=> {
+          section.style.display = "none";
+        }, 2510)
+      }
+    }
   },
+  watch: {
+    check: function() {
+      this.displayNone();
+    }
+  }
 };
 </script>
 
@@ -36,7 +48,7 @@ export default {
   height: 100vh;
   background-color: white;
   transition: opacity 1.5s ease-out;
-  transition-delay: .9s;
+  transition-delay: 1s;
   & .loading__svg {
     transition: opacity .5s ease-out;
     width: 100%;

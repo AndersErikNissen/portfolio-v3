@@ -7,6 +7,9 @@
       <h2 class="clamp--small">
         {{ dataObj.year }}
       </h2>
+      <h2>
+
+      </h2>
     </section>
     <img :src="dataObj.mood" alt="" />
   </header>
@@ -62,6 +65,9 @@ export default {
         ele.style.top = winHeight - eleHeight + "px";
 
     },
+    setColor() {
+      this.headerStyle.backgroundColor = this.dataObj.color;
+    }
   },
   mounted() {
     this.getTop();
@@ -71,6 +77,9 @@ export default {
       // If the windowWidth changes, update the position: sticky > top.
       this.getTop();
     },
+    dataObj() {
+      this.setColor();
+    }
   },
 };
 </script>
