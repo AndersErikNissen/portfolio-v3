@@ -1,10 +1,10 @@
 <template>
   <header :style="headerStyle" class="sticky--hero flex">
-    <section class="flex column">
-      <h1>
+    <section class="template__header--textArea flex column">
+      <h1 class="clamp">
         {{ dataObj.title }}
       </h1>
-      <h2>
+      <h2 class="clamp--small">
         {{ dataObj.year }}
       </h2>
     </section>
@@ -60,11 +60,30 @@ header {
   align-items: center;
   color: var(--color-font-second);
   &.flex {
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+  }
+  & > * {
+    width: 50%;
+    &:nth-child(1) {
+      padding: 0 var(--padding-5);
+    }
   }
   & li {
     margin-right: 1rem;
+  }
+  @media screen and (max-width: 1024px) {
+    &.flex {
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+    & .template__header--textArea {
+      justify-content: center;
+      align-items: center;
+    }
+    & > * {
+      width: 100%;
+    }
   }
 }
 img {
