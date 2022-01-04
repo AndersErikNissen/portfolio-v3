@@ -106,7 +106,7 @@ export default {
   methods: {
     async checkAll() {
       if (this.getAll.length === 0) {
-        this.loading = true;
+        
         try {
           // Payload with dispatch:
           // 0 - Is for all Cases
@@ -125,7 +125,7 @@ export default {
           // If the GET are done without and error, and still no data, then no data was found.
           this.noData = true;
         }
-        this.loading = false;
+        
       }
     },
     returnTop() {

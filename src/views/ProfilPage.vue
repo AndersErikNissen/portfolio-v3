@@ -1,28 +1,38 @@
 <template>
   <main>
-    <the-loading :check="loadingCheck"></the-loading>
-    <profil-hero v-if="heroObj" :dataObj="heroObj" class="sticky--hero"></profil-hero>
+    <transition name="opa">
+      <the-loading v-if="loading"></the-loading>
+    </transition>
+    <profil-hero
+      v-if="heroObj"
+      :dataObj="heroObj"
+      class="sticky--hero"
+    ></profil-hero>
     <the-arrow></the-arrow>
-    <profil-content v-if="contentArr" :dataArr="contentArr" class="sticky--main"></profil-content>
+    <profil-content
+      v-if="contentArr"
+      :dataArr="contentArr"
+      class="sticky--main"
+    ></profil-content>
   </main>
 </template>
 
 <script>
 import theLoading from "../components/Common/TheLoading.vue";
-import theArrow from "../components/Common/TheArrow.vue"
-import profilHero from '../components/UI/Profil/ProfilHero.vue'
-import profilContent from '../components/UI/Profil/ProfilContent.vue'
+import theArrow from "../components/Common/TheArrow.vue";
+import profilHero from "../components/UI/Profil/ProfilHero.vue";
+import profilContent from "../components/UI/Profil/ProfilContent.vue";
 export default {
   name: "ProfilPage",
   components: {
     profilHero,
     profilContent,
     theArrow,
-    theLoading
+    theLoading,
   },
   data() {
     return {
-      loading: false,
+      loading: false
     };
   },
   computed: {
@@ -49,19 +59,18 @@ export default {
     },
     heroObj() {
       let obj = false,
-      check = this.pageACF; 
-      if(check.title) {
+        check = this.pageACF;
+      if (check.title) {
         obj = {
           title: check.title,
           description: check.description,
-          img: check.images[0]
-        }
+          img: check.images[0],
+        };
       }
       return obj;
     },
     contentArr() {
-      let 
-      arr = false;
+      let arr = false;
       if (this.pageACF.text_areas && this.pageACF.text_areas.length > 0) {
         arr = this.pageACF.text_areas;
       }
@@ -69,7 +78,8 @@ export default {
     },
     loadingCheck() {
       let check = false;
-      if (this.loading === false && !this.getPage) {
+      console.log(this.getPage);
+      if (this.loading === true) {
         check = true;
       }
       return check;
@@ -77,7 +87,6 @@ export default {
   },
   methods: {
     async checkPageData() {
-      // Check if the getPage can find some data that matches, because then we don't need to make an API call.
       if (!this.getPage) {
         try {
           this.loading = true;
@@ -91,7 +100,7 @@ export default {
   },
   mounted() {
     this.checkPageData();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   },
 };
 </script>

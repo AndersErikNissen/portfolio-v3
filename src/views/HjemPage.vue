@@ -1,6 +1,8 @@
 <template>
   <main>
-    <the-loading :check="loadingCheck"></the-loading>
+    <transition name="opa">
+      <the-loading v-if="loading"></the-loading>
+    </transition>
     <hjem-textpack
       v-if="pageACF != {}"
       :hero="true"
@@ -91,13 +93,6 @@ export default {
       }
       return obj;
     },
-    loadingCheck() {
-      let check = false;
-      if (this.loading === false && !this.getPage) {
-        check = true;
-      }
-      return check;
-    },
   },
   methods: {
     async checkPageData() {
@@ -106,7 +101,6 @@ export default {
         try {
           this.loading = true;
           await this.$store.dispatch("loadSinglePost", this.getId.WPpost);
-
           /*
             Earlier ErrorHandler: If API call has 200 and this.loading = true, but have no data, something with the GET(URL) could have failed, like a wrong slug, so we redirect to the ErrorPage.
             -- But it doesn't seem to be needed + If you clicked too quickly away from the View it would use the router.push("/notfound").

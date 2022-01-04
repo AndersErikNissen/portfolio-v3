@@ -1,8 +1,19 @@
 <template>
   <main :style="'background-image: url(' + bgSvg + ');'" class="flex heroBg">
-    <the-loading :check="loadingCheck"></the-loading>
-    <intro-header  v-if="pageACF != {}" :dataObj="pageACF" :email="true"></intro-header>
-    <svg-loader v-if="pageACF != {}" :svgPath="svg" :svgAlt="svgDesc"></svg-loader>
+    <transition name="opa">
+      <the-loading v-if="loading"></the-loading>
+    </transition>
+    <intro-header
+      v-if="pageACF != {}"
+      :dataObj="pageACF"
+      :email="true"
+      class="sticky--main"
+    ></intro-header>
+    <svg-loader
+      v-if="pageACF != {}"
+      :svgPath="svg"
+      :svgAlt="svgDesc"
+    ></svg-loader>
   </main>
 </template>
 
@@ -16,7 +27,7 @@ export default {
   components: {
     introHeader,
     svgLoader,
-    theLoading
+    theLoading,
   },
   data() {
     return {
@@ -53,12 +64,12 @@ export default {
       if (this.loading === false && !this.getPage) {
         check = true;
       }
+      console.log("CHECK CHECK", check);
       return check;
     },
   },
   methods: {
     async checkPageData() {
-      // Check if the getPage can find some data that matches, because then we don't need to make an API call.
       if (!this.getPage) {
         try {
           this.loading = true;
@@ -90,8 +101,8 @@ main {
 @media screen and (max-width: 1024px) {
   main {
     & > * {
-    width: 100%;
-  }
+      width: 100%;
+    }
     &.flex {
       flex-direction: column-reverse;
     }

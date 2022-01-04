@@ -1,6 +1,8 @@
 <template>
   <main>
-    <the-loading :check="loadingCheck"></the-loading>
+    <transition name="opa">
+      <the-loading v-if="loading"></the-loading>
+    </transition>
     <template-header v-if="getCase" :dataObj="pageACF"></template-header>
     <the-arrow :clean="true"></the-arrow>
     <section v-if="getCase" class="sticky--main">
@@ -14,16 +16,18 @@
       </section>
       <section class="fill flex center column">
         <h2>Relaterede</h2>
-      <show-cases :useCase="amountOfCases" :removeFromRange="getRange"></show-cases>
+        <show-cases
+          :useCase="amountOfCases"
+          :removeFromRange="getRange"
+        ></show-cases>
       </section>
       <svg-bot></svg-bot>
     </section>
-
   </main>
 </template>
 
 <script>
-import theLoading from "../components/Common/TheLoading.vue"
+import theLoading from "../components/Common/TheLoading.vue";
 import theArrow from "../components/Common/TheArrow.vue";
 import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
 import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
@@ -72,36 +76,37 @@ export default {
     },
     loadingCheck() {
       let check = false;
-      if(this.loading === false && !this.getCase || this.getCase === undefined) {
+      if (
+        (this.loading === false && !this.getCase) ||
+        this.getCase === undefined
+      ) {
         check = true;
       }
       return check;
     },
     getRange() {
       let range = undefined,
-      map = undefined;
-      if(this.getCase) {
+        map = undefined;
+      if (this.getCase) {
         //Map returns a new array with false / true, depending on what I could find.
-        map = this.$store.state.cases.map( item => item.slug === this.case);
+        map = this.$store.state.cases.map((item) => item.slug === this.case);
         // We need the index of the current case, so we can exclude it from the array that shows other Work.
         range = map.indexOf(true);
-        console.log("%c RANGE ", "background-color: aqua; color: black;", range)
+        console.log(
+          "%c RANGE ",
+          "background-color: aqua; color: black;",
+          range
+        );
       }
       return range;
-    }
+    },
   },
   methods: {
     async checkPageData() {
-      // If getCase is false, loadAll to make sure if it exist in the Database. If there still are no data, then push.(/notfound).
-      if (!this.getCase) {
+      if (!this.getPage) {
         try {
           this.loading = true;
-          await this.$store.dispatch("loadAll", 0);
-          // If we have checked the data.array, tried loading the newest version from the API, and still no data, then something must be wrong.
-          // - Like a wrong URL.
-          if (!this.getCase && this.loading === true) {
-            this.$router.push("/notfound");
-          }
+          await this.$store.dispatch("loadSinglePost", this.getId.WPpost);
         } catch (e) {
           this.$router.push("/notfound");
         }
@@ -119,7 +124,7 @@ export default {
       // If the params is not in the data(getCase() = undefined)
       this.checkPageData();
     },
-  }
+  },
 };
 </script>
 

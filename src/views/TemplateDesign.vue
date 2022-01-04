@@ -1,6 +1,8 @@
 <template>
   <main>
-    <the-loading :check="loadingCheck"></the-loading>
+    <transition name="opa">
+      <the-loading v-if="loading"></the-loading>
+    </transition>
     <h2>Show Page Content</h2>
     {{ pageACF }}
   </main>
@@ -46,18 +48,12 @@ export default {
   },
   methods: {
     async checkPageData() {
-      // If getDesign is false, loadAll to make sure if it exist in the Database. If there still are no data, then push.(/notfound).
-      if (!this.getDesign) {
+      if (!this.getPage) {
         try {
           this.loading = true;
-          await this.$store.dispatch("loadAll", 1);
-          // If we have checked the data.array, tried loading the newest version from the API, and still no data, then something must be wrong.
-          // - Like a wrong URL.
-          if (!this.getDesign && this.loading === true) {
-            this.$router.push("/notfound");
-          }
+          await this.$store.dispatch("loadSinglePost", this.getId.WPpost);
         } catch (e) {
-            this.$router.push("/notfound");
+          this.$router.push("/notfound");
         }
         this.loading = false;
       }

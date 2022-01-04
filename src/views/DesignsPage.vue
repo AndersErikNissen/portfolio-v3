@@ -1,6 +1,8 @@
 <template>
   <main>
-    <the-loading :check="loadingCheck"></the-loading>
+    <transition name="opa">
+      <the-loading v-if="loading"></the-loading>
+    </transition>
     <intro-header
       :style="'background-image: url(' + bgSvg + ');'"
       class="flex column bgSvg"
@@ -62,17 +64,10 @@ export default {
       }
       return acf;
     },
-    loadingCheck() {
-      let check = false;
-      if(this.loading === false && !this.getPage) {
-        check = true;
-      }
-      return check;
-    },
+    
   },
   methods: {
     async checkPageData() {
-      // Check if the getPage can find some data that matches, because then we don't need to make an API call.
       if (!this.getPage) {
         try {
           this.loading = true;
