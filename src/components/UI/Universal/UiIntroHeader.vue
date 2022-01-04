@@ -16,7 +16,9 @@
         <a
           class="btn round"
           href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;"
-          ><span>&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</span></a
+          ><span
+            >&#97;&#110;&#100;&#101;&#114;&#115;&#101;&#114;&#105;&#107;&#110;&#105;&#115;&#115;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</span
+          ></a
         >
       </div>
     </div>
@@ -69,22 +71,23 @@ export default {
 <style lang="scss" scoped>
 section {
   color: white;
+  padding: var(--padding-5);
 }
 .kontakt--style {
   padding: var(--padding-normal);
 }
-#aen_email {
-  & a {
-    & a span {
-      color: inherit;
-      text-decoration: underline;
-      font-size: calc(var(--font-btn));
-    }
+div#aen_email {
+  & span {
+    color: inherit;
+    text-decoration: none;
+    font-size: calc(var(--font-btn) * 2);
   }
+
   @media screen and (max-width: 1024px) {
-    & {
-      justify-content: center;
-    }
+    justify-content: center;
+    & span {
+    font-size: calc(var(--font-btn) * 1.2);
+  }
   }
 }
 </style>

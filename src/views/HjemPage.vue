@@ -11,7 +11,7 @@
       <hjem-textpack class="fill air max-width flex center" :dataObj="objDesc"></hjem-textpack>
       <section class="fill air max-width flex center column">
         <div class="flex center">
-          <h2>Seneste Arbejde</h2>
+          <h2 class="clamp">Seneste Arbejde</h2>
         </div>
         <hjem-cases :useCase="useCaseObj"></hjem-cases>
       </section>

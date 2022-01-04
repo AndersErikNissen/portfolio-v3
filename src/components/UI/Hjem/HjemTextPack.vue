@@ -28,7 +28,7 @@
           <h2 v-else>
             {{ dataObj.title }}
           </h2>
-          <p :class="hero ? 'large' : ''">
+          <p :class="{'large': hero}">
             {{ dataObj.description }}
           </p>
           <a
@@ -152,7 +152,6 @@ export default {
     flex-direction: column;
     padding: var(--padding-5);
   }
-
   .hjem__inner--hero {
     & .hjem__svg,
     & .hjem__textPack {
