@@ -6,7 +6,7 @@
     <profil-hero
       v-if="heroObj"
       :dataObj="heroObj"
-      class="sticky--hero"
+      class="sticky--hero bgSvg"
     ></profil-hero>
     <the-arrow></the-arrow>
     <profil-content
