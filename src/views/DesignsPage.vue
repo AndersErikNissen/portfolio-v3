@@ -11,7 +11,10 @@
     <the-arrow></the-arrow>
     <section class="sticky--main">
       <svg-top></svg-top>
-      <all-designs :useCase="useDesignsObj" class="fill"></all-designs>
+      <!-- <all-designs :useCase="useDesignsObj" class="fill"></all-designs> -->
+      <section class="underConstruction fill flex center">
+        <h2>Under Konstruktion!</h2>
+      </section>
       <svg-bot></svg-bot>
     </section>
   </main>
@@ -23,12 +26,12 @@ import theArrow from "../components/Common/TheArrow.vue"
 import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
 import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
 import bgSvg from "@/assets/svg/BackgroundClouds.svg";
-import allDesigns from "../components/UI/Universal/UiAllCasesOrDesigns.vue";
+// import allDesigns from "../components/UI/Universal/UiAllCasesOrDesigns.vue";
 import introHeader from "../components/UI/Universal/UiIntroHeader.vue";
 export default {
   name: "DesignsPage",
   components: {
-    allDesigns,
+    // allDesigns,
     introHeader,
     svgTop,
     svgBot,
@@ -87,4 +90,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.underConstruction {
+  min-height: 50vh;
+}
 </style>
