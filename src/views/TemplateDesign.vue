@@ -3,6 +3,7 @@
     <transition name="opa">
       <the-loading v-if="loading"></the-loading>
     </transition>
+    
     <h2>Show Page Content</h2>
     {{ pageACF }}
   </main>

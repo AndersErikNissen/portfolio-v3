@@ -4,13 +4,16 @@
       <h2 class="clamp--small">
         {{ useObj.title }}
       </h2>
-      <img :src="useObj.svg" alt="SVG fil med animation" />
+      <img class="stageIcon" :src="useObj.svg" alt="SVG fil med animation" />
     </section>
     <section class="template__block--textArea">
       <p>
         {{ dataObj.description }}
       </p>
     </section>
+    <div>
+      <img v-for="img in useImages" :key="img" :src="img" alt="">
+    </div>
   </section>
 </template>
 
@@ -65,6 +68,17 @@ export default {
       }
       return obj;
     },
+    useImages() {
+      let images = [];
+      console.log(this.dataObj.images)
+      this.dataObj.images.forEach(img=> {
+        if(img != false) {
+          images.push(img)
+        }
+      })
+
+      return images;
+    }
   },
 };
 </script>
@@ -76,13 +90,13 @@ export default {
       align-items: center;
       margin: calc(var(--margin-large) / 3) 0;
   }
-  & img {
+  & img.stageIcon {
     width: 100px;
     margin-left: var(--margin-5);
   }
   @media screen and (max-width: 620px) {
     padding: var(--padding-5);
-    & img {
+    & img.stageIcon {
       width: 70px;
     }
   }

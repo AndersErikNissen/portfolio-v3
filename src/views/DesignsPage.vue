@@ -11,7 +11,7 @@
     <the-arrow></the-arrow>
     <section class="sticky--main">
       <svg-top></svg-top>
-      <all-designs :useCase="useDesignsObj"></all-designs>
+      <all-designs :useCase="useDesignsObj" class="fill"></all-designs>
       <svg-bot></svg-bot>
     </section>
   </main>
