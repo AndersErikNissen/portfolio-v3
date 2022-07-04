@@ -1,29 +1,49 @@
 <template>
+
   <main>
+
     <transition name="opa">
       <the-loading v-if="loading"></the-loading>
     </transition>
+
     <template-header v-if="getCase" :dataObj="pageACF"></template-header>
+
     <the-arrow :clean="true"></the-arrow>
+
     <section v-if="getCase" class="sticky--main">
+
       <svg-top></svg-top>
+
       <section class="grid--template fill">
+
         <template-aside :dataObj="pageACF"></template-aside>
+
         <section class="max-width">
+
           <template-description :dataObj="pageACF"></template-description>
           <template-shell :dataObj="pageACF.text_areas"></template-shell>
+
         </section>
+
       </section>
+
       <section class="fill flex center column">
+
         <h2>Relaterede</h2>
+
         <show-cases
           :useCase="amountOfCases"
           :removeFromRange="getRange"
         ></show-cases>
+
       </section>
+
       <svg-bot></svg-bot>
+
     </section>
+
   </main>
+
 </template>
 
 <script>

@@ -23,5 +23,6 @@ const
         allV3: apiBase + apiQueryBase + _categoryV3,
         allCases: apiBase + apiQueryBase + _categoryCases,
         allDesigns: apiBase + apiQueryBase + _categoryDesigns,
-    }
+    };
+
 export default ApiGet;
