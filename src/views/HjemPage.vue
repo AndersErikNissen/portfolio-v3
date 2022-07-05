@@ -1,28 +1,41 @@
 <template>
   <main>
+
     <transition name="opa">
       <the-loading v-if="loading"></the-loading>
     </transition>
+
     <hjem-textpack
       v-if="pageACF != {}"
       :hero="true"
       :dataObj="objHero"
     ></hjem-textpack>
+
     <the-arrow v-if="pageACF != {}"></the-arrow>
+
     <section class="hjem__main sticky--main" v-if="pageACF != {}">
+
       <svg-top></svg-top>
+
       <hjem-textpack
         class="fill air max-width flex center"
         :dataObj="objDesc"
       ></hjem-textpack>
+
       <section class="fill air max-width flex center column">
+
         <div class="flex center">
           <h2 class="clamp">Seneste Arbejde</h2>
         </div>
+
         <hjem-cases :useCase="useCaseObj"></hjem-cases>
+      
       </section>
+
       <svg-bot></svg-bot>
+
     </section>
+    
   </main>
 </template>
 

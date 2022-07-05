@@ -1,0 +1,15 @@
+{
+    "front-page": {
+        "hero": {
+            "title": "Hokus pokus frontend i fokus",
+            "description": "En hjemmeside portfolio af Anders Erik Nissen"
+        },
+        "intro": {
+            "title": "Hokus pokus frontend i fokus",
+            "description": "En hjemmeside portfolio af Anders Erik Nissen"
+        }
+    },
+    "cases": {
+        "x": ""
+    }
+}
