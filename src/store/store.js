@@ -1,8 +1,10 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 
-import data from '../assets/Data/data.json'
-import ApiGet from '../assets/api/apiroutes'
+import data from '../assets/Data/data.json';
+import ApiGet from '../assets/api/apiroutes';
+
+import noApiPages from "../assets/Data/content_data/all_pages.json";
 
 /* 
     NOTE TO SELF:
@@ -25,12 +27,21 @@ export default createStore({
             },
             main: [],
             cases: [],
+            // The new data for NO-API
+            new_data: {}
         }
     },
     getters: {
 
     },
     mutations: {
+        SET_NEW_DATA: ( state ) => {
+
+            // Pages 
+            state.new_data.frontpage = noApiPages[ 'front-page' ];
+
+        },
+
         SET_STATIC_DATA: (state) => {
             const
                 //Set up arrays from the data.json with all the static data
