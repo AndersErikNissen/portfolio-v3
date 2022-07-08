@@ -62,7 +62,7 @@ export default {
       error: false,
       loading: false,
       useCaseObj: this.$store.state.staticData.universal.cases.hjem,
-      currentPageData: this.$store.state.new_data.frontpage,
+      currentPageData: this.$store.state.main.frontpage,
     };
   },
   computed: {

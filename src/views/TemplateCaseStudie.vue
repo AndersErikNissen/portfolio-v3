@@ -33,7 +33,7 @@
 
         <show-cases
           :useCase="amountOfCases"
-          :removeFromRange="getRange"
+          :removeFromRange="currentCaseIndex"
         ></show-cases>
 
       </section>
@@ -55,8 +55,8 @@ import templateAside from "../components/UI/Template/TemplateAside.vue";
 import templateHeader from "../components/UI/Template/TemplateHeader.vue";
 import templateDescription from "../components/UI/Template/TemplateDescription.vue";
 import templateShell from "../components/UI/Template/TemplateSegmentShell.vue";
-
 import showCases from "../components/UI/Universal/UiAllCasesOrDesigns.vue";
+
 export default {
   name: "TemplateCaseStudie",
   props: {
@@ -84,65 +84,58 @@ export default {
   },
   computed: {
     getCase() {
-      return this.$store.state.cases.find((item) => item.slug === this.case);
-    },
-    pageACF() {
-      let acf = {};
-      const pageData = this.getCase;
-      if (pageData) {
-        acf = pageData.acf;
+
+      // Find a case that match.
+      // return this.$store.state.cases.find( item => item.slug === this.case );
+      let this_case = this.$store.state.cases.find( item => item.slug == this.case );
+
+      if ( this_case ) {
+        
+        /**
+         * Index Walkthrough:
+         * We need the index of the current case, so we can exclude it from the array that shows other Work.
+         * Map returns a new array with false / true, depending on what I could find, like: [false,false,true].
+         */
+
+        return {
+          case: this_case,
+          index: this.$store.state.cases.map( item => item.slug == this.case ).indexOf( true )
+        }
+
+      } else {
+
+        return null;
+
       }
-      return acf;
-    },
-    loadingCheck() {
-      let check = false;
-      if (
-        (this.loading === false && !this.getCase) ||
-        this.getCase === undefined
-      ) {
-        check = true;
-      }
-      return check;
-    },
-    getRange() {
-      let range = undefined,
-        map = undefined;
-      if (this.getCase) {
-        //Map returns a new array with false / true, depending on what I could find.
-        map = this.$store.state.cases.map((item) => item.slug === this.case);
-        // We need the index of the current case, so we can exclude it from the array that shows other Work.
-        range = map.indexOf(true);
-        console.log(
-          "%c RANGE ",
-          "background-color: aqua; color: black;",
-          range
-        );
-      }
-      return range;
+
     },
   },
   methods: {
-    async checkPageData() {
-      if (!this.getCase) {
-        try {
-          this.loading = true;
-          await this.$store.dispatch("loadSinglePost", this.getId.WPpost);
-        } catch (e) {
-          this.$router.push("/notfound");
-        }
-        this.loading = false;
+    checkForCase() {
+
+      // If therre are no Case found return to 404-page.
+      if ( ! this.getCase ) {
+
+        this.$router.push( "/notfound" );
+
       }
-    },
+
+    }
   },
   mounted() {
-    this.checkPageData();
-    window.scrollTo(0, 0);
+
+    this.checkForCase();
+
+    // Scroll to top on load.
+    window.scrollTo( 0, 0 );
+
   },
   watch: {
     case: function () {
-      // If the params, change, check the data inside store and the after (if not in store) API call.
-      // If the params is not in the data(getCase() = undefined)
-      this.checkPageData();
+
+      // When Case changes check if a Case could be found.
+      this.checkForCase();
+
     },
   },
 };

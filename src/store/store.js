@@ -5,6 +5,7 @@ import data from '../assets/Data/data.json';
 import ApiGet from '../assets/api/apiroutes';
 
 import noApiPages from "../assets/Data/content_data/all_pages.json";
+import noApiCases from "../assets/Data/content_data/all_cases.json";
 
 /* 
     NOTE TO SELF:
@@ -25,10 +26,10 @@ export default createStore({
                 some: [],
                 universal: {}
             },
-            main: [],
-            cases: [],
+
             // The new data for NO-API
-            new_data: {}
+            main: {},
+            cases: [],
         }
     },
     getters: {
@@ -38,7 +39,10 @@ export default createStore({
         SET_NEW_DATA: ( state ) => {
 
             // Pages 
-            state.new_data.frontpage = noApiPages[ 'front-page' ];
+            state.main = noApiPages;
+
+            // Cases
+            state.cases = noApiCases;
 
         },
 
