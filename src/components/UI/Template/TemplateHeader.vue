@@ -11,7 +11,7 @@
 
       </h2>
     </section>
-    <img :src="dataObj.mood" alt="" />
+    <img :src="dataObj.mood_img" alt="" />
   </header>
 </template>
 
@@ -56,14 +56,19 @@ export default {
     },
   },
   methods: {
-    getTop() {
+     getTop() {
       // If hero is true, set where the sticky--hero should stop at(top);
-        let ele = document.querySelector(".sticky--hero"),
-          eleHeight = ele.offsetHeight,
-          winHeight = window.innerHeight;
-        // # 1 caviart, is that with this method the hero have to be at least 100vh, otherwise there will be space on top.
-        ele.style.top = winHeight - eleHeight + "px";
+      let hero_element =  document.querySelector( ".sticky--hero" );
 
+      if ( this.hero && hero_element ) {
+        let 
+        eleHeight = hero_element.offsetHeight,
+        winHeight = window.innerHeight;
+
+        
+        // # 1 caviart, is that with this method the hero have to be at least 100vh, otherwise there will be space on top.
+        hero_element.style.top = winHeight - eleHeight + "px";
+      }
     },
     setColor() {
       this.headerStyle.backgroundColor = this.dataObj.color;

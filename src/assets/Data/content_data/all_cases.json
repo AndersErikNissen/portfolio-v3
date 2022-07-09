@@ -1,3 +1,31 @@
 [
-    
+    {
+        "slug": "wizard-movies",
+        "title": "Wizard Movies",
+        "roles": [0,2,3],
+        "techs": [3,5,6],
+        "links": {
+            "ext": "",
+            "git": ""
+        },
+        "year": 2021,
+        "mood_img": "",
+        "logo": "",
+        "color": "",
+        "about_case": "",
+        "content": [
+            {
+                "text": "",
+                "img": ""
+            },
+             {
+                "text": "",
+                "img": ""
+            },
+            {
+                "text": "",
+                "img": ""
+            }
+        ]
+    }
 ]

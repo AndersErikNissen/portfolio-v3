@@ -6,7 +6,7 @@
       <the-loading v-if="loading"></the-loading>
     </transition>
 
-    <template-header v-if="getCase" :dataObj="pageACF"></template-header>
+    <template-header v-if="getCase" :dataObj="getCase.case"></template-header>
 
     <the-arrow :clean="true"></the-arrow>
 
@@ -16,12 +16,12 @@
 
       <section class="grid--template fill">
 
-        <template-aside :dataObj="pageACF"></template-aside>
+        <template-aside :dataObj="getCase.case"></template-aside>
 
         <section class="max-width">
 
-          <template-description :dataObj="pageACF"></template-description>
-          <template-shell :dataObj="pageACF.text_areas"></template-shell>
+          <template-description :dataObj="getCase.case"></template-description>
+          <template-shell :dataObj="getCase.case.content"></template-shell>
 
         </section>
 
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+
 import theLoading from "../components/Common/TheLoading.vue";
 import theArrow from "../components/Common/TheArrow.vue";
 import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
@@ -88,6 +89,7 @@ export default {
       // Find a case that match.
       // return this.$store.state.cases.find( item => item.slug === this.case );
       let this_case = this.$store.state.cases.find( item => item.slug == this.case );
+      console.log("asdasd",this.case)
 
       if ( this_case ) {
         

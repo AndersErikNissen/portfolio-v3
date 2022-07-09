@@ -92,12 +92,16 @@ export default {
   methods: {
     getTop() {
       // If hero is true, set where the sticky--hero should stop at(top);
-      if (this.hero) {
-        let ele = document.querySelector(".sticky--hero"),
-          eleHeight = ele.offsetHeight,
-          winHeight = window.innerHeight;
+      let hero_element =  document.querySelector( ".sticky--hero" );
+
+      if ( this.hero && hero_element ) {
+        let 
+        eleHeight = hero_element.offsetHeight,
+        winHeight = window.innerHeight;
+
+        
         // # 1 caviart, is that with this method the hero have to be at least 100vh, otherwise there will be space on top.
-        ele.style.top = winHeight - eleHeight + "px";
+        hero_element.style.top = winHeight - eleHeight + "px";
       }
     },
   },

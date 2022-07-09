@@ -31,7 +31,8 @@ export default createStore({
             // The new data for NO-API
             main: {},
             cases: [],
-            techs: []
+            techs: [],
+            roles: []
         }
     },
     getters: {
@@ -50,7 +51,7 @@ export default createStore({
             state.techs = allBonusInformation.technologies;
             
             // Roles
-            state.techs = allBonusInformation.roles;
+            state.roles = allBonusInformation.roles;
 
         },
 

@@ -4,10 +4,14 @@
         "CSS",
         "JS",
         "VUE.JS",
-        "WordPress"
+        "WordPress",
+        "SASS/SCSS",
+        "Ekstern API",
+        "Strapi"
     ],
     "roles": [
         "Design",
+        "User Experience",
         "Frontend",
         "Backend"
     ]
