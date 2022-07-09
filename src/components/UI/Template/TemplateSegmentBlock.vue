@@ -42,10 +42,12 @@ export default {
   },
   computed: {
     useObj() {
+
       let obj = {
         svg: undefined,
         title: undefined,
       };
+
       switch (this.index) {
         case "first": {
           obj.svg = this.svgFirst;
@@ -66,11 +68,12 @@ export default {
           obj.svg = this.svgFirst;
           obj.title = "No Title";
       }
+
       return obj;
     },
     useImages() {
       let images = [];
-      console.log(this.dataObj.images)
+
       this.dataObj.images.forEach(img=> {
         if(img != false) {
           images.push(img)

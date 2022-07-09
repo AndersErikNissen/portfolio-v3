@@ -6,6 +6,7 @@ import ApiGet from '../assets/api/apiroutes';
 
 import noApiPages from "../assets/Data/content_data/all_pages.json";
 import noApiCases from "../assets/Data/content_data/all_cases.json";
+import allBonusInformation from "../assets/Data/content_data/all_bonus_information.json";
 
 /* 
     NOTE TO SELF:
@@ -30,10 +31,11 @@ export default createStore({
             // The new data for NO-API
             main: {},
             cases: [],
+            techs: []
         }
     },
     getters: {
-
+        // getCaseRoles: ( state ) => ( slug ) => {}
     },
     mutations: {
         SET_NEW_DATA: ( state ) => {
@@ -43,6 +45,12 @@ export default createStore({
 
             // Cases
             state.cases = noApiCases;
+
+            // Technologies
+            state.techs = allBonusInformation.technologies;
+            
+            // Roles
+            state.techs = allBonusInformation.roles;
 
         },
 

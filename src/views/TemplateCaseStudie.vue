@@ -108,7 +108,7 @@ export default {
 
       }
 
-    },
+    }
   },
   methods: {
     checkForCase() {
@@ -134,6 +134,7 @@ export default {
     case: function () {
 
       // When Case changes check if a Case could be found.
+      // - Might not be needed with the noApi?
       this.checkForCase();
 
     },
