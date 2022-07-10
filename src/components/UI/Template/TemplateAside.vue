@@ -66,7 +66,7 @@ export default {
     cleanFilters() {
       let cleanArr = [];
       if (this.dataObj.roles) {
-        this.dataObj.filters.forEach((role) => {
+        this.dataObj.techs.forEach((role) => {
           if (role != "") {
             cleanArr.push(role);
           }

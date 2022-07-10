@@ -26,13 +26,17 @@ export default {
   computed: {
     svgObj() {
       let obj = false;
-      if (this.dataObj.svg_path) {
+
+      if (this.dataObj.logo_path) {
+
         obj = {
-          path: this.dataObj.svg_path,
+          path: this.dataObj.logo_path,
           title: this.dataObj.title,
           color: this.dataObj.color,
         };
+
       }
+      
       return obj;
     },
   },

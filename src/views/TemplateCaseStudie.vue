@@ -89,7 +89,6 @@ export default {
       // Find a case that match.
       // return this.$store.state.cases.find( item => item.slug === this.case );
       let this_case = this.$store.state.cases.find( item => item.slug == this.case );
-      console.log("asdasd",this.case)
 
       if ( this_case ) {
         
