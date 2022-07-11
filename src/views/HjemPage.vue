@@ -21,8 +21,6 @@
         :dataObj="intro_data"
       ></hjem-textpack>
 
-      
-
       <section class="fill air max-width flex center column">
 
         <div class="flex center">
@@ -114,28 +112,10 @@ export default {
     // },
   },
   methods: {
-    // async checkPageData() {
-    //   // Check if the getPage can find some data that matches, because then we don't need to make an API call.
-    //   if (!this.getPage) {
-    //     try {
-    //       this.loading = true;
-    //       await this.$store.dispatch("loadSinglePost", this.getId.WPpost);
-    //       /*
-    //         Earlier ErrorHandler: If API call has 200 and this.loading = true, but have no data, something with the GET(URL) could have failed, like a wrong slug, so we redirect to the ErrorPage.
-    //         -- But it doesn't seem to be needed + If you clicked too quickly away from the View it would use the router.push("/notfound").
-    //         if (!this.getPage) {
-    //           this.$router.push("/notfound");
-    //         }
-    //       */
-    //     } catch (e) {
-    //       this.$router.push("/notfound");
-    //     }
-    //     this.loading = false;
-    //   }
-    // },
+    
   },
   mounted() {
-    // this.checkPageData();
+
     // Will reset window each time going from 1 router to another. There are some Vue ways to do it, but they didn't seem to work.
     // - I have also disabled smooth scrolling to the user don't have to watch the scrolling when changing router.
     window.scrollTo(0, 0);

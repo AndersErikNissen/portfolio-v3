@@ -102,14 +102,13 @@ export default {
 
       let 
       array = [],
-      cases = [],
+      cases = this.$store.state.cases,
       releaseArray = [],
       randomArray = [];
 
       // Used to Generat 2 random numbers that isn't the Case currently and are already in the array.
-      if ( this.useCase.range ) {
+      if ( this.useCase.range && cases.length > 3 ) {
 
-        cases = this.$store.state.cases;
 
         for ( let i = 0; i < cases.length; i++ ) {
 
@@ -142,6 +141,11 @@ export default {
           }
 
         }
+
+      } else {
+
+        // If there are less than 3 items, just return all.
+        cases.forEach( item => releaseArray.push( item ) );
 
       }
 
