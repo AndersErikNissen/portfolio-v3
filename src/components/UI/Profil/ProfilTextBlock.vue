@@ -1,10 +1,10 @@
 <template>
     <section class="profil__textBlock--outer">
         <h2 class="clamp">
-            {{ dataObj[0] }}
+            {{ dataObj.title }}
         </h2>
         <p>
-            {{ dataObj[1] }}
+            {{ dataObj.text }}
         </p>
     </section>    
 </template>

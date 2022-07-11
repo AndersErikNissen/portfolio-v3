@@ -15,7 +15,7 @@
         <ui-display
           v-for="n in useCase.show"
           :key="n - 1"
-          :dataObj="getAll[ n - 1 ]"
+          :dataObj="getAll[n - 1]"
           :basePath="useCase.path"
         ></ui-display>
 
@@ -133,7 +133,8 @@ export default {
           //              V
           // if ( random !== this.removeFromRange && ! randomArray.includes( random ) ) {
 
-          if ( ! randomArray.includes( random ) ) {
+          
+          if ( ! randomArray.includes( random ) ) {  
 
             releaseArray.push( array[ random ] );
             randomArray.push( random );

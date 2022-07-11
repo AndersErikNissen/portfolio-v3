@@ -6,12 +6,15 @@
     ]"
   >
     <div>
+      
       <h1 :class="email ? 'clamp--small' : ''">
         {{ dataObj.title }}
       </h1>
+
       <p class="large">
         {{ dataObj.description }}
       </p>
+
       <div v-if="email" id="aen_email" class="flex">
         <a
           class="btn round"
@@ -21,6 +24,7 @@
           ></a
         >
       </div>
+
     </div>
   </section>
 </template>

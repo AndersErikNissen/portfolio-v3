@@ -12,7 +12,7 @@
       </p>
     </section>
     <div>
-      <img v-for="img in useImages" :key="img" :src="img" alt="">
+      <!-- <img v-for="img in useImages" :key="img" :src="img" alt=""> -->
     </div>
   </section>
 </template>
@@ -83,7 +83,7 @@ export default {
       return images;
     }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

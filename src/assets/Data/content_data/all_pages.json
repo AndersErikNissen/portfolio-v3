@@ -5,11 +5,33 @@
             "description": "En hjemmeside portfolio af Anders Erik Nissen"
         },
         "intro": {
-            "title": "Hokus pokus frontend i fokus",
+            "title": "Lidt om mig selv",
             "description": "En hjemmeside portfolio af Anders Erik Nissen"
         }
     },
-    "cases": {
-        "x": ""
+    "profil": {
+        "hero": {
+            "title": "Mojn",
+            "description": "",
+            "profile_img": ""
+        },
+        "content": [
+            {
+                "title": "",
+                "text": ""
+            },
+            {
+                "title": "",
+                "text": ""
+            },
+            {
+                "title": "",
+                "text": ""
+            }
+        ]
+    },
+    "casestudies": {
+        "title": "",
+        "description": ""
     }
 }
