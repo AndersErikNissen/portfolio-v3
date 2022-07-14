@@ -24,7 +24,7 @@
 
       </section>
 
-      <img :src="dataObj.mood_img" :alt="'Stemningsbillede til ' + dataObj.title" />
+      <img :src="getImage" :alt="'Stemningsbillede til ' + dataObj.title" />
 
     </article>
 
@@ -51,6 +51,36 @@ export default {
   },
   computed: {
 
+    getImage() {
+      
+      // Placeholder Image
+      let get_placeholder =  require( '@/assets/images/mood_imgs/placeholder.png' );
+
+      if ( this.dataObj.mood_img != "" ) {
+
+        // Try and require the Image
+        let get_img = require( '@/assets/images/mood_imgs/' + this.dataObj.mood_img );
+
+
+        if ( get_img ) {
+
+          // If we find an image return it.
+          return get_img;
+
+        } else {
+
+          // If not return an empty string
+          return get_placeholder;
+        }
+
+      } else {
+
+        return get_placeholder;
+
+      }
+
+    },
+
     outputTheRoles() {
       let 
       allRoles = this.$store.state.roles,
@@ -75,7 +105,7 @@ export default {
 
         }
 
-      });
+      } );
 
       // Remove last ", " using RegEx ( $ is the end of the string ). Doesn't seem to work?
       // returnString.replace( '/, $/', '' );

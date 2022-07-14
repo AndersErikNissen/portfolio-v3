@@ -4,7 +4,7 @@
       <section>
         <h5 class="clamp">Ansvar</h5>
         <ul class="clean">
-          <li v-for="ansvar in cleanRoles" :key="ansvar">
+          <li v-for="ansvar in outputTheRoles" :key="ansvar">
             <span>
               {{ ansvar }}
             </span>
@@ -14,7 +14,7 @@
       <section>
         <h5 class="clamp">Teknologier</h5>
         <ul class="clean">
-          <li v-for="filter in cleanFilters" :key="filter">
+          <li v-for="filter in outputTheTechs" :key="filter">
             <span>
               {{ filter }}
             </span>
@@ -52,27 +52,40 @@ export default {
     },
   },
   computed: {
-    cleanRoles() {
-      let cleanArr = [];
-      if (this.dataObj.roles) {
-        this.dataObj.roles.forEach((role) => {
-          if (role != "") {
-            cleanArr.push(role);
-          }
-        });
-      }
-      return cleanArr;
+    outputTheRoles() {
+      let 
+      allRoles = this.$store.state.roles,
+      caseRoleNumbers = this.dataObj.roles;
+
+      // Return String
+      let returnArray = [];
+
+      // Match to roles
+      caseRoleNumbers.forEach( ( roleNumber ) => {
+
+        returnArray.push( allRoles[ roleNumber ] );
+
+      } );
+      
+      return returnArray;
     },
-    cleanFilters() {
-      let cleanArr = [];
-      if (this.dataObj.roles) {
-        this.dataObj.techs.forEach((role) => {
-          if (role != "") {
-            cleanArr.push(role);
-          }
-        });
-      }
-      return cleanArr;
+
+    outputTheTechs() {
+      let 
+      allRoles = this.$store.state.techs,
+      caseRoleNumbers = this.dataObj.techs;
+
+      // Return String
+      let returnArray = [];
+
+      // Match to roles
+      caseRoleNumbers.forEach( ( roleNumber ) => {
+
+        returnArray.push( allRoles[ roleNumber ] );
+
+      } );
+
+      return returnArray;
     },
   },
 };

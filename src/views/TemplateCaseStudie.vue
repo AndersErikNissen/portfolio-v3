@@ -2,7 +2,7 @@
 
   <main>
 
-    <!-- <template-header v-if="getCase" :dataObj="getCase.case"></template-header> -->
+    <template-header v-if="getCase" :dataObj="getCase.case"></template-header>
 
     <the-arrow :clean="true"></the-arrow>
 
@@ -12,12 +12,12 @@
 
       <section class="grid--template fill">
 
-        <!-- <template-aside :dataObj="getCase.case"></template-aside> -->
+        <template-aside :dataObj="getCase.case"></template-aside>
 
         <section class="max-width">
 
-          <!-- <template-description :dataObj="getCase.case"></template-description> -->
-          <!-- <template-shell :dataObj="getCase.case.content"></template-shell> -->
+          <template-description :dataObj="getCase.case"></template-description>
+          <template-shell :dataObj="getCase.case.content"></template-shell>
 
         </section>
 
@@ -47,10 +47,10 @@
 import theArrow from "../components/Common/TheArrow.vue";
 import svgTop from "../components/UI/SVG/SvgEdgeTop.vue";
 import svgBot from "../components/UI/SVG/SvgEdgeBot.vue";
-// import templateAside from "../components/UI/Template/TemplateAside.vue";
-// import templateHeader from "../components/UI/Template/TemplateHeader.vue";
-// import templateDescription from "../components/UI/Template/TemplateDescription.vue";
-// import templateShell from "../components/UI/Template/TemplateSegmentShell.vue";
+import templateAside from "../components/UI/Template/TemplateAside.vue";
+import templateHeader from "../components/UI/Template/TemplateHeader.vue";
+import templateDescription from "../components/UI/Template/TemplateDescription.vue";
+import templateShell from "../components/UI/Template/TemplateSegmentShell.vue";
 import showCases from "../components/UI/Universal/UiAllCasesOrDesigns.vue";
 
 export default {
@@ -62,10 +62,10 @@ export default {
     },
   },
   components: {
-    // templateHeader,
-    // templateDescription,
-    // templateShell,
-    // templateAside,
+    templateHeader,
+    templateDescription,
+    templateShell,
+    templateAside,
     svgTop,
     svgBot,
     theArrow,
