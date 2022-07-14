@@ -12,6 +12,7 @@
 
 <script>
 import svgImport from "../SVG/SvgLogoContainer.vue";
+
 export default {
   name: "TemplateDescription",
   props: {
@@ -27,10 +28,10 @@ export default {
     svgObj() {
       let obj = false;
 
-      if (this.dataObj.logo_path) {
+      if (this.dataObj.logo) {
 
         obj = {
-          path: this.dataObj.logo_path,
+          path: this.dataObj.logo,
           title: this.dataObj.title,
           color: this.dataObj.color,
         };

@@ -107,7 +107,8 @@ export default {
       randomArray = [];
 
       // Used to Generate 2 random numbers that isn't the Case currently and are already in the array.
-      if ( this.useCase.range && cases.length > 3 ) {
+      // We need atleast 3 cases to performe this action.
+      if ( this.useCase.range && cases.length >= 3 ) {
 
 
         for ( let i = 0; i < cases.length; i++ ) {

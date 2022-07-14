@@ -4,15 +4,10 @@
             The require seems to be the best way to get a img/svg that has a dynamic path.
             - Not sure if it's the most optimal way, but I haven't been able to find another way to do it.
          -->
-         <p>{{dataObj.logo_path}}</p>
-    <!-- <img
-      :src="require('@/assets/svg/logos/logo_' + dataObj.logo_path)"
+    <img
+      :src="require('@/assets/svg/logos/' + dataObj.path)"
       :alt="'Logo til projektet ' + dataObj.title"
-    /> -->
-    <!-- <img
-      :src="require('@/assets/svg/logos/logo_wizard.svg')"
-      :alt="'Logo til projektet ' + dataObj.title"
-    /> -->
+    />
   </div>
 </template>
 
