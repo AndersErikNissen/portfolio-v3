@@ -29,8 +29,8 @@
         ]
     },
     {
-        "slug": "wizard-movies",
-        "title": "Wizard Movies",
+        "slug": "movie-wizard",
+        "title": "Movie Wizard",
         "techs": [3,5,6],
         "roles": [0,2,3],
         "links": {
@@ -41,7 +41,7 @@
         "mood_img": "wizardmovies_mood.png",
         "logo": "logo_wizard.svg",
         "color": "#00EACE",
-        "about_case": "Som en del af processen for at have en chance for at komme i praktik hos WEXO A/S skulle jeg lave hjemmeside som skulle arbejde sammen med en Open-source API. API leverer information omkring film og serier, og derfor var kravet at produktet skulle være en hjemmesiden som ville minde om f.eks. IMDB. For at kunne bedre fordybe mig i projektet valgte jeg at komme op med ideen om at kalde projektet “Wizard Movies”, som ville være inspirationen til designet. </br> Jeg skulle også give WEXO A/S et bud på hvor længe jeg ville tage om at lave løsningen, jeg valgte at sige 20 timer, hvilket dog var alt for lavt i og med at jeg endte med at bruge omkring 45 timer. Der var mange faktorer som spillede ind på den store overskridelse, blandt andet at jeg kodede hjemmesiden med Vue.js hvilket jeg kun lige havde lært lidt om i skolen samt at det vidste sig at være svært at arbejde med APIen. ",
+        "about_case": "Som en del af processen for at have en chance for at komme i praktik hos WEXO A/S skulle jeg lave hjemmeside som skulle arbejde sammen med en Open-source API. API leverer information omkring film og serier, og derfor var kravet at produktet skulle være en hjemmesiden som ville minde om f.eks. IMDB. For at kunne bedre fordybe mig i projektet valgte jeg at komme op med ideen om at kalde projektet “Movie Wizard”, som ville være inspirationen til designet. </br> Jeg skulle også give WEXO A/S et bud på hvor længe jeg ville tage om at lave løsningen, jeg valgte at sige 20 timer, hvilket dog var alt for lavt i og med at jeg endte med at bruge omkring 45 timer. Der var mange faktorer som spillede ind på den store overskridelse, blandt andet at jeg kodede hjemmesiden med Vue.js hvilket jeg kun lige havde lært lidt om i skolen samt at det vidste sig at være svært at arbejde med APIen. ",
         "content": [
             {
                 "text": "Som en del af opgaven blev forskellige krav stillet til produktet: der skulle være en forside som skulle fremvise hver film fra hver kategori, der skulle være en side med fremviser alle film fra en bestemt kategori, der skulle også være en side som skulle fremvise information om den enkelte film og til sidst skulle der være en side som skulle fremvise brugernes favorit film ( Ved brug af Local Storage eller andet ). ",

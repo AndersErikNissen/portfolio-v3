@@ -29,7 +29,7 @@
 
         <show-cases
           :useCase="amountOfCases"
-          :removeFromRange="currentCaseIndex"
+          :removeFromRange="getCase.index"
         ></show-cases>
 
       </section>

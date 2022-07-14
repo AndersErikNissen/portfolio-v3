@@ -25,15 +25,17 @@
         <h5 class="clamp">Links</h5>
         <a
           class="btn round"
-          v-if="dataObj.links.external != ''"
-          :href="dataObj.links.external"
+          target="_blank"
+          v-if="dataObj.links.ext != ''"
+          :href="dataObj.links.ext"
         >
           <span> BESØG SIDEN </span>
         </a>
         <a
+          target="_blank"
           class="btn round"
-          v-if="dataObj.links.github != ''"
-          :href="dataObj.links.github"
+          v-if="dataObj.links.git != ''"
+          :href="dataObj.links.git"
         >
           <span> SE PÅ GITHUB </span>
         </a>
