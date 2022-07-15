@@ -12,6 +12,11 @@
           :dataObj="textBlock"
         ></profil-textblock>
 
+        <!-- Erfaringer -->
+        <ul>
+          
+        </ul>
+
       </div>
     </section>
 
@@ -34,11 +39,14 @@ export default {
     svgBot,
   },
   props: {
-    dataArr: {
-      type: Array,
+    dataObj: {
+      type: Object,
       required: true,
     },
   },
+  computed: {
+    
+  }
 };
 </script>
 

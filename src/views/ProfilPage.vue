@@ -10,8 +10,8 @@
     <the-arrow></the-arrow>
 
     <profil-content
-      v-if="contentArray"
-      :dataArr="contentArray"
+      v-if="contentObject"
+      :dataArr="contentObject"
       class="sticky--main"
     ></profil-content>
 
@@ -41,7 +41,7 @@ export default {
     heroObject() {
       return this.currentPageData.hero;
     },
-    contentArray() {
+    contentObject() {
       return this.currentPageData.content;
     }
   },

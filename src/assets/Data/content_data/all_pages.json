@@ -15,20 +15,16 @@
             "description": "Glad for at du ville kigge forbi, nedenfor kan du lærer mig lidt bedre at kende, og forhåbentlig få en ide hvem jeg er som person!",
             "profile_img": "new_profil.jpg"
         },
-        "content": [
-            {
+        "content": {
+            "main": {
                 "title": "Studiet",
                 "text": ""
             },
-            {
-                "title": "Erfaring og Projekter",
-                "text": ""
-            },
-            {
-                "title": "",
-                "text": ""
+            "project_array": {
+                "title": "Erfaringer",
+                "array": []
             }
-        ]
+        }
     },
     "casestudies": {
         "title": "Alle Case Studies",
@@ -40,6 +36,6 @@
     },
     "kontakt": {
         "title": "Send et brev i skyen?",
-        "description": "Står du og brænder med nogle spørgsmål, eller bare gerne vil i kontakt med mig? Så kan du anvende emailen nedenfor, og så vil jeg vende tilbage til dig snarest muligt!"
+        "description": "Står du og brænder med nogle spørgsmål, eller bare gerne vil i kontakt med mig? Så bare skriv!"
     }
 }
