@@ -67,6 +67,7 @@ h6 {
 }
 h1 {
   font-size: clamp(3.8rem, 10vw, 6rem);
+  
   &.clamp--small {
     font-size: clamp(2rem, 10vw, 3.8rem);
   }
@@ -77,6 +78,7 @@ h1 {
 }
 h2 {
   font-size: 3.5rem;
+
   &.clamp {
     font-size: clamp(2rem, 10vw, 4.5rem);
   }
@@ -127,7 +129,7 @@ b {
   font-style: italic;
 }
 p {
-  max-width: 58ch;
+  max-width: 65ch;
   &.large {
     font-size: 1.5rem;
   }

@@ -2,26 +2,26 @@
     "frontpage": {
         "hero": {
             "title": "Hokus pokus frontend i fokus",
-            "description": "En hjemmeside portfolio af Anders Erik Nissen"
+            "description": "En online portfolio af Anders Erik Nissen"
         },
         "intro": {
             "title": "Lidt om mig selv",
-            "description": "En hjemmeside portfolio af Anders Erik Nissen"
+            "description": "Velkommen til min portfolio, som sagt er mit navn Anders Erik Nissen, og jeg er nyuddannet Multimediedesigner fra UCN - Aalborg, Sommer 2022. Mit fokus ligger inden for front-end udvikling selvom det ikke stopper mig fra at have det sjovt med at skabe designs. På siden kan du se de ting jeg går og har rodet med."
         }
     },
     "profil": {
         "hero": {
             "title": "Mojn",
-            "description": "",
-            "profile_img": ""
+            "description": "Glad for at du ville kigge forbi, nedenfor kan du lærer mig lidt bedre at kende, og forhåbentlig få en ide hvem jeg er som person!",
+            "profile_img": "new_profil.jpg"
         },
         "content": [
             {
-                "title": "",
+                "title": "Studiet",
                 "text": ""
             },
             {
-                "title": "",
+                "title": "Erfaring og Projekter",
                 "text": ""
             },
             {
@@ -31,15 +31,15 @@
         ]
     },
     "casestudies": {
-        "title": "",
-        "description": ""
+        "title": "Alle Case Studies",
+        "description": "Her kan du se mine seneste Case Studies, og hermed få et indblik i min arbejdsprocess og tankegang!"
     },
     "designs": {
-        "title": "",
-        "description": ""
+        "title": "Alle Designs",
+        "description": "Her kan du finde forskellige Designs som jeg har lavet, det kan være ting som Illustrationer, Vector Grafik, UI/UX Design og alt mulig andet!"
     },
     "kontakt": {
-        "title": "",
-        "description": ""
+        "title": "Send et brev i skyen?",
+        "description": "Står du og brænder med nogle spørgsmål, eller bare gerne vil i kontakt med mig? Så kan du anvende emailen nedenfor, og så vil jeg vende tilbage til dig snarest muligt!"
     }
 }

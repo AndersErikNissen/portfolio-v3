@@ -17,7 +17,7 @@
       </section>
 
       <div>
-        <img :src="dataObj.profile_img" alt="Profilbillede af AEN" />
+        <img :src="require( '@/assets/images/leftovers/' + dataObj.profile_img )" id="profile-img" alt="Profilbillede af AEN" />
       </div>
 
     </section>
@@ -65,6 +65,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#profile-img {
+  border-radius: 50%;
+}
+
 img {
   max-width: 600px;
 }

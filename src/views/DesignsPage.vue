@@ -16,7 +16,7 @@
       <!-- <all-designs :useCase="useDesignsObj" class="fill"></all-designs> -->
 
       <section class="underConstruction fill flex center">
-        <h2>Under Konstruktion!</h2>
+        <h4>Under Konstruktion!</h4>
       </section>
 
       <svg-bot></svg-bot>
