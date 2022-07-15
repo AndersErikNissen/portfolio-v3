@@ -6,7 +6,7 @@
         },
         "intro": {
             "title": "Lidt om mig selv",
-            "description": "Velkommen til min portfolio, som sagt er mit navn Anders Erik Nissen, og jeg er nyuddannet Multimediedesigner fra UCN - Aalborg, Sommer 2022. Mit fokus ligger inden for front-end udvikling selvom det ikke stopper mig fra at have det sjovt med at skabe designs. På siden kan du se de ting jeg går og har rodet med."
+            "description": "Velkommen til min portfolio, som sagt er mit navn Anders Erik Nissen, og jeg er en nyuddannet Multimediedesigner fra UCN - Aalborg, Sommeren 2022. Mit fokus ligger inden for front-end udvikling selvom det ikke stopper mig fra at have det sjovt med at lege med design / UX. På siden kan du se de ting jeg går og har rodet med."
         }
     },
     "profil": {
@@ -17,12 +17,34 @@
         },
         "content": {
             "main": {
-                "title": "Studiet",
-                "text": ""
+                "title": "Personen bag",
+                "text": "Jeg har ikke altid vidst at jeg ville læse videre til Multimediedesigner, faktisk skulle der gå mange år efter min HTX, med mange oplevelser i mellem før jeg kunne tage valget. På min HTX prøvede jeg være i praktik som Multimediedesigner, men det tidspunkt tænkte jeg ikke det var noget for mig, men heldigvis dukkede jeg op til Åbent Hus i foråret 2020 hvor jeg igen hørte om uddannelsen. </br></br>Selvom at mit fokus ligger på frontend udvikling, finder jeg stor glæde i at nogle gange bruge tid på design og UX / UI samt andre former for kreativ fordybelse. Ikke mindst fordi det giver et indblik i processen som sker inden det er tid til at skrive koden, og derfor er jeg også glad for at jeg har fået rig mulighed på studiet til at fordybe mig i de forskellige dele. </br></br>Nu som færdiguddannet Multimediedesigner er det så tid til at komme ud på arbejdsmarkedet, hvor jeg glæder mig til at komme ud og stifte nye bekendtskaber samt suge til mig af alt den nye læring. </br></br>Når jeg ikke sidder og fordyber mig inden for faget, nyder jeg at komme ud og få noget frisk luft under den åbne himmel på min cykel, eller gribe nogle af mine Kettlebells og smide dem lidt rundt! Jeg nyder at være sammen med venner og familie, men ligger også en stor værdi i at bruge tid for mig selv for lade mine batterier op. Så længe jeg kan huske har jeg været en nørd, så derfor kan jeg ofte være til at finde foran min computer, hvor jeg spiller videospil med mine venner eller ser animationsserier / film. ",
+                "extra_text": "Praktik i 10 uger  hos WEXO A/S som frontend udvikler på en B2B e-commerce side sammen med et team af andre udviklere."
             },
-            "project_array": {
-                "title": "Erfaringer",
-                "array": []
+            "extra": {
+                "experience": {
+                    "title": "Kodesprog",
+                    "array": [
+                        { "skill": "Vanilla (HTML, CSS, JS)", "amount": 5 },
+                        { "skill": "Vue.js", "amount": 3 },
+                        { "skill": "WordPress", "amount": 2 },
+                        { "skill": "WooCommerce", "amount": 1 },
+                        { "skill": "( Pratik ) Shopware", "amount": 1 },
+                        { "skill": "MSSQL", "amount": 1 },
+                        { "skill": "Node.js / Express.js", "amount": 1 },
+                        { "skill": "Strapi", "amount": 1 }
+                    ]
+                },
+                "other": {
+                    "title": "Andet",
+                    "array": [
+                        { "skill": "SASS/SCSS", "text": "God" },
+                        { "skill": "Twig", "text": "Okay" },
+                        { "skill": "Bootstrap", "text": "Okay" },
+                        { "skill": "Docker", "text": "Mindre" },
+                        { "skill": "Github / Gitlab", "text": "God" }
+                    ]
+                }
             }
         }
     },

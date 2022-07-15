@@ -3,9 +3,7 @@
         <h2 class="clamp">
             {{ dataObj.title }}
         </h2>
-        <p>
-            {{ dataObj.text }}
-        </p>
+        <p v-html="dataObj.text"></p>
     </section>    
 </template>
 

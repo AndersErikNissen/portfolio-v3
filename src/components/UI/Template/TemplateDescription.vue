@@ -3,7 +3,7 @@
     <section class="split--60">
       <h2>Hvad er {{ dataObj.title }}?</h2>
       <p>
-        {{ dataObj.description }}
+        {{ dataObj.about_case }}
       </p>
     </section>
     <svg-import class="split--40" :dataObj="svgObj"></svg-import>
