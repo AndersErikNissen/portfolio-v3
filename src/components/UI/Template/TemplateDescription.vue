@@ -3,7 +3,7 @@
     <section class="split--60">
       <h2>Hvad er {{ dataObj.title }}?</h2>
       <p>
-        {{ dataObj.description }}
+        {{ dataObj.about_case }}
       </p>
     </section>
     <svg-import class="split--40" :dataObj="svgObj"></svg-import>
@@ -12,6 +12,7 @@
 
 <script>
 import svgImport from "../SVG/SvgLogoContainer.vue";
+
 export default {
   name: "TemplateDescription",
   props: {
@@ -26,13 +27,17 @@ export default {
   computed: {
     svgObj() {
       let obj = false;
-      if (this.dataObj.svg_path) {
+
+      if (this.dataObj.logo) {
+
         obj = {
-          path: this.dataObj.svg_path,
+          path: this.dataObj.logo,
           title: this.dataObj.title,
           color: this.dataObj.color,
         };
+
       }
+      
       return obj;
     },
   },

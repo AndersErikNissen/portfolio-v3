@@ -26,6 +26,8 @@ export default {
   created() {
     //Updates static data to store.state
     this.$store.commit("SET_STATIC_DATA");
+    this.$store.commit("SET_NEW_DATA");
+
     //Add a functional "mediaquery-watcher" to use for methods and other stuff.
     this.resizeWindow();
   },

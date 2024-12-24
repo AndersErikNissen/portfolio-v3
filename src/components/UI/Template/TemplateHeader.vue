@@ -11,7 +11,7 @@
 
       </h2>
     </section>
-    <img :src="dataObj.mood" alt="" />
+    <img :src="getImage" alt="" />
   </header>
 </template>
 
@@ -37,6 +37,37 @@ export default {
     };
   },
   computed: {
+
+    getImage() {
+      
+      // Placeholder Image
+      let get_placeholder =  require( '@/assets/images/mood_imgs/placeholder.png' );
+
+      if ( this.dataObj.mood_img != "" ) {
+
+        // Try and require the Image
+        let get_img = require( '@/assets/images/mood_imgs/' + this.dataObj.mood_img );
+
+
+        if ( get_img ) {
+
+          // If we find an image return it.
+          return get_img;
+
+        } else {
+
+          // If not return an empty string
+          return get_placeholder;
+        }
+
+      } else {
+
+        return get_placeholder;
+
+      }
+
+    },
+
     getLogo() {
       let obj = false;
       if (this.dataObj) {
@@ -56,14 +87,19 @@ export default {
     },
   },
   methods: {
-    getTop() {
+     getTop() {
       // If hero is true, set where the sticky--hero should stop at(top);
-        let ele = document.querySelector(".sticky--hero"),
-          eleHeight = ele.offsetHeight,
-          winHeight = window.innerHeight;
-        // # 1 caviart, is that with this method the hero have to be at least 100vh, otherwise there will be space on top.
-        ele.style.top = winHeight - eleHeight + "px";
+      let hero_element =  document.querySelector( ".sticky--hero" );
 
+      if ( this.hero && hero_element ) {
+        let 
+        eleHeight = hero_element.offsetHeight,
+        winHeight = window.innerHeight;
+
+        
+        // # 1 caviart, is that with this method the hero have to be at least 100vh, otherwise there will be space on top.
+        hero_element.style.top = winHeight - eleHeight + "px";
+      }
     },
     setColor() {
       this.headerStyle.backgroundColor = this.dataObj.color;

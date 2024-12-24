@@ -7,20 +7,21 @@
       <img class="stageIcon" :src="useObj.svg" alt="SVG fil med animation" />
     </section>
     <section class="template__block--textArea">
-      <p>
-        {{ dataObj.description }}
+      <p v-html="dataObj.text">
       </p>
     </section>
     <div>
-      <img v-for="img in useImages" :key="img" :src="img" alt="">
+      <img v-if="dataObj.img" class="content-img" :src="require( '@/assets/images/content_imgs/' + dataObj.img )" alt="">
     </div>
   </section>
 </template>
 
 <script>
+
 import svgFirst from "@/assets/svg/CasesChallenge.svg";
 import svgSecond from "@/assets/svg/CasesDesign.svg";
 import svgThird from "@/assets/svg/CasesProcess.svg";
+
 export default {
   name: "TemplateSegment",
   props: {
@@ -42,22 +43,24 @@ export default {
   },
   computed: {
     useObj() {
+
       let obj = {
         svg: undefined,
         title: undefined,
       };
+
       switch (this.index) {
-        case "first": {
+        case 0: {
           obj.svg = this.svgFirst;
           obj.title = "Udfordringen";
           break;
         }
-        case "second": {
+        case 1: {
           obj.svg = this.svgSecond;
           obj.title = "Designet";
           break;
         }
-        case "third": {
+        case 2: {
           obj.svg = this.svgThird;
           obj.title = "Løsningen";
           break;
@@ -66,21 +69,11 @@ export default {
           obj.svg = this.svgFirst;
           obj.title = "No Title";
       }
+
       return obj;
     },
-    useImages() {
-      let images = [];
-      console.log(this.dataObj.images)
-      this.dataObj.images.forEach(img=> {
-        if(img != false) {
-          images.push(img)
-        }
-      })
-
-      return images;
-    }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -94,6 +87,11 @@ export default {
     width: 100px;
     margin-left: var(--margin-5);
   }
+
+  & img.content-img {
+    max-width: 65ch;
+  }
+
   @media screen and (max-width: 620px) {
     padding: var(--padding-5);
     & img.stageIcon {

@@ -1,0 +1,19 @@
+{
+    "technologies": [
+        "HTML",
+        "CSS",
+        "JS",
+        "VUE.JS",
+        "WordPress",
+        "SASS/SCSS",
+        "Ekstern API",
+        "Strapi",
+        "Node.js / Express.js"
+    ],
+    "roles": [
+        "Design",
+        "UX/UI",
+        "Frontend",
+        "Backend"
+    ]
+}

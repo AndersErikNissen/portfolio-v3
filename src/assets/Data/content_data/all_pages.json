@@ -1,15 +1,63 @@
 {
-    "front-page": {
+    "frontpage": {
         "hero": {
             "title": "Hokus pokus frontend i fokus",
-            "description": "En hjemmeside portfolio af Anders Erik Nissen"
+            "description": "En online portfolio af Anders Erik Nissen"
         },
         "intro": {
-            "title": "Hokus pokus frontend i fokus",
-            "description": "En hjemmeside portfolio af Anders Erik Nissen"
+            "title": "Lidt om mig selv",
+            "description": "Velkommen til min portfolio, som sagt er mit navn Anders Erik Nissen, og jeg er nyuddannet Multimediedesigner fra UCN - Aalborg, Sommeren 2022. Under uddannelsen har et stort fokus for mig, været at udvikle mine evner og kompetencer inden for især frontend udvikling. På siden kan du finde case-studies fra mine seneste projekter, samt når jeg har færdiggjort Design-siden vil du også kunne se nogle at de mere design orienterede ting jeg går og arbejder på."
         }
     },
-    "cases": {
-        "x": ""
+    "profil": {
+        "hero": {
+            "title": "Mojn",
+            "description": "Glad for at du ville kigge forbi, nedenfor kan du lære mig lidt bedre at kende, og forhåbentlig få en ide om, hvem jeg er som person.",
+            "profile_img": "new_profil.jpg"
+        },
+        "content": {
+            "main": {
+                "title": "Personen bag",
+                "text": "Jeg har ikke altid vidst at jeg ville være Multimediedesigner, faktisk skulle der gå mange år efter HTX, før jeg tog valget om at læse til multimediedesigner. På HTX var jeg i praktik som Multimediedesigner, men dengang tænkte jeg, at det ikke var noget for mig, men heldigvis mødte jeg op til Åbent Hus i foråret 2020 hvor jeg igen hørte om uddannelsen.</br></br>Selvom at mit fokus ligger på frontend udvikling, finder jeg stor glæde i at bruge tid på design og UX / UI, samt andre former for kreativ fordybelse. Ikke mindst fordi det giver et indblik i processen, som der sker inden det er tid til at skrive koden, derfor er jeg også glad for, at jeg kunne fordybe mig i alle dele af uddannelsen.</br></br>Nu som færdiguddannet Multimediedesigner er det så tid til at komme ud på arbejdsmarkedet, hvor jeg glæder mig til at komme ud og stifte nye bekendtskaber samt få en masse ny viden.</br></br>Når jeg ikke sidder og fordyber mig inden for faget, nyder jeg at komme ud og få noget frisk luft under den åbne himmel på min cykel, eller gribe nogle af mine Kettlebells og smide dem lidt rundt! Jeg nyder at være sammen med venner og familie, men ligger også en stor værdi i at bruge tid for mig selv. Så længe jeg kan huske har jeg været lidt af en nørd, så derfor kan jeg ofte være til at finde foran min computer, hvor jeg spiller videospil med mine venner eller ser animationsserier og film.",
+                "extra_text": "Praktik i 10 uger  hos WEXO A/S som frontend udvikler på en B2B e-commerce side sammen med et team af andre udviklere."
+            },
+            "extra": {
+                "experience": {
+                    "title": "Kodesprog",
+                    "array": [
+                        { "skill": "Vanilla (HTML, CSS, JS)", "amount": 5 },
+                        { "skill": "Vue.js", "amount": 3 },
+                        { "skill": "WordPress", "amount": 2 },
+                        { "skill": "WooCommerce", "amount": 1 },
+                        { "skill": "( Pratik ) Shopware", "amount": 1 },
+                        { "skill": "MSSQL", "amount": 1 },
+                        { "skill": "Node.js / Express.js", "amount": 1 },
+                        { "skill": "Strapi", "amount": 1 }
+                    ]
+                },
+                "other": {
+                    "title": "Andet",
+                    "array": [
+                        { "skill": "SASS/SCSS", "text": "God" },
+                        { "skill": "Twig", "text": "Okay" },
+                        { "skill": "Bootstrap", "text": "Okay" },
+                        { "skill": "Docker", "text": "Mindre" },
+                        { "skill": "Github / Gitlab", "text": "God" }
+                    ]
+                }
+            }
+        }
+    },
+    "casestudies": {
+        "title": "Alle Case Studies",
+        "description": "Her kan du se mine seneste Case Studies, og hermed få et indblik i min arbejdsprocess og tankegang!"
+    },
+    "designs": {
+        "title": "Alle Designs",
+        "description": "Her kan du finde forskellige Designs som jeg har lavet, det kan være ting som Illustrationer, Vector Grafik, UI/UX Design og alt mulig andet!"
+    },
+    "kontakt": {
+        "title": "Send et brev i skyen?",
+        "description": "Står du og brænder med nogle spørgsmål, eller bare gerne vil i kontakt med mig? Så bare skriv!"
     }
 }

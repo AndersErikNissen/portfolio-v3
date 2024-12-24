@@ -1,23 +1,35 @@
 <template>
+
   <section :style="'background-image: url(' + bgSvg + ');'" class="profil__heroPack--outer flex center heroBg">
+    
     <section class="profil__hero--content flex">
+
       <section>
+
         <h1>
           {{ dataObj.title }}
         </h1>
+
         <p>
           {{ dataObj.description }}
         </p>
+
       </section>
+
       <div>
-        <img :src="dataObj.img" alt="Profilbillede af AEN" />
+        <img :src="require( '@/assets/images/leftovers/' + dataObj.profile_img )" id="profile-img" alt="Profilbillede af AEN" />
       </div>
+
     </section>
+    
   </section>
+
 </template>
 
 <script>
+
 import bgSvg from "@/assets/svg/BackgroundClouds.svg";
+
 export default {
   name: "ProfilHero.vue",
   props: {
@@ -53,6 +65,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#profile-img {
+  border-radius: 50%;
+}
+
 img {
   max-width: 600px;
 }

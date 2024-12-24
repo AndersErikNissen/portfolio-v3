@@ -1,13 +1,15 @@
 <template>
-  <div :style="'background-color:' + dataObj.color">
+  <div class="svg_logo_container" :style="'background-color:' + dataObj.color">
     <!-- 
-            The require seems to be the best way to get a img/svg that has a dynamic path.
-            - Not sure if it's the most optimal way, but I haven't been able to find another way to do it.
-         -->
+      The require seems to be the best way to get a img/svg that has a dynamic path.
+      - Not sure if it's the most optimal way, but I haven't been able to find another way to do it.
+    -->
+
     <img
       :src="require('@/assets/svg/logos/' + dataObj.path)"
       :alt="'Logo til projektet ' + dataObj.title"
     />
+
   </div>
 </template>
 
@@ -24,12 +26,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
+
+div.svg_logo_container {
   padding: var(--padding-2);
   border-radius: var(--border-round-edge);
+  height: 100%;
+
+  img {
+    max-height: 150px;
+  }
+
   @media screen and (max-width: 1024px) {
     padding: calc(var(--padding-5) * 2);
     border-radius: 0;
   }
 }
+
 </style>
